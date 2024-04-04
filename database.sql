@@ -6,7 +6,8 @@ CREATE TABLE users (
 
 CREATE TABLE items (
   id INTEGER PRIMARY KEY,            -- item id
-  name VARCHAR,                     --  name of the item
+  name VARCHAR,                      --  name of the item
+  price float,                       -- price of the item
   published INTEGER,                 -- date when the article was published in epoch format
   tags VARCHAR,                      -- comma separated tags
   username VARCHAR REFERENCES users, -- user that possess the item
