@@ -1,0 +1,36 @@
+body {
+    background-color: #000000;
+}
+
+.navbar {
+    background-color: #4599c7;
+    font-family: "Inter", sans-serif; 
+    text-align: right;
+    margin-top: -9px;
+    margin-left: -9px;
+    margin-right: -9px;
+}
+
+.navbar a {
+    box-sizing: content-box;
+    display:inline-table;
+    color: #000000;
+    padding: 20px;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: white;
+    color: black;
+}
+
+#navbar-text {
+    font-size: 20px; 
+    font-weight: bold; 
+}
