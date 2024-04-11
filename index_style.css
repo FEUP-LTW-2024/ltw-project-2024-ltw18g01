@@ -1,36 +1,91 @@
 body {
-    background-color: #000000;
+    background-color: #064172;
 }
 
 .navbar {
-    background-color: #4599c7;
+    background-color: #ECB57D;
+    border-radius: 20px;
     font-family: "Inter", sans-serif; 
-    text-align: right;
-    margin-top: -9px;
-    margin-left: -9px;
-    margin-right: -9px;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 15px; 
 }
 
 .navbar a {
-    box-sizing: content-box;
-    display:inline-table;
-    color: #000000;
-    padding: 20px;
+    color: white;
+    padding: 10px 15px; 
+    border: 1.5px solid white; 
+    border-radius: 20px; 
     text-decoration: none;
     font-family: "Inter", sans-serif;
+    margin-right: 10px;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #f0be8b;
 }
 
 .navbar a.active {
-    background-color: white;
-    color: black;
+    background-color: #e6a15c;
 }
 
 #navbar-text {
-    font-size: 20px; 
+    font-size: 15px; 
     font-weight: bold; 
+}
+
+.logo{
+    width: 7%;
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.info-text {
+    font-family: "Inter", sans-serif;
+    color: white;
+    margin-left: 25px;
+}
+#First-text {
+    font-family: "Inter", sans-serif;
+    font-weight: bold; 
+    font-size: 45px; 
+
+}
+#Second-text {
+    font-family: "Inter", sans-serif;
+    font-size: 45px; 
+    margin-top: -40px;
+}
+
+#disclaimer {
+    font-family: "Inter", sans-serif;
+    font-size: 10px; 
+    margin-top: -40px;
+}
+.displays{
+    color: white;
+    font-family: "Inter", sans-serif;
+    margin-left: 25px;
+}
+
+#category{
+    text-align: left;
+    margin-top: 20px;
+    font-weight: bold; 
+    font-size: 15px; 
+}
+
+#image_display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,0)); /* Isso cria colunas automáticas com largura mínima de 150px */
+    gap: 100px; /* Espaçamento entre as imagens */
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+#image_display img {
+    width: 200px; /* Todas as imagens terão a mesma largura */
+    height: 200px; /* Mantém a proporção original da imagem */
+    display: block; /* Remove o espaço extra abaixo da imagem */
 }
