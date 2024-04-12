@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="index_style.css"> 
    </head>
     <body>
-        <img class="logo" src="images/logo/Techie_logo.png" /> 
         <header  id="navbar-text" class="navbar">
+            <img class="logo" src="images/logo/logo_techie.png" /> 
             <a class="active" href="#home">Home</a>
             <a href="#Gaming">Gaming</a>
             <a href="#PCs">PC's</a>
@@ -21,6 +21,7 @@
             <a href="#Photo&Video">Photo&Video</a>
         </header>
         <!-- Section of quotes-->
+
         <section>
             <div class="info-text">
                 <p id="First-text">Fancy some pre-loved tech?</p>
@@ -31,13 +32,52 @@
         <!-- New Arrivals-->
         <section>
             <div class="displays">
-                <p id="category">New arrivals</p>
+                <p class="category">New arrivals</p>
+                <p class="see_more">See more</p>
             </div>
-            <div id="image_display">
-                <img src="images/products/macintoshplus.jpg">
-                <img src="images/products/commodore64.jpg">
-                <img src="images/products/ZXSpectrum48k.jpg">
+            <div class="slide">
+            <!-- os botões estão a dar erro 
+            <button class="bp btn"> &lt; </button> -->
+                <div class="image_display">
+                    <img src="images/products/macintoshplus.jpg">
+                    <img src="images/products/commodore64.jpg">
+                    <img src="images/products/ZXSpectrum48k.jpg">
+                    <img src="images/products/Maquinacanoneos.jpg">
+                    <img src="images/products/motorlineMC1.jpg">
+                    <img src="images/products/tecladogamer.jpg">
+                    <img src="images/products/GiraDiscosThorensTD125MKII.jpg">
+                </div>
+                <!-- os botões estão a dar erro  
+                <button class="bn btn"> &gt; </button> -->
             </div>
         </section>
+
+        <br>
+        <br>
+        <br>
+
+         <!-- SEGA example-->
+         <section>
+            <div class="displays">
+                <p class="category">SEGA - Consoles and videogames</p>
+                <p class="see_more">See more</p>
+            </div>
+            <div class="slide">
+                 <!-- os botões estão a dar erro <button class="bp btn"> &lt; </button> -->
+                <div class="image_display">
+                    <img src="images/products/macintoshplus.jpg">
+                    <img src="images/products/commodore64.jpg">
+                    <img src="images/products/ZXSpectrum48k.jpg">
+                    <img src="images/products/Maquinacanoneos.jpg">
+                    <img src="images/products/motorlineMC1.jpg">
+                    <img src="images/products/tecladogamer.jpg">
+                    <img src="images/products/GiraDiscosThorensTD125MKII.jpg">
+                </div> 
+                <!-- os botões estão a dar erro 
+                <button class="bn btn"> &gt; </button>-->
+            </div>
+        </section>
+
+        <script src="see_more.js"></script>
     </body>
 </html>

@@ -1,20 +1,25 @@
 body {
-    background-color: #064172;
+    background: radial-gradient(circle at top right, #F4CD9A, #966478, #312F66, #281B3B);
+    background-size: 100%;
+    size: 100%;
 }
 
 .navbar {
-    background-color: #ECB57D;
+    width: 95%;
+    background-color: #564D86;
     border-radius: 20px;
     font-family: "Inter", sans-serif; 
     text-align: left;
     margin-left: 20px;
     margin-right: 20px;
     padding: 15px; 
+    display: inline-flex;
+    align-items: center;
 }
 
 .navbar a {
     color: white;
-    padding: 10px 15px; 
+    padding: 5px 15px 5px; 
     border: 1.5px solid white; 
     border-radius: 20px; 
     text-decoration: none;
@@ -23,11 +28,11 @@ body {
 }
 
 .navbar a:hover {
-    background-color: #f0be8b;
+    background-color: #857EAD;
 }
 
 .navbar a.active {
-    background-color: #e6a15c;
+    background-color: #5546A9;
 }
 
 #navbar-text {
@@ -36,9 +41,8 @@ body {
 }
 
 .logo{
-    width: 7%;
-    margin-top: 20px;
-    margin-left: 25px;
+    width:5%;
+    padding-right: 1%;
 }
 
 .info-text {
@@ -46,6 +50,7 @@ body {
     color: white;
     margin-left: 25px;
 }
+
 #First-text {
     font-family: "Inter", sans-serif;
     font-weight: bold; 
@@ -67,25 +72,64 @@ body {
     color: white;
     font-family: "Inter", sans-serif;
     margin-left: 25px;
+    display: flex;
+    justify-content: space-between; /* Isso alinha os elementos separadamente */
+    align-items: baseline;
 }
 
-#category{
+.category{
     text-align: left;
+    font-weight: bolder; 
     margin-top: 20px;
-    font-weight: bold; 
     font-size: 15px; 
 }
 
-#image_display {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px,0)); /* Isso cria colunas automáticas com largura mínima de 150px */
-    gap: 100px; /* Espaçamento entre as imagens */
+.see_more {
+    font-size: 15px;
+    right: inherit;
+}
+
+
+.image_display {
+    size: 100%;
+    display:inline-flex; 
     margin-top: 5px;
     margin-left: 25px;
 }
 
-#image_display img {
-    width: 200px; /* Todas as imagens terão a mesma largura */
-    height: 200px; /* Mantém a proporção original da imagem */
-    display: block; /* Remove o espaço extra abaixo da imagem */
+.image_display img {
+    margin-right: 10px;
+    object-fit: cover;
+    width: 200px; 
+    height: 200px; 
+    display: block;
+    border-top: 10px solid white; 
+    border-left: 10px solid white;
+    border-right: 10px solid white; 
+    border-bottom: 50px solid white; 
+	position: relative;
+	box-shadow: 0 8px 24px #966478;
+}
+
+.slide {
+    position:relative;
+}
+
+.slide .btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px; /* ajuste o tamanho conforme necessário */
+    top: 50%;
+    position:absolute;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.slide .prev {
+    left: 0; /* ajuste a posição à esquerda */
+}
+
+.slide .next {
+    right: 0; /* ajuste a posição à direita */
 }
