@@ -12,27 +12,28 @@
     <body>
         <header  id="navbar-text" class="navbar">
             <img class="logo" src="images/logo/logo_techie.png" alt="logo" /> 
-            <a class="active" href="index.php">Home</a>
+            <a href="index.php">Home</a>
             <a href="gaming.php">Gaming</a>
-            <a href="pcs.php">PC's</a>
+            <a class="active" href="pcs.php">PC's</a>
             <a href="mobile.php">Mobiles</a>
             <a href="tvs.php">TV's</a>
             <a href="music.php">Music</a>
             <a href="photo_video.php">Photo&Video</a>
         </header>
-
-        <!-- Section of quotes-->
+        <br> <br> <br> <br> <br>
         <section>
-            <div class="info-text">
-                <p id="First-text">Fancy some pre-loved tech?</p>
-                <p id="Second-text">Buy and sell at Techie. Zero fees*. Zero hassle.</p>
-                <p id="disclaimer" >*Buyer pays for the shipping.</p>
-            </div>
+            <header  id="sec-navbar-text" class="sec-navbar">
+                <a href=""></a>
+                <a href="">Hp</a>
+                <a href="">Linux</a>
+                <a href="">Windows</a>
+                <a class="active" href="">All</a>
+            </header>
         </section>
-        <!-- New Arrivals-->
+
         <section>
             <div class="displays">
-                <p class="category">New arrivals</p>
+                <p class="category">Apple lovers</p>
                 <p class="see_more">See more</p>
             </div>
             <div class="slide">
@@ -47,27 +48,5 @@
                 </div>
             </div>
         </section>
-        <br>
-        <br>
-        <br>
-
-         <!-- SEGA example-->
-         <section>
-            <div class="displays">
-                <p class="category">SEGA - Consoles and videogames</p>
-                <p class="see_more">See more</p>
-            </div>
-            <div class="slide">
-                <div class="image_display">
-                    <img src="images/products/macintoshplus.jpg">
-                    <img src="images/products/commodore64.jpg">
-                    <img src="images/products/ZXSpectrum48k.jpg">
-                    <img src="images/products/Maquinacanoneos.jpg">
-                    <img src="images/products/motorlineMC1.jpg">
-                    <img src="images/products/tecladogamer.jpg">
-                    <img src="images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div> 
-            </div>
-        </section>
-    </body>
+    </body>    
 </html>
