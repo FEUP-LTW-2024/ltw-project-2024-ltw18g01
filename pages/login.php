@@ -31,8 +31,18 @@
             </div>
         </section>
 
-        <div class="form_rectangle">
-            <p id="First-text">Username</p>
-        </div>
+        <section>
+            <p id="username">Username</p>
+            <div class="form_rectangle">
+                <input id="input-login" type="text" name="username">
+            </div>
+            <p id="username">Password</p>
+            <div class="form_rectangle">
+                <input id="input-login" type="text" name="username">
+            </div>
+            <div class="form_button">
+                <p id="form-button-text">Login</p>
+            </div>  
+        </section>
     </body>
 </html>
