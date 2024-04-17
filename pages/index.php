@@ -18,7 +18,8 @@
             <a href="mobile.php">Mobiles</a>
             <a href="tvs.php">TV's</a>
             <a href="music.php">Music</a>
-            <a href="photo_video.php">Photo&Video</a>
+            <!-- Change link to photo&video -->
+            <a href="account.php">Photo&Video</a>
             <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
         </header>
 

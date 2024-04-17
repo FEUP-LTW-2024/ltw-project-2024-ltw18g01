@@ -1,0 +1,28 @@
+.user-image {
+    width: 20%;
+    margin-left: 25px;
+    border-radius: 50%;
+    border: 3px solid white; 
+}
+
+.user-name {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 35px;
+    font-weight: bold; 
+    display: flex;
+    justify-content:center; 
+}
+
+.edit-profile{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 18px;
+    font-weight: bold; 
+    border: 2px solid #F4CD9A;
+    background-color: #fab152;
+    border-radius: 20px;
+    width: fit-content;
+    padding:0.5%;
+    margin-left: 7.5%;
+}
