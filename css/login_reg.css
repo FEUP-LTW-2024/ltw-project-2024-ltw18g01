@@ -22,3 +22,8 @@
     text-align: center;
 }
 
+.form_rectangle {
+    background: aqua;
+    width: auto;
+    border-radius: 40px;
+}

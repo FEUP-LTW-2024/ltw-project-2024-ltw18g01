@@ -31,6 +31,8 @@
             </div>
         </section>
 
-        <div class="form_rectangle"
+        <div class="form_rectangle">
+            <p id="First-text">Username</p>
+        </div>
     </body>
 </html>
