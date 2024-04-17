@@ -7,11 +7,11 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="css/index_style.css"> 
+        <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
     <body>
         <header  id="navbar-text" class="navbar">
-            <img class="logo" src="images/logo/logo_techie.png" alt="logo" /> 
+            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
             <a href="index.php">Home</a>
             <a class="active" href="gaming.php">Gaming</a>
             <a href="pcs.php">PC's</a>
@@ -38,13 +38,13 @@
             </div>
             <div class="slide">
                 <div class="image_display">
-                    <img src="images/products/macintoshplus.jpg">
-                    <img src="images/products/commodore64.jpg">
-                    <img src="images/products/ZXSpectrum48k.jpg">
-                    <img src="images/products/Maquinacanoneos.jpg">
-                    <img src="images/products/motorlineMC1.jpg">
-                    <img src="images/products/tecladogamer.jpg">
-                    <img src="images/products/GiraDiscosThorensTD125MKII.jpg">
+                    <img src="/images/products/macintoshplus.jpg">
+                    <img src="/images/products/commodore64.jpg">
+                    <img src="/images/products/ZXSpectrum48k.jpg">
+                    <img src="/images/products/Maquinacanoneos.jpg">
+                    <img src="/images/products/motorlineMC1.jpg">
+                    <img src="/images/products/tecladogamer.jpg">
+                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
                 </div>
             </div>
         </section>

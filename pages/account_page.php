@@ -7,6 +7,6 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="css/index_style.css"> 
+        <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
 </html>

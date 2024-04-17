@@ -7,18 +7,18 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="css/index_style.css"> 
+        <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
     <body>
         <header  id="navbar-text" class="navbar">
-            <img class="logo" src="images/logo/logo_techie.png" alt="logo" /> 
+            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
             <a href="index.php">Home</a>
             <a href="gaming.php">Gaming</a>
             <a href="pcs.php">PC's</a>
             <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TV's</a>
+            <a class="active" href="tvs.php">TV's</a>
             <a href="music.php">Music</a>
-            <a class="active" href="photo_video.php">Photo&Video</a>
+            <a href="photo_video.php">Photo&Video</a>
         </header>
     </body>
 </html>
