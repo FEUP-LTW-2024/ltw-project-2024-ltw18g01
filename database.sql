@@ -33,12 +33,12 @@ CREATE TABLE subcategories (
 );
 
 -- Inserções adicionais para a tabela de usuários (users)
-INSERT INTO users (username, password, name) VALUES
-('joao.vicente.36', 'abc123', 'João Vicente'), 
-('rodrigodesousa.pt', '20comer', 'Rodrigo de Sousa'), 
-('miguelmoita_', '123456', 'Miguel Moita'), 
-('_clarasousa', 'password', 'Clara Sousa'),  
-('pukaruca', 'reidistotudo', 'Pedro Santos'); 
+INSERT INTO users (username, password, name, image_url) VALUES
+('joao.vicente.36', 'abc123', 'João Vicente','images/users/vicente.jpeg'), 
+('rodrigodesousa.pt', '20comer', 'Rodrigo de Sousa','images/users/rodrigo.jpeg'), 
+('miguelmoita_', '123456', 'Miguel Moita','images/users/Miguel.jpg'), 
+('_clarasousa', 'password', 'Clara Sousa','images/users/clara_sousa.jpeg'),  
+('pukaruca', 'reidistotudo', 'Pedro Santos','images/users/pedro.jpeg'); 
 
 -- Inserções adicionais para a tabela de itens (items)
 INSERT INTO items (name, price, published, tags, username, state, description,image_url) VALUES
