@@ -19,6 +19,7 @@
             <a href="tvs.php">TV's</a>
             <a href="music.php">Music</a>
             <a href="photo_video.php">Photo&Video</a>
+            <a class="avatar" href="login.php"> <img class="avatar" src="images/guesticon.png" alt="guest"/></a>
         </header>
 
         <!-- Section of quotes-->
