@@ -25,15 +25,10 @@
         <br>
         <section class="user">
             <p class="user-name"> Bruno Mendes </p>
-            <br>
+            <p id="username" class="form_rectangle"> Data de Nascimento </p>
+            <p id="password" class="form_rectangle"> Password </p>
             <img class="user-image" src="/images/users/bdmendes.jpeg" alt="omaiormedodaclara">
             <p class="edit-profile"> Edit profile </p>        
-        </section> 
-
-        <section class="data">
-            <p class="form_rectangle"> Username </p>
-            <br><br><br><br><br><br>
-            <p class="form_rectangle"> Password </p>
         </section>
     </body>
 </html>

@@ -1,17 +1,11 @@
-.grid-container {
+.user {
     display: grid;
-    grid-template-columns: [start] 4fr [middle] 3fr [end];
-    grid-template-rows: [header] auto [body] auto [footer];
+    grid-template-columns:[start] 3em [top] auto [middle] auto [bottom] auto [end];
+    grid-template-rows: [start] auto [top] auto [middle] auto [bottom] auto [end];
 }
 
-.user-image {
-    width: 25%;
-    margin-left: 25px;
-    border-radius: 50%;
-    border: 3px solid white; 
-    box-shadow: 0 2px 24px #F4CD9A;
-    grid-column: start / middle;
-    grid-row: body / footer;
+.navbar {
+    grid-row: start / top;
 }
 
 .user-name {
@@ -21,8 +15,35 @@
     font-weight: bold; 
     display: flex;
     justify-content: center; 
+    grid-column: top/ middle;
+    grid-row: start / top;
+}
+
+.user-image {
+    width: 35%;
+    margin-left: 12%;
+    border-radius: 50%;
+    border: 3px solid white; 
+    box-shadow: 0 2px 24px #F4CD9A;
     grid-column: start / middle;
-    grid-row: body / footer;
+     grid-row: top / bottom;
+}
+
+.form_rectangle {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    background: #564D86; 
+    border-radius: 30px;
+    box-shadow: 0 8px 24px #966478;
+    width: 25em;
+    margin: auto;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
 .edit-profile {
@@ -35,37 +56,19 @@
     border-radius: 20px;
     width: fit-content;
     padding: 0.5%;
-    margin-left: 12%;
+    margin-left: 22%;
     grid-column: start / middle;
-    grid-row: body / footer;
+     grid-row: bottom / end;
 }
 
-body > header {
-    grid-column: start / end;
-    grid-row: header / body;
+#username{
+    grid-column: top / bottom;
+    grid-row: top / middle;
 }
 
-.form_rectangle {
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    font-size: 30px;
-    background: #564D86;
-    width: auto;
-    border-radius: 40px;
-    box-shadow: 0 8px 24px #966478;
-    width: 35em;
-    margin: auto;
-    margin-top: -2em;
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    grid-column: start / end;
-    grid-row: body / footer;
+#password{
+     grid-column: top / bottom;
+    grid-row: middle / bottom;
+
 }
 
-.data{
-    grid-column: middle / end;
-    grid-row: body / footer;
-}
