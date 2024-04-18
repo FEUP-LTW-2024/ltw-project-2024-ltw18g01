@@ -40,6 +40,7 @@
             <div class="form_rectangle">
                 <input id="input-login" type="text" name="username">
             </div>
+            <br><br>
             <div class="form_button">
                 <p id="form-button-text">Login</p>
             </div>  

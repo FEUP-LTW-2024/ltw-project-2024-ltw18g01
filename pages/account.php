@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/css/index_style.css"> 
         <link rel="stylesheet" href="/css/account.css">
    </head>
-    <body>
+   <body>
         <header  id="navbar-text" class="navbar">
             <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
             <a class="active" href="index.php">Home</a>
@@ -23,14 +23,17 @@
             <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
         </header>
         <br>
-        <section> 
-         <div>
-               <p class= "user-name"> Bruno Mendes </p>
-         </div>
-               <br>
-               <img class= "user-image" src= "/images/users/bdmendes.jpeg" alt="omaiormedodaclara">
-               <p class= "edit-profile"> Edit profile </p>
+        <section class="user">
+            <p class="user-name"> Bruno Mendes </p>
+            <br>
+            <img class="user-image" src="/images/users/bdmendes.jpeg" alt="omaiormedodaclara">
+            <p class="edit-profile"> Edit profile </p>        
         </section> 
 
-   </body>
+        <section class="data">
+            <p class="form_rectangle"> Username </p>
+            <br><br><br><br><br><br>
+            <p class="form_rectangle"> Password </p>
+        </section>
+    </body>
 </html>
