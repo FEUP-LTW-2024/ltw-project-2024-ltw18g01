@@ -1,74 +1,71 @@
-.user {
-    display: grid;
-    grid-template-columns:[start] 3em [top] auto [middle] auto [bottom] auto [end];
-    grid-template-rows: [start] auto [top] auto [middle] auto [bottom] auto [end];
-}
-
-.navbar {
-    grid-row: start / top;
-}
-
-.user-name {
+.user-profile{
     font-family: "Inter", sans-serif;
     color: white;
     font-size: 35px;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
-    grid-column: top/ middle;
-    grid-row: start / top;
+}
+
+.catch-phrase{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 35px;
+    font-weight: bold; 
+    display: flex;
+    justify-content: center; 
 }
 
 .user-image {
     width: 35%;
-    margin-left: 12%;
     border-radius: 50%;
     border: 3px solid white; 
     box-shadow: 0 2px 24px #F4CD9A;
-    grid-column: start / middle;
-     grid-row: top / bottom;
+    display: flex;
+    margin: auto;
 }
 
-.form_rectangle {
+.name{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 35px;
+    font-weight: bold; 
+    display: flex;
+    justify-content: center; 
+}
+
+.username{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 35px;
+    font-weight: bold; 
+    display: flex;
+    justify-content: center; 
+}
+.containers{
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+    
+}
+.form-button {
+    height: 4em;
+    border-radius: 40px;
+    border: 1.5px solid white;
+    box-shadow: 0 8px 24px #966478;
+    width: 15em;
+    margin-top: 1em;
+}   
+
+
+#form-button-text {
     font-family: "Inter", sans-serif;
     font-weight: bold;
     color: white;
     text-align: center;
     font-size: 30px;
-    background: #564D86; 
-    border-radius: 30px;
-    box-shadow: 0 8px 24px #966478;
-    width: 25em;
-    margin: auto;
-    margin-top: 1em;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
+    margin: 0.45em;
+    
 }
 
-.edit-profile {
-    font-family: "Inter", sans-serif;
-    color: white;
-    font-size: 18px;
-    font-weight: bold; 
-    border: 2px solid #F4CD9A;
-    background-color: #fab152;
-    border-radius: 20px;
-    width: fit-content;
-    padding: 0.5%;
-    margin-left: 22%;
-    grid-column: start / middle;
-     grid-row: bottom / end;
-}
-
-#username{
-    grid-column: top / bottom;
-    grid-row: top / middle;
-}
-
-#password{
-     grid-column: top / bottom;
-    grid-row: middle / bottom;
-
-}
 

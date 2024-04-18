@@ -24,11 +24,19 @@
         </header>
         <br>
         <section class="user">
-            <p class="user-name"> Bruno Mendes </p>
-            <p id="username" class="form_rectangle"> Data de Nascimento </p>
-            <p id="password" class="form_rectangle"> Password </p>
-            <img class="user-image" src="/images/users/bdmendes.jpeg" alt="omaiormedodaclara">
-            <p class="edit-profile"> Edit profile </p>        
+            <p class = "user-profile"> User Profile </p>
+            <p class = "catch-phrase"> Your profile - make it your own! </p>
+            <img class = "user-image" src="/images/users/rodrigo.jpeg">
+            <p class = "name"> Rodrigo de Sousa </p>
+            <p class = "username"> &#64;rodrigodesousa.pt </p>
+            <div class= "containers">
+                <div class="form-button">
+                    <p id="form-button-text">Edit profile</p>            
+                </div>            
+                <div class="form-button">            
+                    <p id="form-button-text">My items</p>
+                </div>
+            </div> 
         </section>
     </body>
 </html>
