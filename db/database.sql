@@ -1,8 +1,10 @@
 CREATE TABLE users (
-  username VARCHAR PRIMARY KEY,      -- unique username
-  password VARCHAR,                  -- password stored in sha-1
-  name VARCHAR                       -- real name
-  image_url VAR CHAR                -- user image
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR PRIMARY KEY NOT NULL,      -- unique username
+  password VARCHAR NOT NULL,                  -- password stored in sha-1
+  name VARCHAR NOT NULL,                       -- real name
+  image_url VARCHAR NOT NULL                -- user image
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE items (

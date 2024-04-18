@@ -29,21 +29,22 @@
     box-shadow: 0 8px 24px #966478;
     width: 35em;
     margin: auto;
-    margin-top: -2em;
+    margin-top: -0.5em;
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
 }
 
 .form_button {
-    width: auto;
+    height: 4em;
     border-radius: 40px;
     border: 1.5px solid white;
     box-shadow: 0 8px 24px #966478;
     width: 15em;
     margin: auto;
-    margin-top: 0em;
+    margin-top: 1em;
 }
+
 
 #username {
     font-family: "Inter", sans-serif;
@@ -67,6 +68,7 @@
     color: white;
     text-align: center;
     font-size: 30px;
+    margin: 0.45em;
 }
 
 #input-login {
