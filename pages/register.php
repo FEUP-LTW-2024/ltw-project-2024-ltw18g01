@@ -2,11 +2,18 @@
 require_once "config.php";
 
 //Define variables that we will use
-$username=$password=$confirm_password="";
-$username_err=$password_err=$confirm_password_err="";
+$name=$username=$password=$confirm_password="";
+$name_err=$username_err=$password_err=$confirm_password_err="";
 
 //Processing form data when form is submitted
 if($__SERVER["REQUEST_METHOD"]=="POST"){
+
+    if (empty(trim($_POST["name"]))) {
+    $name_err = "Please enter your name.";
+} else {
+    $name = trim($_POST["name"]);
+}
+
 
     if(empty(trim($_POST["username"]))){
         $username_err= "Please enter a username.";
@@ -42,6 +49,7 @@ if($__SERVER["REQUEST_METHOD"]=="POST"){
         }
     }
 
+
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";
     }
@@ -51,6 +59,7 @@ if($__SERVER["REQUEST_METHOD"]=="POST"){
     else{
         $password = trim($_POST["password"]);
     }
+
 
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm password.";
@@ -62,14 +71,15 @@ if($__SERVER["REQUEST_METHOD"]=="POST"){
         }
     }
 
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($name_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
-        $sql = "INSERT INTO users (username, password) VALUES (?,?)";
+        $sql = "INSERT INTO users (name,username, password) VALUES (?,?,?)";
 
         if($stmt = mysqli_prepare($link,$sql)){
 
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "ss",$param_name, $param_username, $param_password);
 
+            $param_name = $name;
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -123,29 +133,37 @@ if($__SERVER["REQUEST_METHOD"]=="POST"){
             </div>
         </section>
 
-        <section>
-            <p id="username">Name</p>
+        <form action = " <?php echo htmlspecialchars($__SERVER["PHP_SELF"]); ?>" method = "post">
+
+            <label id="username">Name</label>
             <div class="form_rectangle">
-                <input id="input-login" type="text" name="username" required>
+                <input id="input-login" type="text" name="name" class= "form control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value=" <?php echo $name; ?>">
+                <span class="invalid-feedback"><?php echo $name_err; ?> </span>
             </div>
-            <p id="username">Username</p>
+
+            <label id="username">Username</label>
             <div class="form_rectangle">
-                <input id="input-login" type="text" name="username" required>
+                <input id="input-login" type="text" name="username" class= "form control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value=" <?php echo $username; ?>">
+                <span class="invalid-feedback"><?php echo $username_err; ?> </span>
             </div>
-            <p id="username">Password</p>
+
+            <label id="username">Password</label>
             <div class="form_rectangle">
-                <input id="input-login" type="password" name="password" required>
+                <input id="input-login" type="password" name="password" class= "form control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value=" <?php echo $password; ?>">
+                <span class="invalid-feedback"><?php echo $password_err; ?> </span>
             </div>
-            <p id="username">Confirm password</p>
+
+            <label id="username">Confirm password</label>
             <div class="form_rectangle">
-                <input id="input-login" type="password" name="password" required>
+                <input id="input-login" type="password" name="confirm_password" class= "form control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value=" <?php echo $confirm_password; ?>">
+                <span class="invalid-feedback"><?php echo $confirm_password_err; ?> </span>
             </div>
+
             <br><br>
             <div class="form_button">
-                <a id="form-button-hover" href="index.php">    
-                    <p id="form-button-text">Register</p>
-                </a>
-            </div>  
-        </section>
+                <input id="form-button-hover" type = "submit" class="btn btn-primary" value="Submit">
+                <input id="form-button-hover" type = "reset" class="btn btn-secondart" value="Reset">
+            </div>   
+        </form>  
     </body>
 </html>
