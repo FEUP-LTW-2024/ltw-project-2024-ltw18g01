@@ -24,9 +24,10 @@
         </header>
         <br>
         <section class="user">
-            <p class = "user-profile"> User Profile </p>
-            <p class = "catch-phrase"> Your profile - make it your own! </p>
-            <img class = "user-image" src="/images/users/rodrigo.jpeg">
+            <p class="user-profile">User Profile</p>
+            <p class="catch-phrase"> Your profile - make it your own! </p>
+            <br>
+            <img class="user-image" src="/images/users/rodrigo.jpeg">
             <p class = "name"> Rodrigo de Sousa </p>
             <p class = "username"> &#64;rodrigodesousa.pt </p>
             <div class= "containers">

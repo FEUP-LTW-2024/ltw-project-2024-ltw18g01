@@ -1,7 +1,7 @@
 .user-profile{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
@@ -10,14 +10,15 @@
 .catch-phrase{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 35px;
-    font-weight: bold; 
+    font-size: 20px;
+    font-weight: regular; 
     display: flex;
     justify-content: center; 
+    margin-top: -1.5em;
 }
 
 .user-image {
-    width: 35%;
+    width: 20%;
     border-radius: 50%;
     border: 3px solid white; 
     box-shadow: 0 2px 24px #F4CD9A;
@@ -28,7 +29,7 @@
 .name{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 35px;
+    font-size: 45px;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
@@ -37,10 +38,11 @@
 .username{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 35px;
-    font-weight: bold; 
+    font-size: 30px;
+    font-weight: 600; 
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    margin-top: -1em;
 }
 .containers{
     display: flex;
