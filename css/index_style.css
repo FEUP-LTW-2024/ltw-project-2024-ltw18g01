@@ -226,26 +226,26 @@ body {
 }
 
 .categories-navbar a {
-    color: white; /* Cor do texto */
-    padding: 5px 10px; /* Espaçamento interno dos links */
-    text-decoration: none; /* Remover sublinhado dos links */
-    font-family: "Inter", sans-serif; /* Fonte do texto */
+    color: white; 
+    padding: 5px 10px; 
+    text-decoration: none; 
+    font-family: "Inter", sans-serif;
 }
 
-/* Estilo para links ativos na barra de navegação das categorias */
+
 .categories-navbar a.active {
-    background-color: #5546A9; /* Cor de fundo do link ativo */
+    background-color: #5546A9; 
 }
 
-/* Estilize o botão do menu móvel conforme necessário */
+
 .mobile-menu button img {
     border: 0;
-    background-color: transparent; /* Define o fundo transparente para o ícone */
+    background-color: transparent; 
 }
 
 ..mobile-menu {
-    display: flex; /* Alterado para flex para alinhar o botão */
-    align-items: center; /* Alinhar verticalmente */
+    display: flex; 
+    align-items: center; 
 }
 
 .mobile-menu button {
@@ -253,16 +253,15 @@ body {
     border: none;
     padding: 0;
     cursor: pointer;
-    text-align: left; /* Alinhar o conteúdo do botão à esquerda */
+    text-align: left;
 }
 
 .mobile-menu button img {
-    width: 30px; /* Ajustar a largura da imagem como desejar */
+    width: 30px;
 }
 
-/* Mostrar o ícone do menu apenas para dispositivos móveis */
 @media only screen and (min-width: 1024px) {
     .mobile-menu button {
-        display: none; /* Ocultar o botão em dispositivos maiores */
+        display: none; 
     }
 }
