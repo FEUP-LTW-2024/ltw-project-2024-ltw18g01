@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -9,19 +11,39 @@
 
         <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
-    <body>
-        <header  id="navbar-text" class="navbar">
-            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
-            <a class="active" href="index.php">Home</a>
-            <a href="gaming.php">Gaming</a>
-            <a href="pcs.php">PC's</a>
-            <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TV's</a>
-            <a href="music.php">Music</a>
-            <!-- Change link to photo&video -->
-            <a href="account.php">Photo&Video</a>
-            <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
-        </header>
+        <body>
+            <header class="navbar" id="navbar-text">
+            <a class="logo" href="index.php"><img src="/images/logo/logo_techie.png" alt="logo"></a>
+            <a class="active desktop" href="index.php">Home</a>
+            <a class="desktop" href="gaming.php">Gaming</a>
+            <a class="desktop" href="pcs.php">PCs</a>
+            <a class="desktop" href="mobile.php">Mobiles</a>
+            <a class="desktop" href="tvs.php">TVs</a>
+            <a class="desktop" href="music.php">Music</a>
+            <a class="desktop" href="photo_video.php">Photo&Video</a>
+            <a class="avatar" href="login.php"><img class="avatar" src="/images/guesticon.png" alt="guest"></a>
+            <div class="mobile-menu">
+                <button onclick="toggleDesktopMenu()"> 
+                    <img src="/images/icon-list.png" alt="Menu-Icon" class="mobile-menu-icon">
+                </button>
+                <div class="desktop-menu">
+                    <a class="desktop" href="index.php">Home</a>
+                    <a class="desktop" href="gaming.php">Gaming</a>
+                    <a class="desktop" href="pcs.php">PC's</a>
+                    <a class="desktop" href="mobile.php">Mobiles</a>
+                    <a class="desktop" href="tvs.php">TV's</a>
+                    <a class="desktop" href="music.php">Music</a>
+                </div>
+            </div>
+        <div class="categories-navbar">
+            <a class="desktop" href="index.php">Home</a>
+            <a class="desktop" href="gaming.php">Gaming</a>
+            <a class="desktop" href="pcs.php">PC's</a>
+            <a class="desktop" href="mobile.php">Mobiles</a>
+            <a class="desktop" href="tvs.php">TV's</a>
+            <a class="desktop" href="music.php">Music</a>
+        </div>
+    </header>
 
         <!-- Section of quotes-->
         <section>
@@ -71,5 +93,6 @@
                 </div> 
             </div>
         </section>
+        <script src="navbar.js"></script>    
     </body>
 </html>

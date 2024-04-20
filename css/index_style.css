@@ -6,26 +6,24 @@ body {
 .navbar {
     background-color: #564D86;
     font-family: "Inter", sans-serif; 
-    text-align: left;
-    padding-left: 1%; /* Adiciona padding apenas para o topo e para baixo */
-    display:flex;
+    padding-left: 1%;
+    display: flex;
     align-items: center;
-    height:fit-content;
+    width: 95vw;
     border-top-right-radius: 20px; 
     border-top-left-radius: 20px; 
     border-bottom-right-radius: 20px; 
     border-bottom-left-radius: 20px; 
-    border-width: 100%;
 }
 
 .navbar a {
     color: white;
-    padding:1% 1%; ; 
+    padding:1% 1%; ;
     border: 1.5px solid white; 
     border-radius: 20px; 
     text-decoration: none;
     font-family: "Inter", sans-serif;
-    margin-right: 10px;
+    margin-right: 1%;
 }
 
 .navbar a:hover {
@@ -36,42 +34,63 @@ body {
     background-color: #5546A9;
 }
 
-.navbar a.avatar{
-    background-color: #564D86;
-    border: none;
-    display: flex;
-    align-items: center;
+.navbar a.logo {
+    border: 0;  
+    width: 10%
 }
 
+.navbar a.logo img {
+    border: 0;
+    width: 90%
+}
+
+
+.navbar a.avatar {
+    border: none;
+    margin-right: 0%;
+    padding: 0%;
+}
+
+.navbar a.avatar img {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid white; 
+    width: 30%; 
+    height: auto; 
+    border-radius: 50%;}
+
 #navbar-text {
-    font-size: 15px; 
+    font-size: 60%; 
     font-weight: bold; 
+    text-align: left;
 }
 
 .sec-navbar {
-    width: min-content;
+    padding: 0.5% 2%;
     background-color: #F4CD9A;
     font-family: "Inter", sans-serif;
-    text-align: center;
-    padding: 0.5% 7%; 
     display: flex;
-    justify-content: center; 
     align-items: center;
-    border: 2px solid white; 
-    border-radius: 40px; 
-    margin: 0 auto; 
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 40px;
+    width: 20vh;
+    margin: 0 auto;
 }
-
 
 .sec-navbar a {
     color: white;
-    padding:2% 7%; ; 
-    border: 1px solid white; 
-    border-radius: 20px; 
+    padding: 2% 4%;
+    border: 1px solid white;
+    border-radius: 20px;
     text-decoration: none;
     font-family: "Inter", sans-serif;
-    margin-right: 10px;
-    
+}
+
+#sec-navbar-text {
+    font-size: 40%;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .sec-navbar a:hover {
@@ -80,16 +99,6 @@ body {
 
 .sec-navbar a.active {
     background-color: #966478;
-}
-
-#sec-navbar-text {
-    font-size: 15px; 
-    font-weight: bold; 
-}
-
-.logo{
-    width:5%;
-    padding-right: 1%;
 }
 
 .info-text {
@@ -120,7 +129,7 @@ body {
     font-family: "Inter", sans-serif;
     margin-left: 25px;
     display: flex;
-    justify-content: space-between; /* Isso alinha os elementos separadamente */
+    justify-content: space-between; 
     align-items: baseline;
 }
 
@@ -157,36 +166,103 @@ body {
 	position: relative;
 	box-shadow: 0 8px 24px #966478;
 }
+/* mobile */
+@media only screen and (max-width: 1024px) {
 
-.slide {
-    position:relative;
+    .navbar{
+        height: 6vh;
+    }
+
+    .navbar a.logo {
+        border: 0;  
+        width: 30%
+    }
+
+    .navbar a.avatar img {
+        display: flex;
+        align-items: center;
+        border: 1.5px solid white; 
+        width: 30%; 
+        height: auto; 
+        border-radius: 50%;}
+
+
+    .desktop {
+        display: none;
+    }
+
+    .navbar a.active {
+        display: none;
+    }
+
 }
 
-.slide .btn {
+@media screen {
+    .mobile {
+        display:none;
+    }
+}
+
+
+.desktop-menu {
+    display: none;
+    position: absolute;
+    background-color: #356EA0;
+    width: 100%;
+    bottom: -150px;
+    left: 0;
+}
+
+.desktop-menu.show {
+    display: block;
+}
+
+.categories-navbar {
+    display: none;
+    background-color: #356EA0; 
+    padding: 10px 0; 
+    text-align: center; 
+    width: 100%;
+}
+
+.categories-navbar a {
+    color: white; /* Cor do texto */
+    padding: 5px 10px; /* Espaçamento interno dos links */
+    text-decoration: none; /* Remover sublinhado dos links */
+    font-family: "Inter", sans-serif; /* Fonte do texto */
+}
+
+/* Estilo para links ativos na barra de navegação das categorias */
+.categories-navbar a.active {
+    background-color: #5546A9; /* Cor de fundo do link ativo */
+}
+
+/* Estilize o botão do menu móvel conforme necessário */
+.mobile-menu button img {
+    border: 0;
+    background-color: transparent; /* Define o fundo transparente para o ícone */
+}
+
+..mobile-menu {
+    display: flex; /* Alterado para flex para alinhar o botão */
+    align-items: center; /* Alinhar verticalmente */
+}
+
+.mobile-menu button {
     background: none;
     border: none;
-    color: white;
-    font-size: 30px;
-    top: 50%;
-    position:absolute;
-    transform: translateY(-50%);
+    padding: 0;
     cursor: pointer;
+    text-align: left; /* Alinhar o conteúdo do botão à esquerda */
 }
 
-.slide .prev {
-    left: 0; 
+.mobile-menu button img {
+    width: 30px; /* Ajustar a largura da imagem como desejar */
 }
 
-.slide .next {
-    right: 0;
-}
-
-.avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1.5px solid white;
-    display: flex;
-    align-items: center;
+/* Mostrar o ícone do menu apenas para dispositivos móveis */
+@media only screen and (min-width: 1024px) {
+    .mobile-menu button {
+        display: none; /* Ocultar o botão em dispositivos maiores */
+    }
 }
