@@ -160,9 +160,16 @@ if($__SERVER["REQUEST_METHOD"]=="POST"){
             </div>
 
             <br><br>
-            <div class="form_button">
-                <input id="form-button-hover" type = "submit" class="btn btn-primary" value="Submit">
-                <input id="form-button-hover" type = "reset" class="btn btn-secondart" value="Reset">
+            <div class="form_button" id="form button-text">
+                <a id="form-button-hover" > 
+                <input type = "submit" class="btn btn-primary" value="Submit">
+                </a>
+            </div>
+            
+            <div class="form_button" id="form button-text">
+                <a id="form-button-hover" > 
+                <input type = "reset" class="btn btn-secondart" value="Reset">
+                </a>
             </div>   
         </form>  
     </body>
