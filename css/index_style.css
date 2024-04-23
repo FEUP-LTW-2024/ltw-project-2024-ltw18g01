@@ -17,17 +17,18 @@ body {
 }
 
 .navbar a {
+    margin-right: 1%;
     color: white;
     padding:1% 1%; ;
     border: 1.5px solid white; 
     border-radius: 20px; 
     text-decoration: none;
     font-family: "Inter", sans-serif;
-    margin-right: 1%;
 }
 
 .navbar a:hover {
     background-color: #857EAD;
+
 }
 
 .navbar a.active {
@@ -35,6 +36,7 @@ body {
 }
 
 .navbar a.logo {
+    background-color:transparent;
     border: 0;  
     width: 10%
 }
@@ -46,21 +48,19 @@ body {
 
 
 .navbar a.avatar {
-    border: none;
-    margin-right: 0%;
-    padding: 0%;
+    border:none;
+    border-radius: 50%;
 }
 
 .navbar a.avatar img {
+    width: 25%;
     display: flex;
     align-items: center;
     border: 1.5px solid white; 
-    width: 30%; 
-    height: auto; 
     border-radius: 50%;}
 
 #navbar-text {
-    font-size: 60%; 
+    font-size: 100%; 
     font-weight: bold; 
     text-align: left;
 }
@@ -168,22 +168,23 @@ body {
 }
 /* mobile */
 @media only screen and (max-width: 1024px) {
-
     .navbar{
-        height: 6vh;
+        height: 40%;
     }
 
     .navbar a.logo {
-        border: 0;  
         width: 30%
+    }
+
+    .navbar a.avatar {
+        width: 35%
     }
 
     .navbar a.avatar img {
         display: flex;
         align-items: center;
         border: 1.5px solid white; 
-        width: 30%; 
-        height: auto; 
+        height: 30%; 
         border-radius: 50%;}
 
 
@@ -195,12 +196,6 @@ body {
         display: none;
     }
 
-}
-
-@media screen {
-    .mobile {
-        display:none;
-    }
 }
 
 
@@ -243,25 +238,26 @@ body {
     background-color: transparent; 
 }
 
-..mobile-menu {
+.mobile-menu {
     display: flex; 
     align-items: center; 
 }
 
 .mobile-menu button {
-    background: none;
+    background:none;
     border: none;
     padding: 0;
     cursor: pointer;
     text-align: left;
+    width: 90%;
 }
 
 .mobile-menu button img {
-    width: 30px;
+    width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
     .mobile-menu button {
-        display: none; 
+        display:none; 
     }
 }

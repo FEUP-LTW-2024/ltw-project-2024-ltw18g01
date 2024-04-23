@@ -12,17 +12,29 @@
         <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
     <body>
-        <header  id="navbar-text" class="navbar">
-            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
-            <a href="index.php">Home</a>
-            <a class="active" href="gaming.php">Gaming</a>
-            <a href="pcs.php">PCs</a>
-            <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TVs</a>
-            <a href="music.php">Music</a>
-            <a href="photo_video.php">Photo&Video</a>
-            <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
-
+        <header class="navbar" id="navbar-text">
+            <a class="logo" href="index.php"><img src="/images/logo/logo_techie.png" alt="logo"></a>
+            <a class="desktop" href="index.php">Home</a>
+            <a class="active desktop" href="gaming.php">Gaming</a>
+            <a class="desktop" href="pcs.php">PCs</a>
+            <a class="desktop" href="mobile.php">Mobiles</a>
+            <a class="desktop" href="tvs.php">TVs</a>
+            <a class="desktop" href="music.php">Music</a>
+            <a class="desktop" href="photo_video.php">Photo&Video</a>
+            <a class="avatar" href="login.php"><img class="avatar" src="/images/guesticon.png" alt="guest"></a>
+            <div class="mobile-menu">
+                <button onclick="toggleDesktopMenu()"> 
+                    <img src="/images/icon-list.png" alt="Menu-Icon">
+                </button>
+                <div class="desktop-menu">
+                    <a class="desktop" href="index.php">Home</a>
+                    <a class="desktop" href="gaming.php">Gaming</a>
+                    <a class="desktop" href="pcs.php">PC's</a>
+                    <a class="desktop" href="mobile.php">Mobiles</a>
+                    <a class="desktop" href="tvs.php">TV's</a>
+                    <a class="desktop" href="music.php">Music</a>
+                </div>
+            </div>
         </header>
         <br> <br>
         <section>
