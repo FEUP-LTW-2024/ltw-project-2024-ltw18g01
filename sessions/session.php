@@ -10,7 +10,7 @@
     }
 
     public function isLoggedIn() : bool {
-      return isset($_SESSION['id']);    
+      return isset($_SESSION['userId']);    
     }
 
     public function logout() {
@@ -18,15 +18,19 @@
     }
 
     public function getId() : ?int {
-      return isset($_SESSION['id']) ? $_SESSION['id'] : null;    
+      return isset($_SESSION['userId']) ? $_SESSION['userId'] : null;    
     }
 
     public function getName() : ?string {
       return isset($_SESSION['name']) ? $_SESSION['name'] : null;
     }
 
+    public function getUserProfilePictureUrl() : ?string {
+      return isset($_SESSION['image_url']) ? $_SESSION['image_url'] : null;
+    }
+
     public function setId(int $id) {
-      $_SESSION['id'] = $id;
+      $_SESSION['userId'] = $id;
     }
 
     public function setName(string $name) {

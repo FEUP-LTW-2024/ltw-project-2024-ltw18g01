@@ -48,12 +48,14 @@
                     <input id="input-login" type="password" name="password" placeholder="password">
                 </div>
                 <br><br>
-                
+
+                <!--
                 <div class="form_button">
                     <a id="form-button-hover" href="index.php">    
                         <p id="form-button-text">Login</p>
                     </a>
                 </div>
+                -->
                 
                 <br><br>
 

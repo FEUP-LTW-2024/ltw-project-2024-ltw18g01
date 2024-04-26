@@ -1,18 +1,14 @@
 <?php
   declare(strict_types = 1);
 
+  require_once(__DIR__ . '/../sessions/session.php');
+  $session = new Session();
+
   require_once(__DIR__ . '/../db/connection.db.php');
 
-  require_once(__DIR__ . '/../db/item.class.php');
-
-  require_once(__DIR__ . '/../cards/item.card.php');
-
   $db = databaseConnect();
-
-  $item = Item::getItem($db, intval($_GET['id']));
-
-  drawItemHomepage($item);
 ?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -35,8 +31,23 @@
         <a class="desktop" href="mobile.php">Mobiles</a>
         <a class="desktop" href="tvs.php">TVs</a>
         <a class="desktop" href="music.php">Music</a>
-        <a class="desktop" href="photo_video.php">Photo&Video</a>
-        <a class="avatar" href="login.php"><img class="avatar" src="/images/guesticon.png" alt="guest"></a>
+        <a class="desktop" href="account.php">Photo&Video</a>
+
+        <?php
+        if ($session->isLoggedIn()) {
+            // If user is logged in, get the URL of their profile picture from db
+            $profilePictureUrl = $session->getUserProfilePictureUrl();
+        ?>
+            <a class="avatar" href="account.php"><img class="avatar" src="<?php echo $profilePictureUrl; ?>" alt="user"></a>
+        <?php
+        } else {
+            // If user is not logged in, use the guest icon
+        ?>
+            <a class="avatar" href="login.php"><img class="avatar" src="/images/guesticon.png" alt="guest"></a>
+        <?php
+        }
+        ?>
+
         <div class="mobile-menu">
             <button onclick="toggleDesktopMenu()"> 
                 <img src="/images/icon-list.png" alt="Menu-Icon">

@@ -1,14 +1,23 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS subcategories;
 
-CREATE TABLE users (
-  id INT NOT NULL PRIMARY KEY,
-  username VARCHAR NOT NULL,      -- unique username
-  password VARCHAR NOT NULL,                  -- password stored in sha-1
-  name VARCHAR NOT NULL,                       -- real name
-  image_url VARCHAR NOT NULL                -- user image
+CREATE TABLE User (
+  userId INTEGER NOT NULL,
+  firstName NVARCHAR NOT NULL,
+  lastName NVARCHAR NOT NULL,
+  username VARCHAR NOT NULL,
+  address NVARCHAR,
+  city NVARCHAR,
+  country NVARCHAR,
+  postalCode NVARCHAR,
+  phone NVARCHAR,
+  email NVARCHAR NOT NULL,
+  password NVARCHAR NOT NULL,                  -- password stored in sha-1
+  image_url VARCHAR,                           -- user image
+  userRating FLOAT default 0.0 CHECK (userRating >= 0.0 AND userRating <= 5.0), -- stars/rating
+  CONSTRAINT PK_User PRIMARY KEY (userId)
 );
 
 CREATE TABLE items (
@@ -39,13 +48,16 @@ CREATE TABLE subcategories (
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
--- Inserções adicionais para a tabela de usuários (users)
-INSERT INTO users (id, username, password, name, image_url) VALUES
-(0, 'joao.vicente.36', 'abc123', 'João Vicente','/images/users/vicente.jpeg'), 
-(1, 'rodrigodesousa.pt', '20comer', 'Rodrigo de Sousa','/images/users/rodrigo.jpeg'), 
-(2, 'miguelmoita_', '123456', 'Miguel Moita','/images/users/Miguel.jpg'), 
-(3, '_clarasousa', 'password', 'Clara Sousa','/images/users/clara_sousa.jpeg'),  
-(4, 'pukaruca', 'reidistotudo', 'Pedro Santos','/images/users/pedro.jpeg'); 
+
+INSERT INTO User(userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating) VALUES
+(0, 'João', 'Mendes', 'joaovicente', 'Avenida das Rochas 21', 'Porto', 'Portugal', '4400-123', '+351 931 234 568', 'vicente@gmail.com', 'vicente123', '/images/users/vicente.jpeg', 4.5),
+(1, 'Rodrigo', 'Sousa', 'rodrigodesousa', 'Rua das Avenidas 23', 'Porto', 'Portugal', '4430-123', '+351 931 254 598', 'rodrigo@gmail.com', 'rodrigo123', '/images/users/rodrigo.jpeg', 4.2),
+(2, 'Miguel', 'Moita', 'miguelmoita', 'Tv. dos Lírios 20', 'Póvoa de Varzim', 'Portugal', '4200-123', '+351 911 234 558', 'miguel@gmail.com', 'miguel123', '/images/users/Miguel.jpg', 3.5),
+(3, 'Clara', 'Sousa', 'clarasousa', 'Av. Estados Unidos 120', 'Esposende', 'Portugal', '3400-123', '+351 921 234 568', 'clara@gmail.com', 'clara123', '/images/users/clara_sousa.jpeg', 4.8),
+(4, 'Pedro', 'Santos', 'pedrosantos', 'Avenida de Ramalde 398', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'pedro@gmail.com', 'pedro123', '/images/users/pedro.jpeg', 4.5);
+
+
+
 
 -- Inserções adicionais para a tabela de itens (items)
 INSERT INTO items (name, price, published, tags, seller, state, description,image_url) VALUES

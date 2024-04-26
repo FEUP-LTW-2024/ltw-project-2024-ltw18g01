@@ -4,20 +4,24 @@
     require_once(__DIR__ . '/../sessions/session.php');
     $session = new Session();
 
-    require_once(__DIR__ . '/../sessions/connection.db.php');
-    require_once(__DIR__ . '/../sessions/user.class.php');
+    require_once(__DIR__ . '/../db/connection.db.php');
+    require_once(__DIR__ . '/../db/user.class.php');
 
     $db = databaseConnect();
 
-    $user = User::databaseConnect($db, $_POST['email'], $_POST['password']);
+    $user = User::getUserWithPassword($db, $_POST['email'], $_POST['password']);
 
     if ($user) {
-        $session->setId($customer->id);
-        $session->setName($customer->name());
+        $session->setId($user->userId);
+        $session->setName($user->name());
         $session->addMessage('success', 'Login successful.');
+        header('Location: /../pages/index_debug.php');
+        exit;
     } else {
         $session->addMessage('error', 'Wrong password.');
+        header ('Location: /../pages/login.php');
+        exit;
     }
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 ?>
