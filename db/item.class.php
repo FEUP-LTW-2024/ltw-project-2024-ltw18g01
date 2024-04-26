@@ -26,24 +26,25 @@
 
         static function getItem(PDO $db, int $id) : Item {
             $stmt = $db->prepare('
-                SELECT id, name, price, image_url
+                SELECT id, name, price, seller, description, image_url, subcategory_id
                 FROM items
                 WHERE id = ?
                 GROUP BY id
             ');
-
+        
             $stmt->execute(array($id));
-
+        
             $item = $stmt->fetch();
-
+        
             return new Item(
                 $item['id'],
                 $item['name'],
                 $item['price'],
-                0,
-                "",
+                $item['seller'],
+                $item['description'],
                 $item['image_url'],
-                0
+                $item['subcategory_id']
             );
         }
+        
     }
