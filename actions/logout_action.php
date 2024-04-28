@@ -4,6 +4,5 @@
   require_once(__DIR__ . '/../sessions/session.php');
   $session = new Session();
   $session->logout();
-
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  header ('Location: /../pages/login.php');
 ?>

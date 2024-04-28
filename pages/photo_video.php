@@ -1,3 +1,16 @@
+<?php
+  declare(strict_types = 1);
+
+  require_once(__DIR__ . '/../sessions/session.php');
+  $session = new Session();
+
+  require_once(__DIR__ . '/../db/connection.db.php');
+  require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../templates/common.tpl.php');
+
+  $db = databaseConnect();
+?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -12,17 +25,8 @@
         <link rel="stylesheet" href="/css/index_style.css"> 
    </head>
     <body>
-        <header  id="navbar-text" class="navbar">
-            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
-            <a href="index.php">Home</a>
-            <a href="gaming.php">Gaming</a>
-            <a href="pcs.php">PCs</a>
-            <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TVs</a>
-            <a href="music.php">Music</a>
-            <a class="active" href="photo_video.php">Photo&Video</a>
-            <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
-
-        </header>
+        <?php
+        drawTopBar($session, $db);
+        ?>
     </body>
 </html>

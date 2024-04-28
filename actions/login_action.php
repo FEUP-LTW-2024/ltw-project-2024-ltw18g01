@@ -15,7 +15,7 @@
         $session->setId($user->userId);
         $session->setName($user->name());
         $session->addMessage('success', 'Login successful.');
-        header('Location: /../pages/index_debug.php');
+        header('Location: /../pages/index.php');
         exit;
     } else {
         $session->addMessage('error', 'Wrong password.');

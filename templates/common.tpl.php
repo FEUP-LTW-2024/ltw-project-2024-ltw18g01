@@ -3,14 +3,10 @@
 
   require_once(__DIR__ . '/../sessions/session.php');
   $session = new Session();
-
-  require_once(__DIR__ . '/../db/connection.db.php');
-
-  $db = databaseConnect();
 ?>
 
-<!DOCTYPE html>
-<html>
+<?php function drawTopBar(Session $session, $db) { ?>
+    <html>
    <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,14 +27,15 @@
         <a class="desktop" href="mobile.php">Mobiles</a>
         <a class="desktop" href="tvs.php">TVs</a>
         <a class="desktop" href="music.php">Music</a>
-        <a class="desktop" href="account.php">Photo&Video</a>
+        <a class="desktop" href="photo_video.php">Photo&Video</a>
 
         <?php
         if ($session->isLoggedIn()) {
             // If user is logged in, get the URL of their profile picture from db
-            $profilePictureUrl = $session->getUserProfilePictureUrl();
+            $profilePictureRelativePath = $session->getUserProfilePictureUrl();
+            $user = User::getUser($db, $session->getId());
         ?>
-            <a class="avatar" href="account.php"><img class="avatar" src="<?php echo $profilePictureUrl; ?>" alt="user"></a>
+            <a class="avatar" href="account.php"><img class="avatar" src="<?php echo $user->image_url; ?>" alt="user"></a>
         <?php
         } else {
             // If user is not logged in, use the guest icon
@@ -71,53 +68,4 @@
         </div>
     </header>
 
-        <!-- Section of quotes-->
-        <section>
-            <div class="info-text">
-                <p id="First-text">Fancy some pre-loved tech?</p>
-                <p id="Second-text">Buy and sell at Techie. Zero fees*. Zero hassle.</p>
-                <p id="disclaimer" >*Buyer pays for the shipping.</p>
-            </div>
-        </section>
-        <!-- New Arrivals-->
-        <section>
-            <div class="displays">
-                <p class="category">New arrivals</p>
-                <p class="see_more">See more</p>
-            </div>
-            <div class="slide">
-                <div class="image_display">
-                    <img src="/images/products/macintoshplus.jpg">
-                    <img src="/images/products/commodore64.jpg">
-                    <img src="/images/products/ZXSpectrum48k.jpg">
-                    <img src="/images/products/Maquinacanoneos.jpg">
-                    <img src="/images/products/motorlineMC1.jpg">
-                    <img src="/images/products/tecladogamer.jpg">
-                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div>
-            </div>
-        </section>
-        <br>
-        <br>
-        <br>
-
-         <!-- SEGA example-->
-         <section>
-            <div class="displays">
-                <p class="category">SEGA - Consoles and videogames</p>
-                <p class="see_more">See more</p>
-            </div>
-            <div class="slide">
-                <div class="image_display">
-                    <img src="/images/products/macintoshplus.jpg">
-                    <img src="/images/products/commodore64.jpg">
-                    <img src="/images/products/ZXSpectrum48k.jpg">
-                    <img src="/images/products/Maquinacanoneos.jpg">
-                    <img src="/images/products/motorlineMC1.jpg">
-                    <img src="/images/products/tecladogamer.jpg">
-                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div> 
-            </div>
-        </section>
-    </body>
-</html>
+<?php } ?>

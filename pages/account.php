@@ -45,9 +45,9 @@
             <p class="user-profile">User Profile</p>
             <p class="catch-phrase"> Your profile - make it your own! </p>
             <br>
-            <img class="user-image" src="/images/users/rodrigo.jpeg">
-            <p class = "name"> Rodrigo de Sousa </p>
-            <p class = "username"> &#64;rodrigodesousa.pt </p>
+            <img class="user-image" src=<?php echo $user->image_url;?>>
+            <p class = "name"><?php echo $user->firstName . ' ' . $user->lastName; ?></p>
+            <p class = "username"> &#64;<?php echo $user->username;?></p>
             <div class= "containers">
                 <div class="form-button">
                     <p id="form-button-text">Edit profile</p>            
@@ -55,7 +55,10 @@
                 <div class="form-button">            
                     <p id="form-button-text">My items</p>
                 </div>
-            </div> 
+            </div>
+            <form action="../actions/logout_action.php" method="post" class="logout">
+                <button type="submit" class="form_button">Logout</button>
+            </form>
         </section>
     </body> 
 </html>
