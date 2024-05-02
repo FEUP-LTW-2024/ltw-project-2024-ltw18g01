@@ -31,15 +31,17 @@
         <br>
 
         <section>
-            <div class="background">
-                <div class="item_picture">
+            <div class= "background">
+                <div class="item-picture">
                     <img src="/images/products/macintoshplus.jpg" alt="Item Picture">
                 </div>
             </div>
+            <div class = "content">
+                <img class="user-image" src=<?php echo $user->image_url;?>>
+                <p class = "name"><?php echo $user->firstName . ' ' . $user->lastName; ?></p>
+                <p class = "username"> &#64;<?php echo $user->username;?></p>
+            </div>
+            
         </section>
-
-
     </body>
-
-
 </html>
