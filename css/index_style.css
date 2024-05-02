@@ -50,6 +50,8 @@ body {
 .navbar a.avatar {
     border:none;
     border-radius: 50%;
+    background-color:transparent;
+    width: 10%
 }
 
 .navbar a.avatar img {

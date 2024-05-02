@@ -1,7 +1,14 @@
-<?php 
-  declare(strict_types = 1); 
+<?php
+  declare(strict_types = 1);
 
   require_once(__DIR__ . '/../sessions/session.php');
+  $session = new Session();
+
+  require_once(__DIR__ . '/../db/connection.db.php');
+  require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../templates/common.tpl.php');
+
+  $db = databaseConnect();
 ?>
 
 <!DOCTYPE html>
@@ -17,19 +24,11 @@
         <link rel="stylesheet" href="/css/login_reg.css"> 
    </head>
     <body>
-        <header  id="navbar-text" class="navbar">
-            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
-            <a class="active" href="index.php">Home</a>
-            <a href="gaming.php">Gaming</a>
-            <a href="pcs.php">PC's</a>
-            <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TV's</a>
-            <a href="music.php">Music</a>
-            <a href="photo_video.php">Photo&Video</a>
-            <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
-        </header>
-
+    <?php
+        drawTopBar($session, $db);
+        ?>
         <!-- Section of quotes-->
+
         <section>
             <div class="login-text">
                 <p id="First-text">Login to Techie</p>
