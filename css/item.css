@@ -1,0 +1,32 @@
+.background {
+    background-color: #564D86;
+    display: flex;
+    width: 96vw;
+    height: 50em;
+    border-top-right-radius: 20px; 
+    border-top-left-radius: 20px; 
+    border-bottom-right-radius: 20px; 
+    border-bottom-left-radius: 20px; 
+}
+
+.background p {
+    margin-bottom: 3em; /* Adjust as needed to control the spacing between paragraphs */
+}
+
+
+.item_picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2em;
+}
+
+.item_picture img{
+    margin-right: 10px;
+    object-fit: cover;
+    width: 32em; 
+    height: 32em; 
+    display: block;
+	position: relative;
+	box-shadow: 0 8px 24px #966478;
+}
