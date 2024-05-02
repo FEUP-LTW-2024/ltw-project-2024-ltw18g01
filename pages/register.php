@@ -11,19 +11,11 @@
         <link rel="stylesheet" href="/css/login_reg.css"> 
    </head>
     <body>
-        <header  id="navbar-text" class="navbar">
-            <img class="logo" src="/images/logo/logo_techie.png" alt="logo" /> 
-            <a class="active" href="index.php">Home</a>
-            <a href="gaming.php">Gaming</a>
-            <a href="pcs.php">PC's</a>
-            <a href="mobile.php">Mobiles</a>
-            <a href="tvs.php">TV's</a>
-            <a href="music.php">Music</a>
-            <a href="photo_video.php">Photo&Video</a>
-            <a class="avatar" href="login.php"> <img class="avatar" src="/images/guesticon.png" alt="guest"/></a>
-        </header>
-
+    <?php
+        drawTopBar($session, $db);
+        ?>
         <!-- Section of quotes-->
+
         <section>
             <div class="login-text">
                 <p id="First-text">Register to Techie</p>
