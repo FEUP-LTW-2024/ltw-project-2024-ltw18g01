@@ -28,7 +28,6 @@
         drawTopBar($session, $db);
         ?>
         <!-- Section of quotes-->
-
         <section>
             <div class="login-text">
                 <p id="First-text">Login to Techie</p>
@@ -46,19 +45,8 @@
                 <div class="form_rectangle">
                     <input id="input-login" type="password" name="password" placeholder="password">
                 </div>
-                <br><br>
 
-                <!--
-                <div class="form_button">
-                    <a id="form-button-hover" href="index.php">    
-                        <p id="form-button-text">Login</p>
-                    </a>
-                </div>
-                -->
-                
-                <br><br>
-
-                <button type="submit" class="form_button">Login</button>
+                <button type="submit"  class="form_rectangle" id="form_button">Login</button>
             </form>
         </section>
     </body>
