@@ -43,17 +43,6 @@
                 <p class="see_more">See more</p>
             </div>
             <div class="slide">
-                <!--
-                <div class="image_display">
-                    <img src="/images/products/macintoshplus.jpg">
-                    <img src="/images/products/commodore64.jpg">
-                    <img src="/images/products/ZXSpectrum48k.jpg">
-                    <img src="/images/products/Maquinacanoneos.jpg">
-                    <img src="/images/products/motorlineMC1.jpg">
-                    <img src="/images/products/tecladogamer.jpg">
-                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div>
-                -->
                 <?php
                     $cat = Category::getCategory($db, 0);
                     drawCategorySlide($cat ,$db);

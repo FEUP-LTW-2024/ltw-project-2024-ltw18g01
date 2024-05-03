@@ -153,6 +153,7 @@ body {
     display:inline-flex; 
     margin-top: 5px;
     margin-left: 25px;
+    align-content: center;
 }
 
 .image_display img {
@@ -168,6 +169,22 @@ body {
 	position: relative;
 	box-shadow: 0 8px 24px #966478;
 }
+
+
+/*
+clara por favor ajusta isto
+é suposto o texto aparecer debaixo da imagem
+ver figma
+*/
+
+.image_display p {
+    bottom: 100px; /* Adjust as needed */
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
 /* mobile */
 @media only screen and (max-width: 1024px) {
     .navbar{
