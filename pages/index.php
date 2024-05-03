@@ -6,7 +6,9 @@
 
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/category.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
+  require_once(__DIR__ . '/../templates/category.tpl.php');
 
   $db = databaseConnect();
 ?>
@@ -43,6 +45,7 @@
                 <p class="see_more">See more</p>
             </div>
             <div class="slide">
+                <!--
                 <div class="image_display">
                     <img src="/images/products/macintoshplus.jpg">
                     <img src="/images/products/commodore64.jpg">
@@ -52,6 +55,12 @@
                     <img src="/images/products/tecladogamer.jpg">
                     <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
                 </div>
+                -->
+                <?php
+                    $cat = Category::getCategory($db, 0);
+                    drawCategorySlide($cat ,$db);
+                ?>
+
             </div>
         </section>
         <br>

@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS User;
-DROP TABLE IF EXISTS items;
-DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS Item;
+DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS subcategories;
 
 CREATE TABLE User (
@@ -20,24 +20,28 @@ CREATE TABLE User (
   CONSTRAINT PK_User PRIMARY KEY (userId)
 );
 
-CREATE TABLE items (
-  id INTEGER PRIMARY KEY,                         -- item id
-  name VARCHAR,                                   --  name of the item
-  price float,                                    -- price of the item
-  published INTEGER,                              -- date when the article was published in epoch format
-  tags VARCHAR,                                   -- comma separated tags
-  seller VARCHAR REFERENCES users,                -- user that possess the item
-  buyer VARCHAR REFERENCES users DEFAULT NULL ,    -- user that wants to buy the item
-  state VARCHAR,                                  -- state of the item
-  description VARCHAR,                            -- report /  aditional description of the state of the item
-  image_url VARCHAR,                              -- user image 
-  subcategory_id INTEGER REFERENCES subcategories -- subcategorie wich will display the item                          --
+CREATE TABLE Category (
+  categoryId INTEGER NOT NULL,            -- category id
+  name VARCHAR NOT NULL,                      --  name of the category 
+  CONSTRAINT PK_Category PRIMARY KEY (categoryId)
 );
 
-CREATE TABLE categories (
-  id INTEGER PRIMARY KEY,            -- category id
-  name VARCHAR,                      --  name of the category 
-  image_url VAR CHAR                -- user image
+CREATE TABLE Item (
+  itemId INTEGER NOT NULL,                         -- item id
+  seller INTEGER NOT NULL,
+  category INTEGER NOT NULL,
+  title VARCHAR NOT NULL,                                   --  name of the item
+  price float NOT NULL,                                    -- price of the item
+  published INTEGER NOT NULL,                              -- date when the article was published in epoch format
+  tags VARCHAR,                                   -- comma separated tags                -- user that possess the item
+  state VARCHAR NOT NULL,                                  -- state of the item
+  description VARCHAR NOT NULL,                            -- report /  aditional description of the state of the item
+  image_url VARCHAR NOT NULL,                              -- user image 
+  CONSTRAINT PK_Item PRIMARY KEY (itemId),
+  FOREIGN KEY (category) REFERENCES Category (categoryId)
+  ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (seller) REFERENCES User (userId)
+  ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE TABLE subcategories (
@@ -60,17 +64,17 @@ INSERT INTO User(userId, firstName, lastName, username, address, city, country, 
 
 
 -- Inserções adicionais para a tabela de itens (items)
-INSERT INTO items (name, price, published, tags, seller, state, description,image_url) VALUES
-('Gaming Keyboard', 39.99, 12042024, 'gaming,keyboard,peripherals', 'joao.vicente.36', 'Very Good', 'Mechanical gaming keyboard with RGB lighting','/images/products/tecladogamer.jpg'),
-('ZXSpectrum', 19.99, 12042024, 'gaming,console,retro', 'rodrigodesousa.pt', 'Decent', 'Old Console a bit dusty but functional to fun nights','/images/products/ZXSpectrum48k.jpg'),
-('Macintos Plus', 79.99, 14042024, 'desktop,retro', 'miguelmoita_', 'Decent', 'The white components are a little yellowed due to the passing of the years','/images/products/macintoshplus.jpg'),
-('Record Desck', 279.99, 14042024, 'sound,retro,music', 'miguelmoita_', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player','/images/products/GiraDiscosThorensTD125MKII.jpg'),
-('Commodore 64', 399.99, 15042024, 'gaming,retro,console', '_clarasousa', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', '/images/products/commodore64.jpg'),
-('Motorline MC1', 119.99, 18042024, 'processor,desktop,pc,retro', 'pukaruca', 'Good', 'Functional processor that belonged to a MC1','/images/products/motorlineMC1.jpg'),
-('Canon Camera', 139.99, 18042024, 'audio,camera,canon,photo,video', 'pukaruca', 'Good', 'A canon camera that takes beautiful photos','/images/products/Maquinacanoneos.jpg');
+INSERT INTO Item (itemId, seller, category, title, price, published, tags, state, description, image_url) VALUES
+(0, 1, 0, 'Gaming Keyboard', 39.99, 12042024, 'gaming,keyboard,peripherals', 'Very Good', 'Mechanical gaming keyboard with RGB lighting','/images/products/tecladogamer.jpg'),
+(1, 4, 0, 'ZX Spectrum', 19.99, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','/images/products/ZXSpectrum48k.jpg'),
+(2, 3, 1, 'Macintosh Plus', 79.99, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years','/images/products/macintoshplus.jpg'),
+(3, 2, 4, 'Record Deck', 279.99, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player','/images/products/GiraDiscosThorensTD125MKII.jpg'),
+(4, 0, 0, 'Commodore 64', 399.99, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', '/images/products/commodore64.jpg'),
+(5, 2, 1, 'Motorline MC1', 119.99, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','/images/products/motorlineMC1.jpg'),
+(6, 3, 5, 'Canon Camera', 139.99, 18042024, 'audio,camera,canon,photo,video', 'Good', 'A canon camera that takes beautiful photos','/images/products/Maquinacanoneos.jpg');
 
 -- Inserções adicionais para a tabela de categorias (categories)
-INSERT INTO categories (id,name) VALUES
+INSERT INTO Category (categoryId, name) VALUES
 (0,'Gaming'),
 (1,'Pcs'),
 (2,'Mobiles'),
