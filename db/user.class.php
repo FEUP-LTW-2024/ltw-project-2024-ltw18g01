@@ -14,9 +14,9 @@
         public string $email;
         public string $image_url;
         public float $userRating;
-        public bool $isAdmin;
+        public int $isAdmin;
 
-        public function __construct(int $userId, string $firstName, string $lastName, string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating, bool $isAdmin) {
+        public function __construct(int $userId, string $firstName, string $lastName, string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating, int $isAdmin) {
             $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
