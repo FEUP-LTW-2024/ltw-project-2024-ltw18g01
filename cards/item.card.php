@@ -8,8 +8,11 @@
 function drawItemHomepage(Item $item) { ?>
     <div class="slide">
         <div class="image_display">
-            <img src="<?php echo $item->image_url; ?>" alt="<?php echo $item->name; ?>">
-            <h2><?php echo $item->name; ?></h2>
+            <?php foreach ($items as $item) { ?>
+                <img src="<?php echo $item['image_url']; ?>">
+                <p><?php echo $item['description']; ?></p>
+                <p class="price"><?php echo $item['price'] . "€"; ?></p> <!-- Added price class -->
+            <?php } ?>
         </div>
     </div>
 <?php } ?>
