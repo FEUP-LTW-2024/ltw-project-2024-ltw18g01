@@ -5,8 +5,10 @@
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
   require_once(__DIR__ . '/../db/category.class.php');
+  require_once(__DIR__ . '/../db/subcategory.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
   require_once(__DIR__ . '/../templates/category.tpl.php');
+  require_once(__DIR__ . '/../templates/subcategory.tpl.php');
 
   $db = databaseConnect();
 ?>
@@ -39,7 +41,7 @@
         <!-- New Arrivals-->
         <section>
             <div class="displays">
-                <p class="category">New arrivals</p>
+                <p class="category">Gaming</p>
                 <p class="see_more">See more</p>
             </div>
             <div class="slide">
@@ -57,19 +59,14 @@
          <!-- SEGA example-->
          <section>
             <div class="displays">
-                <p class="category">SEGA - Consoles and videogames</p>
+                <p class="category">Retro Consoles</p>
                 <p class="see_more">See more</p>
             </div>
             <div class="slide">
-                <div class="image_display">
-                    <img src="/images/products/macintoshplus.jpg">
-                    <img src="/images/products/commodore64.jpg">
-                    <img src="/images/products/ZXSpectrum48k.jpg">
-                    <img src="/images/products/Maquinacanoneos.jpg">
-                    <img src="/images/products/motorlineMC1.jpg">
-                    <img src="/images/products/tecladogamer.jpg">
-                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div> 
+                <?php
+                    $cat = Subcategory::getSubcategory($db, 5);
+                    drawSubcategorySlide($cat ,$db);
+                ?>
             </div>
         </section>
     </body>

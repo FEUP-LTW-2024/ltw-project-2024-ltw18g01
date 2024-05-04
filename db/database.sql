@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Category;
-DROP TABLE IF EXISTS subcategories;
+DROP TABLE IF EXISTS Subcategory;
 
 CREATE TABLE User (
   userId INTEGER NOT NULL,
@@ -30,6 +30,7 @@ CREATE TABLE Item (
   itemId INTEGER NOT NULL,                         -- item id
   seller INTEGER NOT NULL,
   category INTEGER NOT NULL,
+  subcategory INTEGER NOT NULL,
   title VARCHAR NOT NULL,                                   --  name of the item
   price float NOT NULL,                                    -- price of the item
   published INTEGER NOT NULL,                              -- date when the article was published in epoch format
@@ -44,12 +45,13 @@ CREATE TABLE Item (
   ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE subcategories (
-  id INTEGER PRIMARY KEY,            -- subcategory id
-  name VARCHAR,                      -- name of the subcategory 
-  image_url VARCHAR,                -- user image
-  category_id INTEGER,               -- foreign key referencing the parent category
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+CREATE TABLE Subcategory (
+  subcategoryId INTEGER NOT NULL,            -- subcategory id
+  name VARCHAR NOT NULL,                      -- name of the subcategory
+  category INTEGER NOT NULL,               -- foreign key referencing the parent category
+  CONSTRAINT PK_Subcategory PRIMARY KEY (subcategoryId),
+  FOREIGN KEY (category) REFERENCES Category(categoryid)
+  ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 
@@ -64,14 +66,14 @@ INSERT INTO User(userId, firstName, lastName, username, address, city, country, 
 
 
 -- Inserções adicionais para a tabela de itens (items)
-INSERT INTO Item (itemId, seller, category, title, price, published, tags, state, description, image_url) VALUES
-(0, 1, 0, 'Gaming Keyboard', 39.99, 12042024, 'gaming,keyboard,peripherals', 'Very Good', 'Mechanical gaming keyboard with RGB lighting','/images/products/tecladogamer.jpg'),
-(1, 4, 0, 'ZX Spectrum', 19.99, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','/images/products/ZXSpectrum48k.jpg'),
-(2, 3, 1, 'Macintosh Plus', 79.99, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years','/images/products/macintoshplus.jpg'),
-(3, 2, 4, 'Record Deck', 279.99, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player','/images/products/GiraDiscosThorensTD125MKII.jpg'),
-(4, 0, 0, 'Commodore 64', 399.99, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', '/images/products/commodore64.jpg'),
-(5, 2, 1, 'Motorline MC1', 119.99, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','/images/products/motorlineMC1.jpg'),
-(6, 3, 5, 'Canon Camera', 139.99, 18042024, 'audio,camera,canon,photo,video', 'Good', 'A canon camera that takes beautiful photos','/images/products/Maquinacanoneos.jpg');
+INSERT INTO Item (itemId, seller, category, subcategory, title, price, published, tags, state, description, image_url) VALUES
+(0, 1, 0, 0, 'Gaming Keyboard', 39.99, 12042024, 'gaming,keyboard,peripherals', 'Very Good', 'Mechanical gaming keyboard with RGB lighting','/images/products/tecladogamer.jpg'),
+(1, 4, 0, 5, 'ZX Spectrum', 19.99, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','/images/products/ZXSpectrum48k.jpg'),
+(2, 3, 1, 6, 'Macintosh Plus', 79.99, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years','/images/products/macintoshplus.jpg'),
+(3, 2, 4, 13, 'Record Deck', 279.99, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player','/images/products/GiraDiscosThorensTD125MKII.jpg'),
+(4, 0, 0, 5, 'Commodore 64', 399.99, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', '/images/products/commodore64.jpg'),
+(5, 2, 1, 12, 'Motorline MC1', 119.99, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','/images/products/motorlineMC1.jpg'),
+(6, 3, 5, 11, 'Canon Camera', 139.99, 18042024, 'audio,camera,canon,photo,video', 'Good', 'A canon camera that takes beautiful photos','/images/products/Maquinacanoneos.jpg');
 
 -- Inserções adicionais para a tabela de categorias (categories)
 INSERT INTO Category (categoryId, name) VALUES
@@ -83,19 +85,19 @@ INSERT INTO Category (categoryId, name) VALUES
 (5,'Photo&Video');
 
 -- Inserções adicionais para a tabela de subcategorias (subcategories)
-INSERT INTO subcategories (name, category_id) VALUES
-('Keyboards', 2),
-('Mice', 2),
-('Headsets', 5),
-('Graphics Cards', 2),
-('Solid State Drives', 2),
-('Retro Consoles',1),
-('Desktops', 2),
-('Laptops',2),
-('Gaming Desktops', 1),
-('Gaming Laptops', 1),
-('Games',1),
-('Cameras',6),
-('Processor',2),
-('Record Deck',5),
-('Retro Desktop',2);
+INSERT INTO Subcategory (subcategoryId, name, category) VALUES
+(0,'Keyboards', 2),
+(1,'Mice', 2),
+(2,'Headsets', 5),
+(3,'Graphics Cards', 2),
+(4,'Solid State Drives', 2),
+(5,'Retro Consoles',1),
+(6,'Desktops', 2),
+(7,'Laptops',2),
+(8,'Gaming Desktops', 1),
+(9,'Gaming Laptops', 1),
+(10,'Games',1),
+(11,'Cameras',6),
+(12,'Processor',2),
+(13,'Record Deck',5),
+(14,'Retro Desktop',2);
