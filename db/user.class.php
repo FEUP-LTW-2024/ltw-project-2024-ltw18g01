@@ -14,8 +14,9 @@
         public string $email;
         public string $image_url;
         public float $userRating;
+        public bool $isAdmin;
 
-        public function __construct(int $userId, string $firstName, string $lastName,             string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating) {
+        public function __construct(int $userId, string $firstName, string $lastName, string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating, bool $isAdmin) {
             $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
@@ -28,6 +29,7 @@
             $this->email = $email;
             $this->image_url = $image_url;
             $this->userRating = $userRating;
+            $this->isAdmin = $isAdmin;
         }
 
         function name() {
@@ -45,7 +47,7 @@
 
           static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
             $stmt = $db->prepare('
-              SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating
+              SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating, isAdmin
               FROM User 
               WHERE lower(email) = ? AND password = ?
             ');
@@ -67,13 +69,14 @@
                 $user['email'],
                 $user['image_url'],
                 $user['userRating'],
+                $user['isAdmin']
               );
             } else return null;
           }
       
           static function getUser(PDO $db, int $id) : ?User {
             $stmt = $db->prepare('
-            SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating
+            SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating, isAdmin
               FROM User
               WHERE userId = ?
             ');
@@ -94,7 +97,8 @@
                 $user['phone'],
                 $user['email'],
                 $user['image_url'],
-                $user['userRating']
+                $user['userRating'],
+                $user['isAdmin']
               );
             } else {
               return null;
