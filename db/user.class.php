@@ -38,11 +38,11 @@
       
           function save($db) {
             $stmt = $db->prepare('
-              UPDATE User SET firstName = ?, lastName = ?
+              UPDATE User SET firstName = ?, lastName = ?, username = ?, address = ?, city = ?, country = ?, postalCode = ?, phone = ?
               WHERE userId = ?
             ');
       
-            $stmt->execute(array($this->firstName, $this->lastName, $this->userId));
+            $stmt->execute(array($this->firstName, $this->lastName, $this->username, $this->address, $this->city, $this->country, $this->postalCode, $this->phone, $this->userId));
           }
 
           static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {

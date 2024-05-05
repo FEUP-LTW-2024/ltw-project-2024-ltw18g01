@@ -43,9 +43,12 @@
             <p class = "name"><?php echo $user->firstName . ' ' . $user->lastName; ?></p>
             <p class = "username"> &#64;<?php echo $user->username;?></p>
             <div class= "containers">
-                <div class="form-button">
-                    <p id="form-button-text">Edit profile</p>            
-                </div>            
+                <a href="../pages/edit_account.php">
+                    <div class="form-button">
+                        <p id="form-button-text">Edit profile</p>            
+                    </div>
+                </a>
+            
                 <div class="form-button">            
                     <p id="form-button-text">My items</p>
                 </div>
