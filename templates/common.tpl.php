@@ -28,6 +28,7 @@
         <a class="desktop" href="tvs.php">TVs</a>
         <a class="desktop" href="music.php">Music</a>
         <a class="desktop" href="photo_video.php">Photo&Video</a>
+        <a class="icon" href="sell.php"><img class="icon" src="/images/plus.png"></a>
 
         <?php
         if ($session->isLoggedIn()) {

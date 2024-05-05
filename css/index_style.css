@@ -59,7 +59,22 @@ body {
     display: flex;
     align-items: center;
     border: 1.5px solid white; 
-    border-radius: 50%;}
+    border-radius: 50%;
+}
+
+
+.navbar a.icon {
+    border:none;
+    background-color:transparent;
+    width: 1.2%;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.navbar a.icon img {
+    width: 100%;
+    color: white;
+}
 
 #navbar-text {
     font-size: 100%; 

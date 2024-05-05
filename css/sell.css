@@ -1,0 +1,56 @@
+.title{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 40px;
+    font-weight: bold; 
+    display: flex;
+    justify-content: center; 
+}
+
+.subtitle{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: regular; 
+    display: flex;
+    justify-content: center; 
+    margin-top: -1.5em;
+}
+
+.section-title{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 30px;
+    font-weight: 600; 
+    display: flex;
+    justify-content: center;
+}
+
+.section-subtitle{
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: regular; 
+    display: flex;
+    justify-content: center;
+    margin-top: -1.5em;
+}
+
+.item_pictures button {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 2em;
+    height: 4em;
+    border-radius: 40px;
+    border: 1.5px solid white;
+    box-shadow: 0 8px 24px #966478;
+    width: 10em; /* Em vez de 'width: 15em;' */
+    align-items: center;
+    background-color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 600; 
+}
