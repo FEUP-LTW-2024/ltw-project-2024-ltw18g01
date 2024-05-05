@@ -2,18 +2,20 @@
   declare(strict_types = 1);
 
   require_once(__DIR__ . '/../sessions/session.php');
-  $session = new Session();
-
-  if (!$session->isLoggedIn()) die(header('Location: /'));
-
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
+
+
+  $session = new Session();
+
+  if (!$session->isLoggedIn()) die(header('Location: /'));
 
   $db = databaseConnect();
 
   $user = User::getUser($db, $session->getId());
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -48,13 +50,12 @@
                         <p id="form-button-text">Edit profile</p>            
                     </div>
                 </a>
-            
                 <div class="form-button">            
                     <p id="form-button-text">My items</p>
                 </div>
             </div>
             <form action="../actions/logout_action.php" method="post" class="logout">
-                <button type="submit" class="form_button">Logout</button>
+                <button type="submit" class="logout-button">Logout</button>
             </form>
         </section>
     </body> 

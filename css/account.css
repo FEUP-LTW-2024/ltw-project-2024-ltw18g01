@@ -10,7 +10,7 @@
 .catch-phrase{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 20px;
+    font-size: 1.3em;
     font-weight: regular; 
     display: flex;
     justify-content: center; 
@@ -29,7 +29,7 @@
 .name{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 45px;
+    font-size: 2.9em;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
@@ -38,7 +38,7 @@
 .username{
     font-family: "Inter", sans-serif;
     color: white;
-    font-size: 30px;
+    font-size: 1.95em;
     font-weight: 600; 
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@
 .containers{
     display: flex;
     justify-content: center;
-    gap: 5em;
+    gap: 3em;
     
 }
 .form-button {
@@ -65,9 +65,73 @@
     font-weight: bold;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.95em;
     margin: 0.45em;
-    
+}
+
+a {
+    text-decoration: none; 
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em; 
+}
+
+.logout-button {
+    height: 4em;
+    width: 9em;
+    background-color: white;
+    color: #312F66;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 0.6em;
+    border-radius: 20px;
+    border: 1.5px solid white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 
+
+@media only screen and (max-width: 1024px) {
+    .user-image {
+        width: 40%;
+        border-radius: 50%;
+        border: 3px solid white; 
+        box-shadow: 0 2px 24px #F4CD9A;
+        display: flex;
+        margin: auto;
+    }
+
+    .containers {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        gap: 1em;
+        text-align: center; 
+    }
+    
+    .form-button {
+        height: 4em;
+        border-radius: 40px;
+        border: 1.5px solid white;
+        box-shadow: 0 8px 24px #966478;
+        width: 9em;
+        margin-top: 1em;
+    }   
+    
+    #form-button-text {
+        font-family: "Inter", sans-serif;
+        font-weight: bold;
+        color: white;
+        font-size: 1.3em;
+        margin-top: 0.9em;
+    }    
+}
