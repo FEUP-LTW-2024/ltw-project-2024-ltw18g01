@@ -63,5 +63,18 @@
             );
             
         }
+
+        static function getSubcategoriesFromCategory(PDO $db, int $id) : array {
+            $stmt = $db->prepare('
+            SELECT *
+            FROM Subcategory
+            WHERE category = ?
+            ');
+
+            $stmt->execute(array($id));
+            $cat = $stmt->fetchAll();
+
+            return $cat;
+        }
         
     }

@@ -8,11 +8,14 @@
 
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/category.class.php');
+  require_once(__DIR__ . '/../db/subcategory.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
 
   $db = databaseConnect();
 
   $user = User::getUser($db, $session->getId());
+  $categories = Category::getCategories($db);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +28,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         
         <title>Techie</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="/css/index_style.css"> 
         <link rel="stylesheet" href="/css/sell.css">
@@ -63,21 +68,57 @@
             <p class="title">Sell an item at Techie</p>
             <p class="subtitle">Zero fees, zero hassle. All the money goes to you.</p>
         </section>
+        <form action="../actions/sell_action.php" method="post" class="sell">
         <section class="item_pictures">
             <p class="section-title">Item pictures</p>
             <p class="section-subtitle">Maximum of 20 pictures. Be sure to include real pictures of the item.</p>
-            <button>Upload</button>
+            <br>
+            <input type="file" id="fileInput" accept="image/*">
+            <br>
+            <br>
+                <button onclick="uploadImage()">Upload Image</button>
+                <div id="imagePreview"></div>
+
+                <script>
+
+                </script>
         </section>
         <br>
         <br>
         <section class="name_desc">
             <p class="section-title">Title</p>
+            <div class="form_rectangle">
+                    <input id="input-text" type="text" name="title" placeholder="Title">
+            </div>
             <p class="section-title">Description</p>
+            <div class="form_rectangle">
+                    <input id="input-text" type="text" name="description" placeholder="Description">
+            </div>
         </section>
 
 
         <section class="category">
             <p class="section-title">Choose a category</p>
+                    <div class="dropdown">
+            <select id="categoryDropdown">
+                <option value="">Select a category</option>
+                <?php
+                foreach($categories as $category) {
+                    echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+
+        <div class="dropdown">
+            <select id="subcategoryDropdown">
+                <option value="">Select a subcategory</option>
+            </select>
+        </div>
+
+        <script src="../js/cat_dropdown.js"></script>
+
+
         </section>
 
         <section class="status">
@@ -106,5 +147,21 @@
             <script src="../js/checkbox.js"></script>
         </section>
 
+        <section class="item_price">
+            <p class="section-title">Price</p>
+            <div class="form_rectangle">
+                    <input id="input-text" type="text" name="price" placeholder="Price">
+            </div>
+            <br>
+            <div class="centered">
+                <input type="checkbox" id="price_neg" name="price_neg" value="yes">
+                <label for="price_neg">Is it negotiable?</label><br>
+            </div>
+        </section>
+
+        <br>
+
+        <button type="submit">List item</button>
+        </form>
     </body> 
 </html>

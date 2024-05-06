@@ -80,7 +80,7 @@ INSERT INTO Item (itemId, seller, category, subcategory, title, price, published
 -- Inserções adicionais para a tabela de categorias (categories)
 INSERT INTO Category (categoryId, name) VALUES
 (0,'Gaming'),
-(1,'Pcs'),
+(1,'PCs'),
 (2,'Mobiles'),
 (3,'TVs'),
 (4,'Music'),
@@ -88,18 +88,18 @@ INSERT INTO Category (categoryId, name) VALUES
 
 -- Inserções adicionais para a tabela de subcategorias (subcategories)
 INSERT INTO Subcategory (subcategoryId, name, category) VALUES
-(0,'Keyboards', 2),
-(1,'Mice', 2),
-(2,'Headsets', 5),
-(3,'Graphics Cards', 2),
-(4,'Solid State Drives', 2),
-(5,'Retro Consoles',1),
-(6,'Desktops', 2),
-(7,'Laptops',2),
+(0,'Keyboards', 1),
+(1,'Mice', 1),
+(2,'Headsets', 0),
+(3,'Graphics Cards', 1),
+(4,'Solid State Drives', 1),
+(5,'Retro Consoles', 0),
+(6,'Desktops', 1),
+(7,'Laptops',1),
 (8,'Gaming Desktops', 1),
 (9,'Gaming Laptops', 1),
-(10,'Games',1),
-(11,'Cameras',6),
-(12,'Processor',2),
-(13,'Record Deck',5),
-(14,'Retro Desktop',2);
+(10,'Games',0),
+(11,'Cameras',5),
+(12,'Processor',1),
+(13,'Record Deck',4),
+(14,'Retro Desktop',1);

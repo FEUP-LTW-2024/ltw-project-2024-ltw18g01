@@ -42,5 +42,19 @@
             );
             
         }
+
+        static function getCategories(PDO $db) : array {
+            $stmt = $db->prepare('
+                SELECT *
+                FROM Category
+            ');
+        
+            $stmt->execute(array());
+        
+            $categories = $stmt->fetchAll();
+        
+            return $categories; 
+        }
+
         
     }
