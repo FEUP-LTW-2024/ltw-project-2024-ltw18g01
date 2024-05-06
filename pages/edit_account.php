@@ -36,7 +36,6 @@
         drawTopBar($session, $db);
         ?>
         <!-- Section of quotes-->
-        <br><br>
         <section class="user">
             <p class="user-profile">Edit profile</p>
             <p class="catch-phrase">Adjust it to your liking.</p>
