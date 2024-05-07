@@ -39,9 +39,7 @@
         <section class="user">
             <p class="user-profile">Edit profile</p>
             <p class="catch-phrase">Adjust it to your liking.</p>
-            <!--
-            <img class="user-image" src=<?php echo $user->image_url;?>>
-            -->
+            <img class="user-image" src=<?php echo $user->image_url;?> >
             <?php
             drawEditProfile($user, $db);
             ?>

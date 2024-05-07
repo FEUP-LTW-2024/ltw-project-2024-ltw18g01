@@ -30,11 +30,12 @@
         <a class="desktop" href="photo_video.php">Photo&Video</a>
         <a class="icon" href="sell.php"><img class="icon" src="/images/plus.png"></a>
 
+
         <?php
-        if ($session->isLoggedIn()) {
-            // If user is logged in, get the URL of their profile picture from db
-            $profilePictureRelativePath = $session->getUserProfilePictureUrl();
-            $user = User::getUser($db, $session->getId());
+            if ($session->isLoggedIn()) {
+                // If user is logged in, get the URL of their profile picture from db
+                $profilePictureRelativePath = $session->getUserProfilePictureUrl();
+                $user = User::getUser($db, $session->getId());
         ?>
             <a class="avatar" href="account.php"><img class="avatar" src="<?php echo $user->image_url; ?>" alt="user"></a>
         <?php
@@ -45,7 +46,6 @@
         <?php
         }
         ?>
-
         <div class="mobile-menu">
             <button onclick="toggleDesktopMenu()"> 
                 <img src="/images/icon-list.png" alt="Menu-Icon">
