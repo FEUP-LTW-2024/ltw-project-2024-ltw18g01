@@ -4,6 +4,7 @@
   require_once(__DIR__ . '/../sessions/session.php');
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/item.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
 
 
@@ -30,35 +31,30 @@
 
         <link rel="stylesheet" href="/css/index_style.css"> 
         <link rel="stylesheet" href="/css/account.css">
+        <link rel="stylesheet" href="/css/listings.css">
    </head>
    <body>
    <?php
         drawTopBar($session, $db);
         ?>
         <!-- Section of quotes-->
-        <br><br>
-        <section class="user">
-            <p class="user-profile">User Profile</p>
-            <p class="catch-phrase"> Your profile - make it your own! </p>
-            <br>
-            <img class="user-image" src=<?php echo $user->image_url;?>>
-            <p class = "name"><?php echo $user->firstName . ' ' . $user->lastName; ?></p>
-            <p class = "username"> &#64;<?php echo $user->username;?></p>
-            <div class= "containers">
-                <a href="../pages/edit_account.php">
-                    <div class="form-button">
-                        <p id="form-button-text">Edit profile</p>            
-                    </div>
-                </a>
-                <a href="../pages/listings.php">
-                    <div class="form-button">            
-                        <p id="form-button-text">My items</p>
-                    </div>
-                </a>
+        <p class="user-profile">My items</p>
+        <p class="catch-phrase">Your place for sales and purchases!</p>
+        <br>
+        <section class="items">
+            <div id="item-card">
+                <img src="../images/products/commodore64.jpg"></img>
+                <div id="item-things">
+                    <p id="item-title">Playstation 5</p>
+                    <br>
+                    <p id="item-status">Listed successfully.</p>
+                    <br>
+                    <p id="item-price">100,00€</p>
+                </div>
+                <div id="item-user-status">
+                    <p id="item-user-status-text">SOLD</p>
+                </div>
             </div>
-            <form action="../actions/logout_action.php" method="post" class="logout">
-                <button type="submit" class="logout-button">Logout</button>
-            </form>
         </section>
     </body> 
 </html>

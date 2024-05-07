@@ -1,0 +1,59 @@
+#item-card {
+    background: #564D86;
+    color: white;
+    border-radius: 40px;
+    box-shadow: 0 8px 24px #966478;
+    width: 60em;
+    margin: auto;
+    margin-top: -0.5em;
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    height: 8em;
+}
+
+#item-card img {
+    margin-left: 1em;
+    object-fit: cover;
+    width: 7em; 
+    height: 7em; 
+    display: block;
+    border-radius: 40px;
+}
+
+#item-things {
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#item-title {
+    font-size: 40px;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+#item-status {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+
+#item-price {
+    font-size: 25px;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+#item-user-status {
+    margin: auto;
+    display: flex;
+    justify-content: right;
+    margin-left: 25em;
+}
+
+#item-user-status-text {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
