@@ -13,45 +13,45 @@ require_once(__DIR__ . '/../db/item.class.php');
 
 $db = databaseConnect();
 
-// Check if the form was submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$user = User::getUser($db, $session->getId());
+
+if ($user) {
     // Retrieve form data
-    $title = $_POST['title'];
-    $description = $_POST['description'];
+    $itemId = (int)uniqid();
+    $seller = $user->userId;
     $category = $_POST['category'];
     $subcategory = $_POST['subcategory'];
-    $status = $_POST['status'];
-    $shipping_size = $_POST['shipping_size'];
+    $title = $_POST['title'];
     $price = $_POST['price'];
-    $price_negotiable = isset($_POST['price_neg']) ? 1 : 0; // If checkbox is checked, set to 1, else 0.
+    $negotiable = isset($_POST['price_neg']) ? 1 : 0;
+    $published = time(); // unix
+    $tags = "newitem,publishedbyyou"; // PLACEHOLDER
+    $state = $_POST['status'];
+    $description = $_POST['description'];
+    $shippingSize = $_POST['shipping_size'];
+    $image_url = "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png";
 
-    // Validate data (perform additional validation as needed)
-    if (empty($title) || empty($description) || empty($category) || empty($subcategory) || empty($status) || empty($shipping_size) || empty($price)) {
-        // Handle validation errors, redirect back to the form with an error message
-        header("Location: ../sell_form.php?error=emptyfields");
+    $sql = "INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $db->prepare($sql);
+    if (!$stmt) {
+        // Handle SQL error
+        header("Location: ../sell_form.php?error=sqlerror");
         exit();
     } else {
-        // Prepare SQL statement
-        $sql = "INSERT INTO Item (title, description, category, subcategory, status, shipping_size, price, price_negotiable) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $db->prepare($sql);
-        if (!$stmt) {
-            // Handle SQL error
-            header("Location: ../sell_form.php?error=sqlerror");
+        // Bind parameters
+        $parameters = array($itemId, $seller, $category, $subcategory, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $image_url);
+        if (!$stmt->execute($parameters)) {
+            // Handle execution error
+            header("Location: ../pages/sell.php");
             exit();
         } else {
-            // Bind parameters and execute the statement
-            $stmt->bind_param("ssssssdi", $title, $description, $category, $subcategory, $status, $shipping_size, $price, $price_negotiable);
-            if (!$stmt->execute()) {
-                // Handle execution error
-                header("Location: ../pages/sell.php");
-                exit();
-            } else {
-                // Item added successfully
-                header("Location: ../pages/index.php");
-                exit();
-            }
+            // Item added successfully
+            header("Location: ../pages/index.php");
+            exit();
         }
     }
+
 } else {
     // If the form was not submitted, redirect back to the form page
     header("Location: ../pages/sell.php");

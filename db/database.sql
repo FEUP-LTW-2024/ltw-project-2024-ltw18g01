@@ -34,6 +34,7 @@ CREATE TABLE Item (
   subcategory INTEGER NOT NULL,
   title VARCHAR NOT NULL,                                   --  name of the item
   price float NOT NULL,                                    -- price of the item
+  negotiable BOOLEAN NOT NULL,
   published INTEGER NOT NULL,                              -- date when the article was published in epoch format
   tags VARCHAR,                                   -- comma separated tags                -- user that possess the item
   state VARCHAR NOT NULL,                                  -- state of the item
@@ -68,14 +69,14 @@ INSERT INTO User(userId, firstName, lastName, username, address, city, country, 
 
 
 -- Inserções adicionais para a tabela de itens (items)
-INSERT INTO Item (itemId, seller, category, subcategory, title, price, published, tags, state, description, shippingSize, image_url) VALUES
-(0, 1, 0, 0, 'Gaming Keyboard', 39.99, 12042024, 'gaming,keyboard,peripherals', 'Very Good', 'Mechanical gaming keyboard with RGB lighting', 'Small', '/images/products/tecladogamer.jpg'),
-(1, 4, 0, 5, 'ZX Spectrum', 19.99, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','Medium', '/images/products/ZXSpectrum48k.jpg'),
-(2, 3, 1, 6, 'Macintosh Plus', 79.99, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years', 'Large', '/images/products/macintoshplus.jpg'),
-(3, 2, 4, 13, 'Record Deck', 279.99, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player', 'Large', '/images/products/GiraDiscosThorensTD125MKII.jpg'),
-(4, 0, 0, 5, 'Commodore 64', 399.99, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', 'Medium', '/images/products/commodore64.jpg'),
-(5, 2, 1, 12, 'Motorline MC1', 119.99, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','Small', '/images/products/motorlineMC1.jpg'),
-(6, 3, 5, 11, 'Canon Camera', 139.99, 18042024, 'audio,camera,canon,photo,video', 'Good', 'A canon camera that takes beautiful photos','Medium', '/images/products/Maquinacanoneos.jpg');
+INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, image_url) VALUES
+(0, 1, 0, 0, 'Gaming Keyboard', 39.99, true, 12042024, 'gaming,keyboard,peripherals', 'Very Good', 'Mechanical gaming keyboard with RGB lighting', 'Small', '/images/products/tecladogamer.jpg'),
+(1, 4, 0, 5, 'ZX Spectrum', 19.99, true, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','Medium', '/images/products/ZXSpectrum48k.jpg'),
+(2, 3, 1, 6, 'Macintosh Plus', 79.99, true, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years', 'Large', '/images/products/macintoshplus.jpg'),
+(3, 2, 4, 13, 'Record Deck', 279.99, true, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player', 'Large', '/images/products/GiraDiscosThorensTD125MKII.jpg'),
+(4, 0, 0, 5, 'Commodore 64', 399.99, true, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', 'Medium', '/images/products/commodore64.jpg'),
+(5, 2, 1, 12, 'Motorline MC1', 119.99, true, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','Small', '/images/products/motorlineMC1.jpg'),
+(6, 3, 5, 11, 'Canon Camera', 139.99, true, 18042024, 'audio,camera,canon,photo,video', 'Good', 'A canon camera that takes beautiful photos','Medium', '/images/products/Maquinacanoneos.jpg');
 
 -- Inserções adicionais para a tabela de categorias (categories)
 INSERT INTO Category (categoryId, name) VALUES
