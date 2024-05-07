@@ -3,6 +3,7 @@
 
   require_once(__DIR__ . '/../db/item.class.php');
   require_once(__DIR__ . '/../utils/session.php');
+  $session = new Session();
 ?>
 
 <?php function drawItemSlide(Item $item) { ?>

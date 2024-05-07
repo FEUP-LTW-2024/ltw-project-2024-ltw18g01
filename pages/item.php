@@ -32,16 +32,17 @@
 
         <section>
             <div class= "background">
-                <div class="item-picture">
-                    <img src="/images/products/macintoshplus.jpg" alt="Item Picture">
+                <div class="grid-container">
+                    <div class= "item-picture">
+                        <img src= "/images/products/macintoshplus.jpg" alt="Item Picture">
+                    </div>
+                    <div class = "content">
+                        <img class= "user-image" src= "/images/products/macintoshplus.jpg">
+                        <p class = "name"> Miguelelelele </p>
+                        <p class = "username"> &#64;Miguelllllllll</p>
+                    </div>
                 </div>
-            </div>
-            <div class = "content">
-                <img class="user-image" src=<?php echo $user->image_url;?>>
-                <p class = "name"><?php echo $user->firstName . ' ' . $user->lastName; ?></p>
-                <p class = "username"> &#64;<?php echo $user->username;?></p>
-            </div>
-            
+            </div>          
         </section>
     </body>
 </html>
