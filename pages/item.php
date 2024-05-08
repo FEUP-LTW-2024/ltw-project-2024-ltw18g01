@@ -38,8 +38,10 @@
                     </div>
                     <div class = "content">
                         <img class= "user-image" src= "/images/products/macintoshplus.jpg">
-                        <p class = "name"> Miguelelelele </p>
-                        <p class = "username"> &#64;Miguelllllllll</p>
+                        <div class ="information">
+                            <p class = "name"> Miguelelelele </p>
+                            <p class = "username"> &#64;Miguelllllllll</p>
+                        </div>
                     </div>
                 </div>
             </div>          
