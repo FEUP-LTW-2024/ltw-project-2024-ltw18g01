@@ -26,21 +26,36 @@
     <body>
         <?php
          drawTopBar($session, $db);
-        ?>
-        
+        ?>      
         <br>
-
         <section>
-            <div class= "background">
-                <div class="grid-container">
-                    <div class= "item-picture">
+            <div class = "background">
+                <div class ="grid-container">
+                    <div class = "item-picture">
                         <img src= "/images/products/macintoshplus.jpg" alt="Item Picture">
                     </div>
-                    <div class = "content">
+                    <div class = "user-data">
                         <img class= "user-image" src= "/images/products/macintoshplus.jpg">
-                        <div class ="information">
-                            <p class = "name"> Miguelelelele </p>
-                            <p class = "username"> &#64;Miguelllllllll</p>
+                        <div class ="user-info">
+                            <p id = "username"> miguelmoita </p>
+                            <p id = "sales-history"> 58 sales completed</p>
+                            <img class = "star" src= "/images/starbox.png">
+                            <p id = "star-score"> 4.91 </p>
+                            <div class = "button"> 
+                                <p id= "button-text"> Message seller </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "item-info"> 
+                        <p id = "item-name"> Macintoshplus </p>
+                        <p id = "item-description"> Bought this Macinto in 1998 but, as I recently need money, I'm selling this relic. The price is negotiable and, if you have any doubts message me! </p>
+                        <p id  = "item-price" > 100,00€ </p>
+                        <p id  = "shipping-price"> Estimated shipping cost: 29.99€ </p>
+                        <div class = "button"> 
+                            <p id = "button-text"> Buy now </p>
+                        </div>
+                         <div class = "button"> 
+                            <p id = "button-text"> Request new price </p>
                         </div>
                     </div>
                 </div>
