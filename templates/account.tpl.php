@@ -11,7 +11,7 @@ function drawEditProfile(User $user, PDO $db) {
 ?>  
     <form action="../actions/edit_profile_action.php" method="post" class="profile" enctype="multipart/form-data">
        <p id="username">Profile Image</p>
-            <div>
+            <div class="input-login">
                 <input id="input-login" type="file" name="profileImage">
             </div>
 
@@ -54,7 +54,11 @@ function drawEditProfile(User $user, PDO $db) {
             <div class="form_rectangle">
                 <input id="input-login" type="text" name="phone" value="<?=$user->phone?>">
             </div>
-        <button type="submit"  class="form_rectangle" id="form_button">Save</button>
+
+         <div class="containers">
+            <a href="../pages/account.php" class="cancel_button">Cancel</a>
+            <button type="submit" class="form_button">Save</button> 
+        </div>
     </form>
 <?php 
 } 

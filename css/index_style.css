@@ -83,7 +83,7 @@ body {
 }
 
 .sec-navbar {
-    padding: 0.5% 2%;
+    padding: 0.5em 1em;
     background-color: #F4CD9A;
     font-family: "Inter", sans-serif;
     display: flex;
@@ -91,21 +91,23 @@ body {
     justify-content: center;
     border: 2px solid white;
     border-radius: 40px;
-    width: 20vh;
+    width: max-content;
     margin: 0 auto;
 }
 
 .sec-navbar a {
+    border-radius: 40px;
     color: white;
-    padding: 2% 4%;
+    padding: 0.8em 1.6em;
     border: 1px solid white;
-    border-radius: 20px;
     text-decoration: none;
     font-family: "Inter", sans-serif;
+    margin-right: 0.5em;
 }
 
+
 #sec-navbar-text {
-    font-size: 40%;
+    font-size: 1em;
     font-weight: bold;
     white-space: nowrap;
 }
@@ -231,6 +233,16 @@ done ihih <3
 
     .navbar a.active {
         display: none;
+    }
+    
+    .sec-navbar a {
+        padding: 0.7em 1em;
+        margin-right: 0.3em;
+    }
+
+    #sec-navbar-text {
+        font-size: 0.8em;
+        font-weight: bold;
     }
 
 }

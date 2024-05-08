@@ -91,6 +91,34 @@
     outline: none;
 }
 
+.input-login {
+    display:grid; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+.cancel_button, .form_button {
+    font-family: "Inter", sans-serif;
+    display: inline-block;
+    padding: 1em 2em;
+    background-color: white;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 2em;
+    box-shadow: 0 8px 24px #966478;
+
+}
+
+.cancel_button:hover, .form_button:hover {
+    background-color: #F3ECE0;
+}
+
 
 @media only screen and (max-width: 1024px) {
     .form_rectangle {
