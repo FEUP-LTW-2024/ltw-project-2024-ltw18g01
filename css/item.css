@@ -13,12 +13,12 @@
 }
 
 .background p {
-    margin-bottom: 3em; /* Adjust as needed to control the spacing between paragraphs */
+    margin-bottom: 3em; 
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 40em auto; /* Two columns */ 
+    grid-template-columns: 40em 70em auto; 
     grid-template-rows: 41.5em 5em auto;
 }
 
@@ -80,7 +80,7 @@
 
 
 .user-info p {
-    margin-bottom: 1px; /* Reduz a margem inferior entre os parágrafos dentro de .item-info */
+    margin-bottom: 1px; 
 }
 
 
@@ -145,7 +145,7 @@
 
 .item-info p {
     margin-top: 0.5em;
-    margin-bottom: 0.5em; /* Reduz a margem inferior entre os parágrafos dentro de .item-info */
+    margin-bottom: 0.5em;
 }
 
 #item-name{

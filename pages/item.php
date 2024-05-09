@@ -36,10 +36,10 @@
             <div class = "background">
                 <div class ="grid-container">
                     <div class = "item-picture">
-                        <img src=<?=$item -> image_url ?> ">
+                        <img src=<?=$item -> image_url ?>>
                     </div>
                     <div class = "user-data">
-                        <img class= "user-image" src= "/images/products/macintoshplus.jpg">
+                        <img class= "user-image" src=<?=$seller -> image_url ?>>
                         <div class ="sales-info">
                             <div class ="user-info">
                                 <p id = "username"> <?=$seller -> username?>  </p>
