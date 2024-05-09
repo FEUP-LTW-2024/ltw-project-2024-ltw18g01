@@ -54,9 +54,9 @@
                     </div>
                     <div class = "item-info"> 
                         <p id = "item-name"> <?=$item -> title ?></p>
-                        <p id = "item-description"> <?=$item -> description ?>  </p>
-                        <p id  = "item-price" > <?=$item -> price ?> </p>
-                        <p id  = "shipping-price"> Estimated shipping cost: <?=$item -> shippingSize ?></p>
+                        <p id = "item-description"> <?=$item -> description ?></p>
+                        <p id  = "item-price" > <?=$item -> price ?> € </p>
+                        <p id  = "shipping-price"> Estimated shipping cost: <?=$item -> shippingCost ?> €</p>
                         <div class= "containers">
                             <div class = "button-buy-now"> 
                                 <p id = "button-text"> Buy now </p>

@@ -14,10 +14,10 @@ class Item {
     public string $state;
     public string $description;
     public string $shippingSize;
-    public int $shippingCost;
+    public float $shippingCost;
     public string $image_url;
 
-    public function __construct(int $id, int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, int $shippingCost, string $image_url) {
+    public function __construct(int $id, int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, string $image_url) {
         $this->id = $id;
         $this->seller = $seller;
         $this->category = $category;
@@ -50,7 +50,7 @@ class Item {
         return null;
     }
 
-    $shippingCost = isset($item['shippingCost']) ? (int)$item['shippingCost'] : 0;
+    
 
     return new Item(
     $item['itemId'],
@@ -65,7 +65,7 @@ class Item {
     $item['state'],
     $item['description'],
     $item['shippingSize'],
-    $shippingCost,
+    $item['shippingCost'],
     $item['image_url']
 );
 }

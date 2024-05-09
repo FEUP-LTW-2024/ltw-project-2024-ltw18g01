@@ -89,7 +89,6 @@
             
             if ($user) {
 
-              $salesNumber = isset($user['salesNumber']) ? (int)$user['salesNumber'] : 0;
 
               return new User(
                 $user['userId'],
@@ -104,7 +103,7 @@
                 $user['email'],
                 $user['image_url'],
                 $user['userRating'],
-                  $salesNumber,
+                $user['salesNumber'],
                 $user['isAdmin']
               );
             } else {
