@@ -57,14 +57,14 @@ function drawTopBar(Session $session, $db)
                 <?php
                 } else {
                 ?>
-                    <a class="avatar" href="login.php"><img class="avatar" src="/images/guesticon.png" alt="guest"></a>
+                    <a class="avatar" href="login.php"><img class="avatar" src="/images/others/guesticon.png" alt="guest"></a>
                 <?php
                 }
                 ?>
 
                 <div class="mobile-menu">
                     <button onclick="toggleDesktopMenu()">
-                        <img src="/images/icon-list.png" alt="Menu-Icon">
+                        <img src="/images/others/icon-list.png" alt="Menu-Icon">
                     </button>
                     <div class="desktop-menu">
                         <?php foreach ($pages as $page => $url) {

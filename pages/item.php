@@ -4,9 +4,13 @@
   require_once(__DIR__ . '/../sessions/session.php');
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/item.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
 
   $db = databaseConnect();
+  $itemId = (int)$_GET['itemId']; 
+  $item = Item::getItem($db,$itemId);
+  $seller = User::getUser($db,$item -> seller);
 ?>
 
 <!DOCTYPE html>
@@ -32,31 +36,35 @@
             <div class = "background">
                 <div class ="grid-container">
                     <div class = "item-picture">
-                        <img src= "/images/products/macintoshplus.jpg" alt="Item Picture">
+                        <img src=<?=$item -> image_url ?> ">
                     </div>
                     <div class = "user-data">
                         <img class= "user-image" src= "/images/products/macintoshplus.jpg">
-                        <div class ="user-info">
-                            <p id = "username"> miguelmoita </p>
-                            <p id = "sales-history"> 58 sales completed</p>
-                            <img class = "star" src= "/images/starbox.png">
-                            <p id = "star-score"> 4.91 </p>
-                            <div class = "button"> 
+                        <div class ="sales-info">
+                            <div class ="user-info">
+                                <p id = "username"> <?=$seller -> username?>  </p>
+                                <p id = "sales-history"> <?=$seller -> salesNumber?> sales completed</p>
+                            </div>
+                            <img class = "star" src= "/images/others/starbox.png">
+                            <p id = "star-score"> <?=$seller -> userRating?> </p>
+                            <div class = "button-message-seller"> 
                                 <p id= "button-text"> Message seller </p>
                             </div>
                         </div>
                     </div>
                     <div class = "item-info"> 
-                        <p id = "item-name"> Macintoshplus </p>
-                        <p id = "item-description"> Bought this Macinto in 1998 but, as I recently need money, I'm selling this relic. The price is negotiable and, if you have any doubts message me! </p>
-                        <p id  = "item-price" > 100,00€ </p>
-                        <p id  = "shipping-price"> Estimated shipping cost: 29.99€ </p>
-                        <div class = "button"> 
-                            <p id = "button-text"> Buy now </p>
-                        </div>
-                         <div class = "button"> 
-                            <p id = "button-text"> Request new price </p>
-                        </div>
+                        <p id = "item-name"> <?=$item -> title ?></p>
+                        <p id = "item-description"> <?=$item -> description ?>  </p>
+                        <p id  = "item-price" > <?=$item -> price ?> </p>
+                        <p id  = "shipping-price"> Estimated shipping cost: <?=$item -> shippingSize ?></p>
+                        <div class= "containers">
+                            <div class = "button-buy-now"> 
+                                <p id = "button-text"> Buy now </p>
+                            </div>
+                            <div class = "button-request-new-price"> 
+                                <p id = "button-text"> Request new price </p>
+                            </div>
+                        </div>    
                     </div>
                 </div>
             </div>          

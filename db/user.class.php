@@ -14,9 +14,10 @@
         public string $email;
         public string $image_url;
         public float $userRating;
+        public int $salesNumber;
         public int $isAdmin;
 
-        public function __construct(int $userId, string $firstName, string $lastName, string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating, int $isAdmin) {
+        public function __construct(int $userId, string $firstName, string $lastName, string $username, string $address, string $city, string $country, string $postalCode, string $phone, string $email, string $image_url, float $userRating, int $salesNumber,int $isAdmin) {
             $this->userId = $userId;
             $this->firstName = $firstName;
             $this->lastName = $lastName;
@@ -29,6 +30,7 @@
             $this->email = $email;
             $this->image_url = $image_url;
             $this->userRating = $userRating;
+            $this ->salesNumber = $salesNumber;
             $this->isAdmin = $isAdmin;
         }
 
@@ -47,7 +49,7 @@
 
           static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
             $stmt = $db->prepare('
-              SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating, isAdmin
+              SELECT *
               FROM User 
               WHERE lower(email) = ? AND password = ?
             ');
@@ -69,6 +71,7 @@
                 $user['email'],
                 $user['image_url'],
                 $user['userRating'],
+                $user['salesNumber'],
                 $user['isAdmin']
               );
             } else return null;
@@ -76,7 +79,7 @@
       
           static function getUser(PDO $db, int $id) : ?User {
             $stmt = $db->prepare('
-            SELECT userId, firstName, lastName, username, address, city, country, postalCode, phone, email, image_url, userRating, isAdmin
+            SELECT *
               FROM User
               WHERE userId = ?
             ');
@@ -85,6 +88,9 @@
             $user = $stmt->fetch();
             
             if ($user) {
+
+              $salesNumber = isset($user['salesNumber']) ? (int)$user['salesNumber'] : 0;
+
               return new User(
                 $user['userId'],
                 $user['firstName'],
@@ -98,6 +104,7 @@
                 $user['email'],
                 $user['image_url'],
                 $user['userRating'],
+                  $salesNumber,
                 $user['isAdmin']
               );
             } else {

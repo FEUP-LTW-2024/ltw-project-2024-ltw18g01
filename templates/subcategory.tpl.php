@@ -13,12 +13,14 @@ function drawSubcategorySlide(Subcategory $cat, PDO $db) {
     // Retrieve items for the given category
     $items = Subcategory::getSubcategoryItems($db, $cat->id);
 ?>  
-   <div class="image_display">
+    <div class="image_display">
         <?php foreach ($items as $item) { ?>
-            <div class="image_wrapper">
-                <img src="<?php echo $item['image_url']; ?>">
-                <p><?php echo $item['price'] . "€"; ?></p>
-            </div>
+            <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <div class="image_wrapper">
+                    <img src="<?php echo $item['image_url']; ?>">
+                    <p><?php echo $item['price'] . "€"; ?></p>
+                </div>
+            </a>
         <?php } ?>
     </div>
 <?php 

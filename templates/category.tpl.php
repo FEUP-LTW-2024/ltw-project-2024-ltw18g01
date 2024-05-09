@@ -14,10 +14,12 @@ function drawCategorySlide(Category $cat, PDO $db) {
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
-            <div class="image_wrapper">
-                <img src="<?php echo $item['image_url']; ?>">
-                <p><?php echo $item['price'] . "€"; ?></p>
-            </div>
+             <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <div class="image_wrapper">
+                    <img src="<?php echo $item['image_url']; ?>">
+                    <p><?php echo $item['price'] . "€"; ?></p>
+                </div>
+            </a>
         <?php } ?>
     </div>
 <?php 
