@@ -29,10 +29,8 @@ if ($user) {
     $user->phone = $_POST['phone'];
 
     if ($_FILES['profileImage']['error'] === UPLOAD_ERR_OK) {
-        // Move o arquivo de imagem para o diretório que queremos
         $targetDir = __DIR__ . '/../images/users/';
 
-        // Obtém o nome do arquivo atual
         $currentFileName = basename($user->image_url);
         
         $currentFileExtension = pathinfo($currentFileName, PATHINFO_EXTENSION);
