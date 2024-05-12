@@ -104,10 +104,11 @@
                 <div class="form_rectangle">
                     <input id="input-login" type="password" name="password" required>
                 </div>
-                <br><br>
+                <br>
+                <br>
                 <div>
                     <button type="submit" class="register-button">
-                        <p id="register-button-text">Register</p>
+                        <p id="register-button-text2">Register</p>
                     </button>
                 </div>
             </form>

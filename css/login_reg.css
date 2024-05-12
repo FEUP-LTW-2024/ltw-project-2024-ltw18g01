@@ -1,3 +1,8 @@
+.register_button {
+    text-decoration: underline;
+    color: white;
+}
+
 .login-text {
     font-family: "Inter", sans-serif;
     color: white;
@@ -44,32 +49,6 @@
     
 }
 
-.register-button {
-    display: inline-block;
-    padding: 1em 2em;
-    background-color: white;
-    color: #564D86;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    margin-top: 2em;
-}
-
-.register-button:hover {
-    background-color: #966478;
-}
-
-#register-button-text {
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
-    color: #564D86;
-    text-align: center;
-    font-size: 30px;
-    margin: 0.45em;
-}
 
 #username {
     font-family: "Inter", sans-serif;
@@ -153,4 +132,19 @@
         justify-content: center; 
         align-items: center; 
     }  
+}
+.register-button {
+    display: flex;
+    padding: 0.2em 2em;
+    background-color: white;
+    color: #564D86;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 40px;
+    margin: auto;
+    margin-top: -0.5em;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
