@@ -11,15 +11,27 @@
     position: relative;
     margin-top: 1.5em;
 }
-
 .background p {
-    margin-bottom: 3em; 
+    margin-bottom: 4em; 
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 40em 70em auto; 
-    grid-template-rows: 41.5em 5em auto;
+    grid-template-rows: 41.5em 20em auto;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1em;
+}
+
+.item-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1em;
 }
 
 .item-picture {

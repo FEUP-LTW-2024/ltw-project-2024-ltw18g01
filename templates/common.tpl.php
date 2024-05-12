@@ -83,3 +83,36 @@ function drawTopBar(Session $session, $db)
         </body>
     </html>
 <?php } ?>
+
+<<?php
+function drawMyItems($db, $userId) {
+    $items = Item::getItemsByUser($db, $userId);
+
+    if ($items) {
+        foreach ($items as $item) {
+            ?>
+            <div id="item-card">
+                <img src="<?php echo $item['image_url']; ?>"></img>
+                <div id="item-things">
+                    <p id="item-title"><?php echo $item['title']; ?></p>
+                    <br>
+                    <?php if (isset($item['status'])) { ?>
+                        <p id="item-status"><?php echo $item['status']; ?></p>
+                        <br>
+                    <?php } ?>
+                    <p id="item-price"><?php echo $item['price']; ?></p>
+                </div>
+                <div id="item-user-status">
+                    <?php if (isset($item['user_status'])) { ?>
+                        <p id="item-user-status-text"><?php echo $item['user_status']; ?></p>
+                    <?php } ?>
+                </div>
+            </div>
+            <br><br>
+            <?php
+        }
+    } else {
+        echo 'No items found.';
+    }
+}
+?>

@@ -42,19 +42,9 @@
         <p class="catch-phrase">Your place for sales and purchases!</p>
         <br>
         <section class="items">
-            <div id="item-card">
-                <img src="../images/products/commodore64.jpg"></img>
-                <div id="item-things">
-                    <p id="item-title">Playstation 5</p>
-                    <br>
-                    <p id="item-status">Listed successfully.</p>
-                    <br>
-                    <p id="item-price">100,00€</p>
-                </div>
-                <div id="item-user-status">
-                    <p id="item-user-status-text">SOLD</p>
-                </div>
-            </div>
+            <?php
+            drawMyItems($db, $user->userId);
+            ?>
         </section>
     </body> 
 </html>

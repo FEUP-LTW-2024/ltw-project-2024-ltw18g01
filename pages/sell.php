@@ -3,17 +3,17 @@
 
   require_once(__DIR__ . '/../sessions/session.php');
   $session = new Session();
-
+  
   if (!$session->isLoggedIn()) die(header('Location: /'));
-
+  
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
   require_once(__DIR__ . '/../db/category.class.php');
   require_once(__DIR__ . '/../db/subcategory.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
-
+  
   $db = databaseConnect();
-
+  
   $user = User::getUser($db, $session->getId());
   $categories = Category::getCategories($db);
 ?>
@@ -69,6 +69,7 @@
             <p class="subtitle">Zero fees, zero hassle. All the money goes to you.</p>
         </section>
         <form action="../actions/sell_action.php" method="post" class="sell">
+
         <section class="item_pictures">
             <p class="section-title">Item pictures</p>
             <p class="section-subtitle">Maximum of 20 pictures. Be sure to include real pictures of the item.</p>
@@ -78,10 +79,6 @@
             <br>
                 <button onclick="uploadImage()">Upload Image</button>
                 <div id="imagePreview"></div>
-
-                <script>
-
-                </script>
         </section>
         <br>
         <br>
@@ -98,54 +95,63 @@
 
 
         <section class="category">
-            <p class="section-title">Choose a category</p>
-                    <div class="dropdown">
-            <select id="categoryDropdown">
-                <option value="">Select a category</option>
-                <?php
-                foreach($categories as $category) {
-                    echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+                <p class="section-title">Choose a category</p>
+                <div class="dropdown">
+                    <select name="category" id="categoryDropdown">
+                        <option value="">Select a category</option>
+                        <?php
+                        foreach($categories as $category) {
+                            echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
 
-        <div class="dropdown">
-            <select id="subcategoryDropdown">
-                <option value="">Select a subcategory</option>
-            </select>
-        </div>
+                <div class="dropdown">
+                    <select name="subcategory" id="subcategoryDropdown">
+                        <option value="">Select a subcategory</option>
+                    </select>
+                </div>
 
-        <script src="../js/cat_dropdown.js"></script>
+                <script src="../js/cat_dropdown.js"></script>
+            </section>
+            <section class="status">
+                <p class="section-title">Condition</p>
+                <input type="hidden" name="status" id="status" value="">
+                <input type="checkbox" id="verygood" value="Very Good">
+                <label for="verygood">Very Good</label><br>
+                <input type="checkbox" id="good" value="Good">
+                <label for="good">Good</label><br>
+                <input type="checkbox" id="decent" value="Decent">
+                <label for="decent">Decent</label><br>
+                <input type="checkbox" id="forparts" value="For parts">
+                <label for="forparts">For parts</label><br>
 
-
-        </section>
-
-        <section class="status">
-            <p class="section-title">Condition</p>
-            <input type="checkbox" id="verygood" name="status" value="Very Good">
-            <label for="verygood">Very Good</label><br>
-            <input type="checkbox" id="good" name="status" value="Good">
-            <label for="good">Good</label><br>
-            <input type="checkbox" id="decent" name="status" value="Decent">
-            <label for="decent">Decent</label><br>
-            <input type="checkbox" id="forparts" name="status" value="For parts">
-            <label for="forparts">For parts</label><br>
-
-            <script src="../js/checkbox.js"></script>
-        </section>
+                <script>
+                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.addEventListener('change', function() {
+                            var status = '';
+                            checkboxes.forEach(function(cb) {
+                                if (cb.checked) {
+                                    status = cb.value;
+                                }
+                            });
+                            document.getElementById('status').value = status;
+                        });
+                    });
+                </script>
+            </section>
 
         <section class="shipping">
-            <p class="section-title">Shipping size</p>
-            <input type="checkbox" id="small" name="shipping_size" value="Small">
-            <label for="small">Small(<1kg)</label><br>
-            <input type="checkbox" id="medium" name="shipping_size" value="Medium">
-            <label for="medium">Medium(<5kg)</label><br>
-            <input type="checkbox" id="large" name="shipping_size" value="Large">
-            <label for="large">Large(+5kg)</label><br>
-
-            <script src="../js/checkbox.js"></script>
-        </section>
+                <p class="section-title">Shipping size</p>
+                <input type="radio" id="small" name="shipping_size" value="Small">
+                <label for="small">Small(<1kg)</label><br>
+                <input type="radio" id="medium" name="shipping_size" value="Medium">
+                <label for="medium">Medium(<5kg)</label><br>
+                <input type="radio" id="large" name="shipping_size" value="Large">
+                <label for="large">Large(+5kg)</label><br>
+            </section>
 
         <section class="item_price">
             <p class="section-title">Price</p>

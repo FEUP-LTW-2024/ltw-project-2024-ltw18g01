@@ -69,6 +69,25 @@ class Item {
     $item['image_url']
 );
 }
+static function getItemsByUser(PDO $db, int $userId) {
+    $stmt = $db->prepare('
+        SELECT i.*, u.username AS seller_username
+        FROM Item i
+        JOIN User u ON i.seller = u.userId
+        WHERE i.seller = ?
+    ');
+
+    $stmt->execute(array($userId));
+    $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($items) {
+        foreach ($items as &$item) {
+            $item['user_status'] = 'SOLD'; // Definir o status do item conforme necessário
+        }
+    }
+
+    return $items;
+}
 }
 
 
