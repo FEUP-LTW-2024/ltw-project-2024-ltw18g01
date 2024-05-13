@@ -71,8 +71,14 @@
               </form>
             <?php } ?>
             
-
+            <form method="POST" action="../actions/ban_user_action.php">
+              <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
+              <button>Ban user</button>
+            </form>
+            
+          
             </div>
+            
 
             <br>
             <br>

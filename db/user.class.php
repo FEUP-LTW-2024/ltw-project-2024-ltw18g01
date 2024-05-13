@@ -173,6 +173,12 @@ class User {
         $stmt->execute([$isAdmin, $id]);
 
     }
+
+    function removeUser(PDO $db, int $id) {
+        $stmt = $db->prepare("DELETE FROM User WHERE userId = ?");
+        $stmt->execute([$id]);
+    }
+    
     
 }
 ?>
