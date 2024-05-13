@@ -84,35 +84,78 @@ function drawTopBar(Session $session, $db)
     </html>
 <?php } ?>
 
-<<?php
+<?php
 function drawMyItems($db, $userId) {
     $items = Item::getItemsByUser($db, $userId);
 
     if ($items) {
         foreach ($items as $item) {
             ?>
-            <div id="item-card">
-                <img src="<?php echo $item['image_url']; ?>"></img>
-                <div id="item-things">
-                    <p id="item-title"><?php echo $item['title']; ?></p>
-                    <br>
-                    <?php if (isset($item['status'])) { ?>
-                        <p id="item-status"><?php echo $item['status']; ?></p>
+            <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <div id="item-card">
+                    <img src="<?php echo $item['image_url']; ?>"></img>
+                    <div id="item-things">
+                        <p id="item-title"><?php echo $item['title']; ?></p>
                         <br>
-                    <?php } ?>
-                    <p id="item-price"><?php echo $item['price']; ?></p>
+                        <?php if (isset($item['status'])) { ?>
+                            <p id="item-status"><?php echo $item['status']; ?></p>
+                            <br>
+                        <?php } ?>
+                        <p id="item-price"><?php echo $item['price']; ?></p>
+                    </div>
+                    <div id="item-user-status">
+                        <?php if (isset($item['user_status'])) { ?>
+                            <p id="item-user-status-text"><?php echo $item['user_status']; ?></p>
+                        <?php } ?>
+                    </div>
                 </div>
-                <div id="item-user-status">
-                    <?php if (isset($item['user_status'])) { ?>
-                        <p id="item-user-status-text"><?php echo $item['user_status']; ?></p>
-                    <?php } ?>
-                </div>
-            </div>
+            </a>
             <br><br>
             <?php
         }
     } else {
         echo 'No items found.';
     }
+}
+?>
+
+<?php
+function drawItems($item, $seller) {
+    echo '
+    <div class="background">
+        <div class="grid-container">
+            <div class="item-picture">
+                <img src="' . $item->image_url . '">
+            </div>
+            <div class="user-data">
+                <img class="user-image" src="' . $seller->image_url . '">
+                <div class="sales-info">
+                    <div class="user-info">
+                        <p id="username">' . $seller->username . '</p>
+                        <p id="sales-history">' . $seller->salesNumber . ' sales completed</p>
+                    </div>
+                    <img class="star" src="/images/others/starbox.png">
+                    <p id="star-score">' . $seller->userRating . '</p>
+                    <div class="button-message-seller"> 
+                        <p id="button-text">Message seller</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item-info"> 
+                <p id="item-name">' . $item->title . '</p>
+                <p id="item-description">' . $item->description . '</p>
+                <p id="item-price">' . $item->price . ' €</p>
+                <p id="shipping-price">Estimated shipping cost: ' . $item->shippingCost . ' €</p>
+                <div class="containers">
+                    <div class="button-buy-now"> 
+                        <p id="button-text">Buy now</p>
+                    </div>
+                    <div class="button-request-new-price"> 
+                        <p id="button-text">Request new price</p>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>';
 }
 ?>

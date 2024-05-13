@@ -33,41 +33,9 @@
         ?>      
         <br>
         <section>
-            <div class = "background">
-                <div class ="grid-container">
-                    <div class = "item-picture">
-                        <img src=<?=$item -> image_url ?>>
-                    </div>
-                    <div class = "user-data">
-                        <img class= "user-image" src=<?=$seller -> image_url ?>>
-                        <div class ="sales-info">
-                            <div class ="user-info">
-                                <p id = "username"> <?=$seller -> username?>  </p>
-                                <p id = "sales-history"> <?=$seller -> salesNumber?> sales completed</p>
-                            </div>
-                            <img class = "star" src= "/images/others/starbox.png">
-                            <p id = "star-score"> <?=$seller -> userRating?> </p>
-                            <div class = "button-message-seller"> 
-                                <p id= "button-text"> Message seller </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "item-info"> 
-                        <p id = "item-name"> <?=$item -> title ?></p>
-                        <p id = "item-description"> <?=$item -> description ?></p>
-                        <p id  = "item-price" > <?=$item -> price ?> € </p>
-                        <p id  = "shipping-price"> Estimated shipping cost: <?=$item -> shippingCost ?> €</p>
-                        <div class= "containers">
-                            <div class = "button-buy-now"> 
-                                <p id = "button-text"> Buy now </p>
-                            </div>
-                            <div class = "button-request-new-price"> 
-                                <p id = "button-text"> Request new price </p>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-            </div>          
+        <?php 
+            drawItems($item, $seller);
+        ?>
         </section>
     </body>
 </html>
