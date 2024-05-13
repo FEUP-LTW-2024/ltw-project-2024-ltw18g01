@@ -47,6 +47,8 @@ function drawTopBar(Session $session, $db)
                 }
                 ?>
                  <a class="icon" href="sell.php"><img class="icon" src="/images/others/plus.png"></a>
+                 <a class="icon" href="chat.php"><img class="icon" src="/images/others/communications.png"></a>
+
                 <?php
                 if ($session->isLoggedIn()) {
 
