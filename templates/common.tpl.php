@@ -103,7 +103,7 @@ function drawMyItems($db, $userId) {
                             <p id="item-status"><?php echo $item['status']; ?></p>
                             <br>
                         <?php } ?>
-                        <p id="item-price"><?php echo $item['price']; ?></p>
+                        <p id="item-price"><?php echo $item['price']; ?>€</p>
                     </div>
                     <div id="item-user-status">
                         <?php if (isset($item['user_status'])) { ?>
