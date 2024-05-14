@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Subcategory;
+DROP TABLE IF EXISTS Wishlist;
 
 CREATE TABLE User (
   userId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -56,6 +57,16 @@ CREATE TABLE Subcategory (
   CONSTRAINT PK_Subcategory PRIMARY KEY (subcategoryId),
   FOREIGN KEY (category) REFERENCES Category(categoryid)
   ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE Wishlist (
+  wishlistId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  user INTEGER NOT NULL,
+  item INTEGER NOT NULL,
+  FOREIGN KEY (user) REFERENCES User(userId)
+  ON DELETE CASCADE ON UPDATE NO ACTION,
+  FOREIGN KEY (item) REFERENCES Item(itemId)
+  ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 
@@ -124,3 +135,15 @@ INSERT INTO Subcategory (subcategoryId, name, category) VALUES
 (12,'Albuns & singles',4),
 (13,'Consoles',0),
 (14,'Films', 3);
+
+INSERT INTO Wishlist (wishlistId, user, item) VALUES
+(0, 0, 14),
+(1, 0, 15),
+(2, 1, 1),
+(3, 1, 20),
+(4, 2, 21),
+(5, 2, 10),
+(6, 3, 14),
+(7, 3, 3),
+(8, 4, 5),
+(9, 4, 16);
