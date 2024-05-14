@@ -9,7 +9,7 @@
     $db = databaseConnect();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Recuperando os dados do formulário
+        
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $username = $_POST['username'];
@@ -20,18 +20,15 @@
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $image_url = ''; // Definir a URL da imagem conforme necessário
-        $userRating = 0.0; // Definir a classificação do usuário inicialmente como 0
-        $salesNumber = 0; // Definir o número de vendas como 0
-        $isAdmin = 0; // Definir o status de administração do usuário conforme necessário
+        $image_url = ''; 
+        $userRating = 0.0;
+        $salesNumber = 0; 
+        $isAdmin = 0; 
 
-        // Criando um novo objeto User com os dados do formulário
         $newUser = new User(0, $firstName, $lastName, $username, $address, $city, $country, $postalCode, $phone, $email, $password, $image_url, $userRating, $salesNumber, $isAdmin);
 
-        // Salvando o novo usuário no banco de dados
         $newUser->save($db);
 
-        // Redirecionando para a página de login após o registro bem-sucedido
         header('Location: login.php');
         exit;
     }
@@ -51,7 +48,7 @@
    </head>
     <body>
     <?php drawTopBar($session, $db); ?>
-        <!-- Section of quotes-->
+        
         <section>
             <div class="login-text">
                 <p id="First-text">Register to Techie</p>

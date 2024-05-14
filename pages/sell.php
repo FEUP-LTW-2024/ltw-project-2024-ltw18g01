@@ -16,6 +16,42 @@
   
   $user = User::getUser($db, $session->getId());
   $categories = Category::getCategories($db);
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $sellerId = $user->userId; 
+    $categoryId = $_POST['category'];
+    $subcategoryId = $_POST['subcategory'];
+    $title = $_POST['title']; 
+    $price = $_POST['price'];
+    $negotiable = isset($_POST['price_neg']) ? true : false; 
+    $published = time(); 
+    $tags = ''; 
+    $state = $_POST['status']; 
+    $description = $_POST['description'];
+    $shippingSize = $_POST['shipping_size']; 
+    switch ($shippingSize) {
+    case 'Small':
+        $shippingCost = 19.99;
+        break;
+    case 'Medium':
+        $shippingCost = 29.99;
+        break;
+    case 'Large':
+        $shippingCost = 49.99;
+        break;
+    default:
+        $shippingCost = 0;
+    }
+    $image_url = ''; 
+
+    $newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $image_url);
+
+    $newItem->save($db);
+
+    header('Location: item.php?itemId=' . $newItem->itemId); 
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,34 +72,9 @@
    </head>
    <body>
    <?php
-        drawTopBar($session, $db);
-        ?>
-        <!-- Section of quotes-->
+        drawTopBar($session, $db);?>
         <br><br>
-        <!--
-        <section class="user">
-            <p class="user-profile">User Profile</p>
-            <p class="catch-phrase"> Your profile - make it your own! </p>
-            <br>
-            <img class="user-image" src=<?php // echo $user->image_url;?>>
-            <p class = "name"><?php // echo $user->firstName . ' ' . $user->lastName; ?></p>
-            <p class = "username"> &#64;<?php // echo $user->username;?></p>
-            <div class= "containers">
-                <a href="../pages/edit_account.php">
-                    <div class="form-button">
-                        <p id="form-button-text">Edit profile</p>            
-                    </div>
-                </a>
-            
-                <div class="form-button">            
-                    <p id="form-button-text">My items</p>
-                </div>
-            </div>
-            <form action="../actions/logout_action.php" method="post" class="logout">
-                <button type="submit" class="form_button">Logout</button>
-            </form>
-        </section>
-        -->
+
         <section class="sell_item">
             <p class="title">Sell an item at Techie</p>
             <p class="subtitle">Zero fees, zero hassle. All the money goes to you.</p>
