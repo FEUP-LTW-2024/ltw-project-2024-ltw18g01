@@ -107,8 +107,9 @@ function drawMyItems($db, $userId) {
                         <p id="item-price"><?php echo $item['price']; ?>€</p>
                     </div>
                     <div id="item-user-status">
-                        <form action="../actions/shipping_label_action.php">
+                        <form method="POST" action="../actions/shipping_label_action.php">
                             <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                            <input type="hidden" name="title" value="<?php echo $item['title']; ?>">
                             <button>Ship</button>
                         </form>
                         <img id="printer-img" src="/../images/others/printer.png">
