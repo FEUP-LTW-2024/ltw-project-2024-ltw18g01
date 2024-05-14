@@ -55,6 +55,15 @@
                         <p id="form-button-text">My items</p>
                     </div>
                 </a>
+                <?php
+                if ($user->isAdmin) { ?>
+                    <a href="../pages/admin.php">
+                    <div class="form-button">            
+                        <p id="form-button-text">Admin menu</p>
+                    </div>
+                    </a>
+                <?php } ?>
+
             </div>
             <form action="../actions/logout_action.php" method="post" class="logout">
                 <button type="submit" class="logout-button">Logout</button>

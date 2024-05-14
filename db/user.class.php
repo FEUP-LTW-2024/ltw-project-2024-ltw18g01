@@ -127,6 +127,58 @@ class User {
       } else {
           return null;
       }
-    }  
+    }
+    
+    static function getAllUsers(PDO $db) : array {
+        $stmt = $db->prepare('
+            SELECT *
+            FROM User
+        ');
+    
+        $stmt->execute();
+        $users = $stmt->fetchAll();
+    
+        $result = [];
+        foreach ($users as $user) {
+            $image_url = is_string($user['image_url']) ? $user['image_url'] : '/images/others/guesticon.png';
+            $userObj = new User(
+                $user['userId'],
+                $user['firstName'],
+                $user['lastName'],
+                $user['username'],
+                $user['address'],
+                $user['city'],
+                $user['country'],
+                $user['postalCode'],
+                $user['phone'],
+                $user['email'],
+                $user['password'],
+                $image_url,
+                $user['userRating'] !== null ? (float)$user['userRating'] : null,
+                $user['salesNumber'],
+                $user['isAdmin']
+            );
+            $result[] = $userObj;
+        }
+    
+        return $result;
+    }
+
+    function updateUserStatus(PDO $db, int $id, int $isAdmin) {
+        $stmt = $db->prepare(
+            "UPDATE User SET isAdmin = ?
+             WHERE userId = ?"
+        );
+
+        $stmt->execute([$isAdmin, $id]);
+
+    }
+
+    function removeUser(PDO $db, int $id) {
+        $stmt = $db->prepare("DELETE FROM User WHERE userId = ?");
+        $stmt->execute([$id]);
+    }
+    
+    
 }
 ?>

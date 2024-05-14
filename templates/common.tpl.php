@@ -32,6 +32,7 @@ function drawTopBar(Session $session, $db)
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
             <title>Techie</title>
             <link rel="stylesheet" href="/css/index_style.css">
+            <link rel="stylesheet" href="/css/listings.css">
         </head>
 
         <body>
@@ -106,6 +107,11 @@ function drawMyItems($db, $userId) {
                         <p id="item-price"><?php echo $item['price']; ?>€</p>
                     </div>
                     <div id="item-user-status">
+                        <form action="../actions/shipping_label_action.php">
+                            <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                            <button>Ship</button>
+                        </form>
+                        <img id="printer-img" src="/../images/others/printer.png">
                         <?php if (isset($item['user_status'])) { ?>
                             <p id="item-user-status-text"><?php echo $item['user_status']; ?></p>
                         <?php } ?>
