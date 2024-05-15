@@ -29,6 +29,7 @@ function drawCategorySlide(Category $cat, PDO $db, int $userId) {
                 
                 <form method="POST" action="/../actions/like_action.php">
                     <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <input type="hidden" name="userId" value="<?php echo $userId; ?>">
 
                     <?php if (in_array($item['itemId'], $wishlistItemIds)) { ?>
                         <button id="liked"></button>
