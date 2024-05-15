@@ -4,16 +4,20 @@
   require_once(__DIR__ . '/../db/item.class.php');
   require_once(__DIR__ . '/../db/category.class.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/wishlist.class.php');
+
 
   require_once(__DIR__ . '/../sessions/session.php');
 
   $db = databaseConnect();
+
 ?>
 
 <?php 
-function drawCategorySlide(Category $cat, PDO $db) {
+function drawCategorySlide(Category $cat, PDO $db, int $userId) {
     // Retrieve items for the given category
     $items = Category::getCategoryItems($db, $cat->id);
+    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId)
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
@@ -25,7 +29,12 @@ function drawCategorySlide(Category $cat, PDO $db) {
                 
                 <form method="POST" action="/../actions/like_action.php">
                     <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
-                    <button></button>
+
+                    <?php if (in_array($item['itemId'], $wishlistItemIds)) { ?>
+                        <button id="liked"></button>
+                    <?php } else { ?> 
+                        <button></button>
+                    <?php } ?>
                 </form>
                 
                 <!-- ajax ver.

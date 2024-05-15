@@ -35,7 +35,7 @@
     border: none;
     appearance: none;
     position: absolute;
-    bottom: 2.2em;
+    bottom: 0.5em;
     right: 2.2em;
     width: 20px;
     height: 20px;
@@ -46,10 +46,13 @@
     transition: transform 0.5s ease;
 }
 
+.image_display button#liked {
+    filter: invert(18%) sepia(94%) saturate(6367%) hue-rotate(357deg) brightness(103%) contrast(119%);
+}
+
 .image_display button:hover {
     transform: rotate(360deg);
 }
-
 
 .image_wrapper {
     position: relative;

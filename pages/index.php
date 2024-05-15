@@ -48,7 +48,7 @@
             <div class="slide">
                 <?php
                     $cat = Category::getCategory($db, 0);
-                    drawCategorySlide($cat ,$db);
+                    drawCategorySlide($cat ,$db, $session->getId());
                 ?>
 
             </div>

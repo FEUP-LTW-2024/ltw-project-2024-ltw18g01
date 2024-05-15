@@ -15,6 +15,8 @@
   $db = databaseConnect();
 
   $user = User::getUser($db, $session->getId());
+
+  $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $session->getId());
 ?>
 
 <!DOCTYPE html>
@@ -38,12 +40,15 @@
         drawTopBar($session, $db);
 
         $wishlist = Wishlist::getWishlistUser($db, $session->getId());
+
         ?>
         
         <p class="user-profile">Wishlist</p>
         <p class="catch-phrase">Let your wishes be granted!</p>
         <div class="image_display">
         <?php
+
+
         foreach ($wishlist as $wlitem) { ?>
             
             <div class="image_wrapper">
@@ -53,8 +58,14 @@
                 <p><?php echo $wlitem['price'] . "€  | " . $wlitem['likes'] . " likes"; ?></p>
                 
                 <form method="POST" action="/../actions/like_action.php">
-                    <input type="hidden" name="itemId" value="<?php echo $wlitem['itemId']; ?>">x
-                    <button></button>
+                    <input type="hidden" name="itemId" value="<?php echo $wlitem['itemId']; ?>">
+
+                    <?php if (in_array($wlitem['itemId'], $wishlistItemIds)) { ?>
+                        <button id="liked"></button>
+                    <?php } else { ?> 
+                        <button></button>
+                    <?php } ?>
+
                 </form>
                 
                 <!-- ajax ver.
