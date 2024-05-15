@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $state = $_POST['status']; 
     $description = $_POST['description'];
     $shippingSize = $_POST['shipping_size']; 
-
     switch ($shippingSize) {
         case 'Small':
             $shippingCost = 19.99;
@@ -49,8 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
 
     $newItem->save($db);
-
-    header('Location: ../actions/sell_action.php'); 
+    header('Location: /pages/item.php?itemId=' . $newItem->itemId);
     exit;
 }
 ?>

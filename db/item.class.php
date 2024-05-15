@@ -85,7 +85,7 @@ static function getItemsByUser(PDO $db, int $userId) {
 
     if ($items) {
         foreach ($items as &$item) {
-            $item['user_status'] = 'SOLD'; // Definir o status do item conforme necessário
+            $item['user_status'] = 'SOLD'; 
         }
     }
 
@@ -126,6 +126,5 @@ static function likeManipulator(PDO $db, int $itemId, int $userId, bool $add) {
     }
 }
 
-}
 
 
