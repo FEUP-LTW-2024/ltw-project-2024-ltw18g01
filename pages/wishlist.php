@@ -28,7 +28,6 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="/css/index_style.css">
         <link rel="stylesheet" href="/css/listings.css">
         <link rel="stylesheet" href="/css/wishlist.css">
         <link rel="stylesheet" href="/css/account.css">
