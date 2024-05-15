@@ -92,8 +92,24 @@ static function getItemsByUser(PDO $db, int $userId) {
     return $items;
 }
 
-static function likeManipulator(PDO $db, int $itemId, int $userId, bool $add) {
-    if ($add) {
+static function removeLike(PDO $db, int $itemId, int $userId) {
+    $stmt = $db->prepare('
+        UPDATE Item
+        SET likes = likes - 1
+        WHERE itemId = ?
+        ');
+
+    $stmt->execute(array($itemId));
+
+    $stmt = $db->prepare('
+        DELETE FROM Wishlist
+        WHERE item = ? AND user = ?
+        ');
+
+    $stmt->execute(array($itemId, $userId));
+}
+
+static function addLike(PDO $db, int $itemId, int $userId) {
         $stmt = $db->prepare('
         UPDATE Item
         SET likes = likes + 1
@@ -107,23 +123,7 @@ static function likeManipulator(PDO $db, int $itemId, int $userId, bool $add) {
         VALUES (?, ?)
         ');
         
-        $stmt->execute(array($itemId));
-    } else {
-        $stmt = $db->prepare('
-        UPDATE Item
-        SET likes = likes - 1
-        WHERE itemId = ?
-        ');
-
-        $stmt->execute(array($itemId));
-
-        $stmt = $db->prepare('
-        DELETE FROM Wishlist
-        WHERE item = ?
-        ');
-
-        $stmt->execute(array($itemId));
-    }
+        $stmt->execute(array($itemId, $userId));
 }
 
 }
