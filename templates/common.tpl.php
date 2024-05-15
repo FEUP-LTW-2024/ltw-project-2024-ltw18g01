@@ -124,7 +124,7 @@ function drawMyItems($db, $userId) {
             <?php
         }
     } else {
-        echo 'No items found.';
+        echo '<p id="no-items">No items found :v </p>';
     }
 }
 ?>

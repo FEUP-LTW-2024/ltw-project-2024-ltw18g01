@@ -60,3 +60,12 @@
     font-weight: 600;
     font-family: "Inter", sans-serif;
 }
+
+#no-items{
+    font-size: 25px;
+    margin-top: 2em;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color:white;
+}

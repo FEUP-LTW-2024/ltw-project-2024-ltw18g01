@@ -42,9 +42,10 @@
     default:
         $shippingCost = 0;
     }
+    $likes = 0;
     $image_url = ''; 
 
-    $newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $image_url);
+    $newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
 
     $newItem->save($db);
 
