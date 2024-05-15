@@ -19,10 +19,11 @@ $wishlist = Wishlist::getWishlistUser($db, (int)$_POST['userId']);
 $wishlistItemIds = Wishlist::getWishlistUserIDs($db, (int)$_POST['userId']);
 
 if (in_array($item->id, $wishlistItemIds)) {
-    Item::removeLike($db, $item->id, $user->userId);
+    Item::removeLike($db, $item->id, $session->getId());
 } else {
-    Item::addLike($db, $item->id, $user->userId);
+    Item::addLike($db, $item->id, $session->getId());
 }
+
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
