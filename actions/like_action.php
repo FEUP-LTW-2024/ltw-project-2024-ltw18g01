@@ -16,11 +16,12 @@ $db = databaseConnect();
 $user = User::getUser($db, $session->getId());
 $item = Item::getItem($db, (int)$_POST['itemId']);
 $wishlist = Wishlist::getWishlistUser($db, (int)$_POST['userId']);
+$wishlistItemIds = Wishlist::getWishlistUserIDs($db, (int)$_POST['userId']);
 
-if (in_array($item->id, $wishlist)) {
-    Item::likeManipulator($db, $item->id, $user->userId, true);
+if (in_array($item->id, $wishlistItemIds)) {
+    Item::removeLike($db, $item->id, $user->userId);
 } else {
-    Item::likeManipulator($db, $item->id, $user->userId, false);
+    Item::addLike($db, $item->id, $user->userId);
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);

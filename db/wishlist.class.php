@@ -27,5 +27,19 @@
         
             return $items;
         }
+
+        static function getWishlistUserIDs(PDO $db, int $userId): array {
+            $stmt = $db->prepare('
+                SELECT item
+                FROM Wishlist
+                WHERE Wishlist.user = ?
+            ');
+        
+            $stmt->execute(array($userId));
+        
+            $items = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        
+            return $items;
+        }
         
     }

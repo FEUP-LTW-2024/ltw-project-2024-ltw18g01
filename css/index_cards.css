@@ -46,6 +46,10 @@
     transition: transform 0.5s ease;
 }
 
+.image_display button#liked {
+    filter: invert(18%) sepia(94%) saturate(6367%) hue-rotate(357deg) brightness(103%) contrast(119%);
+}
+
 .image_display button:hover {
     transform: rotate(360deg);
 }
