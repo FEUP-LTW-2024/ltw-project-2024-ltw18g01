@@ -3,8 +3,16 @@
 
   require_once(__DIR__ . '/../db/item.class.php');
   require_once(__DIR__ . '/../db/category.class.php');
+  require_once(__DIR__ . '/../db/user.class.php');
 
   require_once(__DIR__ . '/../sessions/session.php');
+
+  $db = databaseConnect();
+  $session = new Session();
+
+  if (!$session->isLoggedIn()) die(header('Location: /'));
+
+  $user = User::getUser($db, $session->getId());
 ?>
 
 <?php 
@@ -14,12 +22,22 @@ function drawCategorySlide(Category $cat, PDO $db) {
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
-             <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
-                <div class="image_wrapper">
-                    <img src="<?php echo $item['image_url']; ?>">
-                    <p><?php echo $item['price'] . "€"; ?></p>
-                </div>
-            </a>
+            <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <img src="<?php echo $item['image_url']; ?>">
+                </a>
+                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <button></button>
+                </form>
+                
+                <!-- ajax ver.
+                <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
+                <script src="/../js/wishlist.js"></script>
+                --->
+            </div>
         <?php } ?>
     </div>
 <?php 

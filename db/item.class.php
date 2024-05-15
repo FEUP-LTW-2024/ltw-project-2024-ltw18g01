@@ -15,9 +15,10 @@ class Item {
     public string $description;
     public string $shippingSize;
     public float $shippingCost;
+    public int $likes;
     public string $image_url;
 
-    public function __construct(int $id, int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, string $image_url) {
+    public function __construct(int $id, int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, int $likes, string $image_url) {
         $this->id = $id;
         $this->seller = $seller;
         $this->category = $category;
@@ -31,6 +32,7 @@ class Item {
         $this->description = $description;
         $this->shippingSize = $shippingSize;
         $this->shippingCost = $shippingCost;
+        $this->likes = $likes;
         $this->image_url = $image_url;
     }
 
@@ -66,6 +68,7 @@ class Item {
     $item['description'],
     $item['shippingSize'],
     $item['shippingCost'],
+    $item['likes'],
     $item['image_url']
 );
 }
@@ -88,6 +91,41 @@ static function getItemsByUser(PDO $db, int $userId) {
 
     return $items;
 }
+
+static function likeManipulator(PDO $db, int $itemId, int $userId, bool $add) {
+    if ($add) {
+        $stmt = $db->prepare('
+        UPDATE Item
+        SET likes = likes + 1
+        WHERE itemId = ?
+        ');
+
+        $stmt->execute(array($itemId));
+
+        $stmt = $db->prepare('
+        INSERT INTO Wishlist (item, user)
+        VALUES (?, ?)
+        ');
+        
+        $stmt->execute(array($itemId));
+    } else {
+        $stmt = $db->prepare('
+        UPDATE Item
+        SET likes = likes - 1
+        WHERE itemId = ?
+        ');
+
+        $stmt->execute(array($itemId));
+
+        $stmt = $db->prepare('
+        DELETE FROM Wishlist
+        WHERE item = ?
+        ');
+
+        $stmt->execute(array($itemId));
+    }
+}
+
 }
 
 

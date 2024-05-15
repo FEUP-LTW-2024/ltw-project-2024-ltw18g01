@@ -1,0 +1,58 @@
+.image_display {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.image_display img {
+    margin-right: 10px;
+    object-fit: cover;
+    width: 12em; 
+    height: 12em; 
+    display: block;
+    border-top: 0.6em solid white; 
+    border-left: 0.6em solid white;
+    border-right: 0.6em solid white; 
+    box-shadow: 0 8px 24px #966478;
+}
+
+.image_display p {
+    position: relative;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    color: black; 
+    border-top: 0.3em solid white; 
+    border-bottom: 0.3em solid white; 
+    background-color: white;
+    width: 95.5%;
+}
+
+.image_display button {
+    cursor: pointer;
+    border: none;
+    appearance: none;
+    position: absolute;
+    bottom: 0.5em;
+    right: 2.2em;
+    width: 20px;
+    height: 20px;
+    background-image: url('/../images/others/heart-solid.svg');
+    background-size: cover;
+    background-color: transparent;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
+    transition: transform 0.5s ease;
+}
+
+.image_display button:hover {
+    transform: rotate(360deg);
+}
+
+
+.image_wrapper {
+    position: relative;
+    margin-bottom: 8em;
+    justify-items: center;
+}

@@ -28,18 +28,47 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="/css/index_style.css"> 
+        <link rel="stylesheet" href="/css/index_style.css">
+        <link rel="stylesheet" href="/css/listings.css">
+        <link rel="stylesheet" href="/css/wishlist.css">
+        <link rel="stylesheet" href="/css/account.css">
    </head>
     <body>
         <?php
         
-        // drawTopBar($session, $db);
+        drawTopBar($session, $db);
 
-        $wishlist = Wishlist::getWishlistUser($db, $user->userId);
-
-        foreach ($wishlist as $wlitem) { ?>
-            <p><?php echo var_dump($wlitem); ?></p>
-        <?php }
+        $wishlist = Wishlist::getWishlistUser($db, $session->getId());
         ?>
+        
+        <p class="user-profile">Wishlist</p>
+        <p class="catch-phrase">Let your wishes be granted!</p>
+        <div class="image_display">
+        <?php
+        foreach ($wishlist as $wlitem) { ?>
+            
+            <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$wlitem['itemId']?>">
+                <img src="<?php echo $wlitem['image_url']; ?>">
+                </a>
+                <p><?php echo $wlitem['price'] . "€  | " . $wlitem['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $wlitem['itemId']; ?>">
+                    <button></button>
+                </form>
+                
+                <!-- ajax ver.
+                <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
+                <script src="/../js/wishlist.js"></script>
+                --->
+            </div>
+
+        <?php } ?>
+        
+        </div>
+
+
+
     </body>
 </html>
