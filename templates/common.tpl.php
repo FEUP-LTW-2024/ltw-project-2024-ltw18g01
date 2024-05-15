@@ -110,7 +110,7 @@ function drawMyItems($db, $userId) {
                     <div id="item-user-status">
                         <form method="POST" action="../actions/shipping_label_action.php">
                             <input type="hidden" name="userId" value="<?php echo $userId; ?>">
-                            <input type="hidden" name="title" value="<?php echo $item['title']; ?>">
+                            <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
                             <button>Ship</button>
                         </form>
                         <img id="printer-img" src="/../images/others/printer.png">
