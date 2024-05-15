@@ -48,7 +48,11 @@
             <div class="slide">
                 <?php
                     $cat = Category::getCategory($db, 0);
-                    drawCategorySlide($cat ,$db, $session->getId());
+                    if ($session->isLoggedIn()) {
+                        drawCategorySlide($cat ,$db, $session->getId());
+                    } else {
+                        drawCategorySlideGuest($cat, $db);
+                    }
                 ?>
 
             </div>

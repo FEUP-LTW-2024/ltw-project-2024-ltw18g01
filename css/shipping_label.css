@@ -1,0 +1,77 @@
+@page {
+    size: A4;
+    margin: 0;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+}
+
+#text {
+  font-family: "Inter", sans-serif;
+  font-size: x-large;
+  font-weight: 900;
+  text-align: center;
+}
+
+#barcode {
+  font-family: "Libre Barcode 39 Text";
+  font-size: 90px;
+  text-align: center;
+  margin: 0;
+  
+}
+
+#barc_box {
+  border: 2px solid #000; /* Add border around the box */
+  padding: 10px; /* Add some padding inside the box */
+  display: inline-block; /* Ensure the box wraps around the content */
+}
+
+#barcode_wrapper {
+  text-align: center;
+  justify-content: center;
+}
+
+#notcover {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: regular;
+  text-align: center;
+}
+
+#line {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: regular;
+  text-align: center;
+}
+
+#logo {
+  font-family: "Inter", sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+#ads #header {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#ads #header2 {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#ads #disclaimer {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: regular;
+  text-align: center;
+}
