@@ -8,11 +8,6 @@
   require_once(__DIR__ . '/../sessions/session.php');
 
   $db = databaseConnect();
-  $session = new Session();
-
-  if (!$session->isLoggedIn()) die(header('Location: /'));
-
-  $user = User::getUser($db, $session->getId());
 ?>
 
 <?php 

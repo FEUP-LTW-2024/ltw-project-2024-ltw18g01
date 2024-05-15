@@ -54,7 +54,7 @@
                 <p><?php echo $wlitem['price'] . "€  | " . $wlitem['likes'] . " likes"; ?></p>
                 
                 <form method="POST" action="/../actions/like_action.php">
-                    <input type="hidden" name="itemId" value="<?php echo $wlitem['itemId']; ?>">
+                    <input type="hidden" name="itemId" value="<?php echo $wlitem['itemId']; ?>">x
                     <button></button>
                 </form>
                 
