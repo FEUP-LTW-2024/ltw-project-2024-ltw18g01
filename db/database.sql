@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Subcategory;
 DROP TABLE IF EXISTS Wishlist;
+DROP TABLE IF EXISTS Message;
+
 
 CREATE TABLE User (
   userId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -69,6 +71,13 @@ CREATE TABLE Wishlist (
   ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
+CREATE TABLE Message (
+  messageId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  senderId INTEGER NOT NULL,
+  receiverId INTEGER NOT NULL,
+  sentAt DATETIME NOT NULL, 
+  message TEXT NOT NULL
+);
 
 INSERT INTO User(userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating,salesNumber, isAdmin) VALUES
 (0, 'João', 'Mendes', 'joaovicente', 'Avenida das Rochas 21', 'Porto', 'Portugal', '4400-123', '+351 931 234 568', 'vicente@gmail.com', 'vicente123', '/../images/users/vicente.jpeg', 4.5, 14, true),
@@ -162,3 +171,10 @@ INSERT INTO Wishlist (wishlistId, user, item) VALUES
 (21, 0, 12),
 (22, 0, 13),
 (23, 0, 21);
+
+INSERT INTO Message (senderId, receiverId, message, sentAt) VALUES
+(1, 3, 'ola!', '2024-04-13 12:40:00'),
+(3, 1, 'olaa!', '2024-04-13 12:42:00'),
+(3, 1, 'tudo?', '2024-04-13 12:45:00'),
+(1, 3, 'no!', '2024-04-13 12:40:00'),
+(1, 4, 'hello', '2024-04-13 12:40:00');
