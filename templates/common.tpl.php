@@ -47,6 +47,7 @@ function drawTopBar(Session $session, $db)
                     echo '<a class="desktop ' . $activeClass . '" href="' . $url . '">' . $page . '</a>';
                 }
                 ?>
+                 <a class="icon" id="search" href="search.php"><img class="icon" src="/images/others/search.svg"></a>
                  <a class="icon" href="sell.php"><img class="icon" src="/images/others/plus.png"></a>
                  <a class="icon" href="chat.php"><img class="icon" src="/images/others/communications.png"></a>
                  <a class="icon" href="wishlist.php"><img class="icon" src="/images/others/heart.png"></a>
