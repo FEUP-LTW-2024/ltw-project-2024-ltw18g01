@@ -126,5 +126,29 @@ static function addLike(PDO $db, int $itemId, int $userId) {
         $stmt->execute(array($itemId, $userId));
 }
 
+public function save(PDO $db) {
+        $stmt = $db->prepare('
+            INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, image_url)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ');
 
+        $stmt->execute(array(
+            $this->itemId,
+            $this->seller,
+            $this->category,
+            $this->subcategory,
+            $this->title,
+            $this->price,
+            $this->negotiable,
+            $this->published,
+            $this->tags,
+            $this->state,
+            $this->description,
+            $this->shippingSize,
+            $this->likes,
+            $this->shippingCost,
+            $this->image_url
+        ));
+    }
+}
 

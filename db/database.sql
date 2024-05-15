@@ -23,13 +23,13 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Category (
-  categoryId INTEGER NOT NULL,            -- category id
-  name VARCHAR NOT NULL,                      --  name of the category 
+  categoryId INTEGER NOT NULL,                             -- category id
+  name VARCHAR NOT NULL,                                   --  name of the category 
   CONSTRAINT PK_Category PRIMARY KEY (categoryId)
 );
 
 CREATE TABLE Item (
-  itemId INTEGER NOT NULL,                                 -- item id
+  itemId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,       -- item id
   seller INTEGER NOT NULL,                                 -- user that possess the item
   category INTEGER NOT NULL,
   subcategory INTEGER NOT NULL,
@@ -44,7 +44,6 @@ CREATE TABLE Item (
   likes INTEGER,
   shippingCost INTEGER NOT NULL,
   image_url VARCHAR NOT NULL,                              -- user image 
-  CONSTRAINT PK_Item PRIMARY KEY (itemId),
   FOREIGN KEY (category) REFERENCES Category (categoryId)
   ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (seller) REFERENCES User (userId)

@@ -45,7 +45,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $likes = 0;
     $image_url = ''; 
 
-    $newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
+     if(isset($_FILES['image'])) {
+        $uploadError = $_FILES['image']['error'];
+        switch ($uploadError) {
+            case UPLOAD_ERR_OK:
+                $tmp_name = $_FILES["image"]["tmp_name"];
+                $name = basename($_FILES["image"]["name"]);
+                $upload_dir = __DIR__ . '/../images/products/'; 
+                $target_file = $upload_dir . $name;
+
+                if(move_uploaded_file($tmp_name, $target_file)) {
+                    $image_url = '/../images/products/' . $name; 
+                } else {
+                    echo '<p id="upload-failed"> Upload failed :v :v </p>';
+                }
+                break;
+            case UPLOAD_ERR_NO_FILE:
+                echo "No file uploaded.";
+                break;
+            case UPLOAD_ERR_INI_SIZE:
+                echo "The uploaded file exceeds the upload_max_filesize.";
+                break;
+            case UPLOAD_ERR_FORM_SIZE:
+                echo "File too large.";
+                break;
+            case UPLOAD_ERR_PARTIAL:
+                echo "Partial upload.";
+                break;
+            case UPLOAD_ERR_NO_TMP_DIR:
+                echo "No temporary directory.";
+                break;
+            case UPLOAD_ERR_CANT_WRITE:
+                echo "Can't write to disk.";
+                break;
+            case UPLOAD_ERR_EXTENSION:
+                echo "File upload stopped by extension.";
+                break;
+            default:
+                echo "Unknown upload error.";
+                break;
+        }
+    }
+
+    $newItem = new Item(0,$sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
 
     $newItem->save($db);
     header('Location: /pages/item.php?itemId=' . $newItem->itemId);
@@ -79,11 +121,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="title">Sell an item at Techie</p>
         <p class="subtitle">Zero fees, zero hassle. All the money goes to you.</p>
     </section>
-    <form action="../actions/sell_action.php" method="post" class="sell">
+    <form action="../actions/sell_action.php" method="post" class="sell" enctype="multipart/form-data">
         <section class="item_pictures">
             <p class="section-title">Item pictures</p>
             <br>
-            <input type="file" id="fileInput" accept="image/*">
+            <input type="file" id="fileInput" accept="image/*" required>
             <br>
             <br>
             <button onclick="uploadImage()">Upload Image</button>
@@ -94,18 +136,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <section class="name_desc">
             <p class="section-title">Title</p>
             <div class="form_rectangle">
-                <input id="input-text" type="text" name="title" placeholder="Title">
+                <input id="input-text" type="text" name="title" placeholder="Title" required>
             </div>
             <p class="section-title">Description</p>
             <div class="form_rectangle">
-                <input id="input-text" type="text" name="description" placeholder="Description">
+                <input id="input-text" type="text" name="description" placeholder="Description" required>
             </div>
         </section>
 
         <section class="category">
             <p class="section-title">Choose a category</p>
             <div class="dropdown">
-                <select name="category" id="categoryDropdown">
+                <select name="category" id="categoryDropdown" required>
                     <option value="">Select a category</option>
                     <?php
                     foreach($categories as $category) {
@@ -116,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="dropdown">
-                <select name="subcategory" id="subcategoryDropdown">
+                <select name="subcategory" id="subcategoryDropdown" required>
                     <option value="">Select a subcategory</option>
                 </select>
             </div>
@@ -125,46 +167,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
         <section class="status">
             <p class="section-title">Condition</p>
-            <input type="hidden" name="status" id="status" value="">
-            <input type="checkbox" id="verygood" value="Very Good">
+            <input type="radio" id="verygood" name="status" value="Very Good" required>
             <label for="verygood">Very Good</label><br>
-            <input type="checkbox" id="good" value="Good">
+            <input type="radio" id="good" name="status" value="Good" required>
             <label for="good">Good</label><br>
-            <input type="checkbox" id="decent" value="Decent">
+            <input type="radio" id="decent" name="status" value="Decent" required>
             <label for="decent">Decent</label><br>
-            <input type="checkbox" id="forparts" value="For parts">
+            <input type="radio" id="forparts" name="status" value="For parts" required>
             <label for="forparts">For parts</label><br>
-
-            <script>
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.addEventListener('change', function() {
-                        var status = '';
-                        checkboxes.forEach(function(cb) {
-                            if (cb.checked) {
-                                status = cb.value;
-                            }
-                        });
-                        document.getElementById('status').value = status;
-                    });
-                });
-            </script>
         </section>
 
         <section class="shipping">
             <p class="section-title">Shipping size</p>
-            <input type="radio" id="small" name="shipping_size" value="Small">
+            <input type="radio" id="small" name="shipping_size" value="Small" required>
             <label for="small">Small(<1kg)</label><br>
-            <input type="radio" id="medium" name="shipping_size" value="Medium">
+            <input type="radio" id="medium" name="shipping_size" value="Medium" required>
             <label for="medium">Medium(<5kg)</label><br>
-            <input type="radio" id="large" name="shipping_size" value="Large">
+            <input type="radio" id="large" name="shipping_size" value="Large" required>
             <label for="large">Large(+5kg)</label><br>
         </section>
 
         <section class="item_price">
             <p class="section-title">Price</p>
             <div class="form_rectangle">
-                <input id="input-text" type="text" name="price" placeholder="Price">
+                <input id="input-text" type="text" name="price" placeholder="Price" required>
             </div>
             <br>
             <div class="centered">

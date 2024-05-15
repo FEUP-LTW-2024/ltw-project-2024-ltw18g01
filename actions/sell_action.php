@@ -12,14 +12,27 @@ require_once(__DIR__ . '/../db/item.class.php');
 
 // Obtém os dados do formulário
 $sellerId = $session->getId();
-$categoryId = $_POST['category'] ?? '';
-$subcategoryId = $_POST['subcategory'] ?? '';
+$categoryId = isset($_POST['category']) ? (int)$_POST['category'] : 0; 
+$subcategoryId = isset($_POST['subcategory']) ? (int)$_POST['subcategory'] : 0; 
 $title = $_POST['title'] ?? '';
-$price = $_POST['price'] ?? '';
-$negotiable = isset($_POST['price_neg']) ? 1 : 0;
+$price = isset($_POST['price']) ? (int)$_POST['price'] : 0; 
+$negotiable = isset($_POST['price_neg']) && $_POST['price_neg'] === 'yes';
 $state = $_POST['status'] ?? '';
 $description = $_POST['description'] ?? '';
-$shippingSize = $_POST['shipping_size'] ?? '';
+$shippingSize = $_POST['shipping_size'] ?? '';  
+switch ($shippingSize) {
+    case 'Small':
+        $shippingCost = 19.99;
+        break;
+    case 'Medium':
+        $shippingCost = 29.99;
+        break;
+    case 'Large':
+        $shippingCost = 49.99;
+        break;
+    default:
+        $shippingCost = 0;
+}
 $likes = 0;
 $image_url = ''; // Você pode adicionar a lógica para lidar com o upload de imagem aqui
 
