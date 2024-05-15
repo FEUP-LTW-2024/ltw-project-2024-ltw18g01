@@ -26,16 +26,6 @@
     justify-content: center;
 }
 
-.section-subtitle{
-    font-family: "Inter", sans-serif;
-    color: white;
-    font-size: 16px;
-    font-weight: regular; 
-    display: flex;
-    justify-content: center;
-    margin-top: -1.5em;
-}
-
 button {
     display: flex;
     justify-content: center;

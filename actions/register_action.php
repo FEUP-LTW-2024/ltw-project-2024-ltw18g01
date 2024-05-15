@@ -14,7 +14,6 @@ $postalCode = $_POST['postalCode'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
-
 $image_url = '/images/others/guesticon.png';
 
 $user = new User(
