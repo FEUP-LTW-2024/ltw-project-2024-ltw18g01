@@ -49,7 +49,7 @@ $categories = Category::getCategories($db);
         <section class="item_pictures">
             <p class="section-title">Item pictures</p>
             <br>
-            <input type="file" id="fileInput" accept="image/*" required>
+            <input name="image" type="file" id="fileInput" accept="image/*" required>
             <br>
             <br>
             <button onclick="uploadImage()">Upload Image</button>

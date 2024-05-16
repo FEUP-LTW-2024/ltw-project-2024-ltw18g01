@@ -36,10 +36,52 @@ switch ($shippingSize) {
 $likes = 0;
 $image_url = '';
 
+if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    // File upload is successful, process the file
+    $tmp_name = $_FILES['image']['tmp_name'];
+    $name = basename($_FILES['image']['name']);
+    $upload_dir = __DIR__ . '/../images/products/';
+    $target_file = $upload_dir . $name;
+
+    if(move_uploaded_file($tmp_name, $target_file)) {
+        // File moved successfully
+        $image_url = '/images/products/' . $name;
+    } else {
+        // Error moving file
+        echo "Erro ao mover o arquivo.";
+    }
+} elseif(isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+    // File upload failed, display specific error message
+    switch($_FILES['image']['error']) {
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            echo "O arquivo enviado é muito grande.";
+            break;
+        case UPLOAD_ERR_PARTIAL:
+            echo "O arquivo foi apenas parcialmente carregado.";
+            break;
+        case UPLOAD_ERR_NO_FILE:
+            echo "Nenhum arquivo foi enviado.";
+            break;
+        case UPLOAD_ERR_NO_TMP_DIR:
+            echo "Faltando uma pasta temporária.";
+            break;
+        case UPLOAD_ERR_CANT_WRITE:
+            echo "Falha ao gravar o arquivo no disco.";
+            break;
+        case UPLOAD_ERR_EXTENSION:
+            echo "Uma extensão do PHP interrompeu o upload do arquivo.";
+            break;
+        default:
+            echo "Erro desconhecido ao carregar o arquivo.";
+            break;
+    }
+}
+
+
 $db = databaseConnect();
 
-$newItem = new Item($sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, 0, $likes, $image_url);
-
+$newItem = new Item($sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
 
 $newItem->save($db);
 

@@ -37,7 +37,7 @@
 
         <section>
             <form action="../actions/login_action.php" method="post" class="login">
-                <p id="username">Username</p>
+                <p id="username">Email</p>
                 <div class="form_rectangle">
                     <input id="input-login" type="email" name="email" placeholder="email">
                 </div>

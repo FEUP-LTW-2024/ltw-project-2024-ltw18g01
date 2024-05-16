@@ -7,31 +7,6 @@
     require_once(__DIR__ . '/../templates/common.tpl.php');
 
     $db = databaseConnect();
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $username = $_POST['username'];
-        $address = $_POST['address'];
-        $city = $_POST['city'];
-        $country = $_POST['country'];
-        $postalCode = $_POST['postalCode'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $image_url = ''; 
-        $userRating = 0.0;
-        $salesNumber = 0; 
-        $isAdmin = 0; 
-
-        $newUser = new User(0, $firstName, $lastName, $username, $address, $city, $country, $postalCode, $phone, $email, $password, $image_url, $userRating, $salesNumber, $isAdmin);
-
-        $newUser->save($db);
-
-        header('Location: login.php');
-        exit;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +76,8 @@
                 <div class="form_rectangle">
                     <input id="input-login" type="password" name="password" required>
                 </div>
+                <p id="username">Picture</p>
+                    <input name="image" type="file" id="fileInput" accept="image/*" required>
                 <br>
                 <br>
                 <div>
@@ -108,6 +85,10 @@
                         <p id="register-button-text2">Register</p>
                     </button>
                 </div>
+                <br>
+                <br>
+                <br>
+                <br>
             </form>
         </section>
     </body>
