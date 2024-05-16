@@ -108,7 +108,7 @@ class Item {
         $stmt->execute(array($itemId, $userId));
     }
 
-static function addLike(PDO $db, int $itemId, int $userId) {
+    static function addLike(PDO $db, int $itemId, int $userId) {
             $stmt = $db->prepare('
             UPDATE Item
             SET likes = likes + 1
