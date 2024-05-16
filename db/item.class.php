@@ -125,6 +125,21 @@ class Item {
             $stmt->execute(array($itemId, $userId));
     }
 
+    static function searchItems(PDO $db, string $query, int $count) : array {
+        $stmt = $db->prepare(
+            'SELECT *
+            FROM Item
+            WHERE title LIKE ?
+            LIMIT ?'
+        );
+
+        $stmt->execute(array($query . '%', $count));
+
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $items;
+    }
+
     public function save(PDO $db) {
         $stmt = $db->prepare('
             INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, image_url)

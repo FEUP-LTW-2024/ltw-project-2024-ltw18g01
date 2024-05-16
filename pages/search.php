@@ -4,9 +4,12 @@
   require_once(__DIR__ . '/../sessions/session.php');
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/wishlist.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
 
   $db = databaseConnect();
+  $session = new Session();
+  $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $session->getId());
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +23,26 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="/css/index_style.css"> 
+        <link rel="stylesheet" href="/css/login_reg.css">
+        <link rel="stylesheet" href="/css/search.css">
+        <link rel="stylesheet" href="/css/wishlist.css">
    </head>
     <body>
         <?php
         drawTopBar($session, $db);
         ?>
+
+        <p id="username">Search</p>
+            <div class="form_rectangle">
+                <input id="search-data" type="text" name="search-data" placeholder="In need of something?">
+            </div>
+        
+        <br>
+        <script>
+            const wishlistItemIds = <?php echo json_encode($wishlistItemIds); ?>;
+        </script>
+
+        <script src="../js/ajax_search.js" defer></script>
+
     </body>
 </html>

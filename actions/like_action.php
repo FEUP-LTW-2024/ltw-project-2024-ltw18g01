@@ -18,12 +18,22 @@ $item = Item::getItem($db, (int)$_POST['itemId']);
 $wishlist = Wishlist::getWishlistUser($db, (int)$_POST['userId']);
 $wishlistItemIds = Wishlist::getWishlistUserIDs($db, (int)$_POST['userId']);
 
-if (in_array($item->id, $wishlistItemIds)) {
-    Item::removeLike($db, $item->id, $session->getId());
+if (in_array((int)$_POST['itemId'], $wishlistItemIds)) {
+    Item::removeLike($db, (int)$_POST['itemId'], $session->getId());
 } else {
-    Item::addLike($db, $item->id, $session->getId());
+    Item::addLike($db, (int)$_POST['itemId'], $session->getId());
+}
+
+if (strpos($_SERVER['HTTP_REFERER'], '/../pages/search.php') !== false) {
+    $currentURL = $_SERVER['REQUEST_URI'];
+    header('Location: ' . $currentURL);
+    exit; // Make sure to exit after sending the header
+} else {
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+
+
 ?>
