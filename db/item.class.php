@@ -18,8 +18,7 @@ class Item {
     public int $likes;
     public string $image_url;
 
-    public function __construct(int $id, int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, int $likes, string $image_url) {
-        $this->id = $id;
+    public function __construct(int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, int $likes, string $image_url) {
         $this->seller = $seller;
         $this->category = $category;
         $this->subcategory = $subcategory;
@@ -37,103 +36,102 @@ class Item {
     }
 
 
-        static function getItem(PDO $db, int $id) : Item {
+    static function getItem(PDO $db, int $id) : Item {
         $stmt = $db->prepare('
         SELECT *
         FROM Item
         WHERE itemId = ?
-    ');
+        ');
 
-    $stmt->execute(array($id));
+        $stmt->execute(array($id));
 
-    $item = $stmt->fetch();
+        $item = $stmt->fetch();
 
-    if (!$item) {
-        return null;
-    }
-
-    
-
-    return new Item(
-    $item['itemId'],
-    $item['seller'], 
-    $item['category'],
-    $item['subcategory'],
-    $item['title'],
-    $item['price'],
-    (bool)$item['negotiable'],
-    $item['published'],
-    $item['tags'],
-    $item['state'],
-    $item['description'],
-    $item['shippingSize'],
-    $item['shippingCost'],
-    $item['likes'],
-    $item['image_url']
-);
-}
-static function getItemsByUser(PDO $db, int $userId) {
-    $stmt = $db->prepare('
-        SELECT i.*, u.username AS seller_username
-        FROM Item i
-        JOIN User u ON i.seller = u.userId
-        WHERE i.seller = ?
-    ');
-
-    $stmt->execute(array($userId));
-    $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if ($items) {
-        foreach ($items as &$item) {
-            $item['user_status'] = 'SOLD'; 
+        if (!$item) {
+            return null;
         }
+
+        
+
+        return new Item(
+            $item['seller'], 
+            $item['category'],
+            $item['subcategory'],
+            $item['title'],
+            $item['price'],
+            (bool)$item['negotiable'],
+            $item['published'],
+            $item['tags'],
+            $item['state'],
+            $item['description'],
+            $item['shippingSize'],
+            $item['shippingCost'],
+            $item['likes'],
+            $item['image_url']
+        );
     }
 
-    return $items;
-}
-
-static function removeLike(PDO $db, int $itemId, int $userId) {
-    $stmt = $db->prepare('
-        UPDATE Item
-        SET likes = likes - 1
-        WHERE itemId = ?
-        ');
-
-    $stmt->execute(array($itemId));
-
-    $stmt = $db->prepare('
-        DELETE FROM Wishlist
-        WHERE item = ? AND user = ?
-        ');
-
-    $stmt->execute(array($itemId, $userId));
-}
-
-static function addLike(PDO $db, int $itemId, int $userId) {
+    static function getItemsByUser(PDO $db, int $userId) {
         $stmt = $db->prepare('
-        UPDATE Item
-        SET likes = likes + 1
-        WHERE itemId = ?
+            SELECT i.*, u.username AS seller_username
+            FROM Item i
+            JOIN User u ON i.seller = u.userId
+            WHERE i.seller = ?
         ');
+
+        $stmt->execute(array($userId));
+        $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($items) {
+            foreach ($items as &$item) {
+                $item['user_status'] = 'SOLD'; 
+            }
+        }
+
+        return $items;
+    }
+
+    static function removeLike(PDO $db, int $itemId, int $userId) {
+        $stmt = $db->prepare('
+            UPDATE Item
+            SET likes = likes - 1
+            WHERE itemId = ?
+            ');
 
         $stmt->execute(array($itemId));
 
         $stmt = $db->prepare('
-        INSERT INTO Wishlist (item, user)
-        VALUES (?, ?)
-        ');
-        
-        $stmt->execute(array($itemId, $userId));
-}
+            DELETE FROM Wishlist
+            WHERE item = ? AND user = ?
+            ');
 
-public function save(PDO $db) {
+        $stmt->execute(array($itemId, $userId));
+    }
+
+static function addLike(PDO $db, int $itemId, int $userId) {
+            $stmt = $db->prepare('
+            UPDATE Item
+            SET likes = likes + 1
+            WHERE itemId = ?
+            ');
+
+            $stmt->execute(array($itemId));
+
+            $stmt = $db->prepare('
+            INSERT INTO Wishlist (item, user)
+            VALUES (?, ?)
+            ');
+            
+            $stmt->execute(array($itemId, $userId));
+    }
+
+    public function save(PDO $db) {
         $stmt = $db->prepare('
-            INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, image_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, image_url)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
         $stmt->execute(array(
-            $this->itemId,
             $this->seller,
             $this->category,
             $this->subcategory,
@@ -149,6 +147,8 @@ public function save(PDO $db) {
             $this->shippingCost,
             $this->image_url
         ));
+
+        $this->id= (int) $db->lastInsertId();
     }
 }
 

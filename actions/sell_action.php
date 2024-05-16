@@ -34,20 +34,15 @@ switch ($shippingSize) {
         $shippingCost = 0;
 }
 $likes = 0;
-$image_url = ''; // Você pode adicionar a lógica para lidar com o upload de imagem aqui
+$image_url = '';
 
-// Validação dos dados (pode ser implementada conforme necessário)
-
-// Conexão com o banco de dados
 $db = databaseConnect();
 
-// Cria uma nova instância do Item
-$newItem = new Item(0, $sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, 0, $likes, $image_url);
+$newItem = new Item($sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, 0, $likes, $image_url);
 
-// Salva o novo item no banco de dados
+
 $newItem->save($db);
 
-// Redireciona para a página de item criado
-header('Location: /pages/item.php?itemId=' . $newItem->itemId);
+header('Location: /pages/item.php?itemId=' . $newItem->id);
 exit;
 ?>

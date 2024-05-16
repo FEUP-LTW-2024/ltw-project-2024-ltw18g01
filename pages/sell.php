@@ -16,84 +16,8 @@ $db = databaseConnect();
   
 $user = User::getUser($db, $session->getId());
 $categories = Category::getCategories($db);
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sellerId = $user->userId; 
-    $categoryId = $_POST['category'];
-    $subcategoryId = $_POST['subcategory'];
-    $title = $_POST['title']; 
-    $price = $_POST['price'];
-    $negotiable = isset($_POST['price_neg']) ? true : false; 
-    $published = time(); 
-    $tags = ''; 
-    $state = $_POST['status']; 
-    $description = $_POST['description'];
-    $shippingSize = $_POST['shipping_size']; 
-    switch ($shippingSize) {
-        case 'Small':
-            $shippingCost = 19.99;
-            break;
-        case 'Medium':
-            $shippingCost = 29.99;
-            break;
-        case 'Large':
-            $shippingCost = 49.99;
-            break;
-        default:
-            $shippingCost = 0;
-    }
-    $likes = 0;
-    $image_url = ''; 
-
-     if(isset($_FILES['image'])) {
-        $uploadError = $_FILES['image']['error'];
-        switch ($uploadError) {
-            case UPLOAD_ERR_OK:
-                $tmp_name = $_FILES["image"]["tmp_name"];
-                $name = basename($_FILES["image"]["name"]);
-                $upload_dir = __DIR__ . '/../images/products/'; 
-                $target_file = $upload_dir . $name;
-
-                if(move_uploaded_file($tmp_name, $target_file)) {
-                    $image_url = '/../images/products/' . $name; 
-                } else {
-                    echo '<p id="upload-failed"> Upload failed :v :v </p>';
-                }
-                break;
-            case UPLOAD_ERR_NO_FILE:
-                echo "No file uploaded.";
-                break;
-            case UPLOAD_ERR_INI_SIZE:
-                echo "The uploaded file exceeds the upload_max_filesize.";
-                break;
-            case UPLOAD_ERR_FORM_SIZE:
-                echo "File too large.";
-                break;
-            case UPLOAD_ERR_PARTIAL:
-                echo "Partial upload.";
-                break;
-            case UPLOAD_ERR_NO_TMP_DIR:
-                echo "No temporary directory.";
-                break;
-            case UPLOAD_ERR_CANT_WRITE:
-                echo "Can't write to disk.";
-                break;
-            case UPLOAD_ERR_EXTENSION:
-                echo "File upload stopped by extension.";
-                break;
-            default:
-                echo "Unknown upload error.";
-                break;
-        }
-    }
-
-    $newItem = new Item(0,$sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, $published, $tags, $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
-
-    $newItem->save($db);
-    header('Location: /pages/item.php?itemId=' . $newItem->itemId);
-    exit;
-}
 ?>
+
 
 <!DOCTYPE html>
 <html>
