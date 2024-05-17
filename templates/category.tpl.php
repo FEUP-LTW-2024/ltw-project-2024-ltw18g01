@@ -62,6 +62,9 @@ function drawCategorySlideGuest(Category $cat, PDO $db) {
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
+            <?php
+            if ($item['sold'] == false) { ?>
+
             <div class="image_wrapper">
                 <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
                 <img src="<?php echo $item['image_url']; ?>">
@@ -78,6 +81,7 @@ function drawCategorySlideGuest(Category $cat, PDO $db) {
                 <script src="/../js/wishlist.js"></script>
                 --->
             </div>
+            <?php } ?>
         <?php } ?>
     </div>
 <?php 

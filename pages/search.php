@@ -9,7 +9,12 @@
 
   $db = databaseConnect();
   $session = new Session();
-  $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $session->getId());
+  if ($session->isLoggedIn()) {
+    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $session->getId());
+  } else {
+    $wishlistItemIds = [];
+  }
+  
 ?>
 
 <!DOCTYPE html>

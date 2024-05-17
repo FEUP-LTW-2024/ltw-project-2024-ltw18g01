@@ -9,7 +9,7 @@
 
   $session = new Session();
 
-  if (!$session->isLoggedIn()) die(header('Location: /'));
+  if (!$session->isLoggedIn()) die(header('Location: /pages/login.php'));
 
   $db = databaseConnect();
 

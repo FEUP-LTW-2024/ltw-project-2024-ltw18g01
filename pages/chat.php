@@ -9,7 +9,7 @@ require_once(__DIR__ . '/../templates/common.tpl.php');
 
 $session = new Session();
 if (!$session->isLoggedIn()) {
-    header('Location: /');
+    header('Location: /pages/login.php');
     exit;
 }
 
