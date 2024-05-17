@@ -147,6 +147,14 @@ class Item {
         return $items;
     }
 
+    static function removeAllItemsSubcategory(PDO $db, int $subcatid) {
+        $stmt = $db->prepare('
+        DELETE FROM Item WHERE subcategory = ?'
+        );
+
+        $stmt->execute(array($subcatid));
+    }
+
     public function save(PDO $db) {
         $stmt = $db->prepare('
             INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, sold, image_url)

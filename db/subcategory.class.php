@@ -64,6 +64,18 @@
             
         }
 
+        static function getAllSubcategories(PDO $db) : array {
+            $stmt = $db->prepare('
+            SELECT *
+            FROM Subcategory
+            ');
+
+            $stmt->execute();
+            $subcat = $stmt->fetchAll();
+
+            return $subcat;
+        }
+
         static function getSubcategoriesFromCategory(PDO $db, int $id) : array {
             $stmt = $db->prepare('
             SELECT *
@@ -76,5 +88,37 @@
 
             return $cat;
         }
+
+        static function removeSubcategory(PDO $db, int $id) {
+            $stmt = $db->prepare('
+            DELETE FROM Subcategory WHERE subcategoryId = ?
+            ');
+
+            $stmt->execute(array($id));
+        }
         
+        static function checkSubcategoryExistence(PDO $db, string $title) : bool{
+            $stmt = $db->prepare('
+            SELECT COUNT(*)
+            FROM Subcategory
+            WHERE name = ?
+            ');
+
+            $stmt->execute(array($title));
+            $count = $stmt->fetchColumn();
+            return $count > 0;
+        }
+        
+        public function save(PDO $db) {
+            $stmt = $db->prepare('
+            INSERT INTO Subcategory (name, category)
+            VALUES (?, ?)
+            ');
+
+            $stmt->execute(array(
+                $this->id,
+                $this->name,
+                $this->category
+            ));
+        }
     }

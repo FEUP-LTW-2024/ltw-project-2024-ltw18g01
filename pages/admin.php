@@ -4,6 +4,8 @@
   require_once(__DIR__ . '/../sessions/session.php');
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
+  require_once(__DIR__ . '/../db/subcategory.class.php');
+  require_once(__DIR__ . '/../db/category.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
 
 
@@ -16,6 +18,8 @@
   $user = User::getUser($db, $session->getId());
   if ($user->isAdmin == false) die(header('Location : ../pages/index.php'));
   $allusers = User::getAllUsers($db);
+  $subcat = Subcategory::getAllSubcategories($db);
+  $categories = Category::getCategories($db);
 ?>
 
 
@@ -41,11 +45,14 @@
    <?php
         drawTopBar($session, $db);
         ?>
-        <!-- Section of quotes-->
+        <p class="user-profile">Admin menu</p>
+        <p class="catch-phrase"> If you're reading this, you're an admin! </p>
+        <button id="toggleBtn">Toggle Users</button>
+        <button id="toggleBtnCats">Toggle Subcategories</button>
+        <button id="toggleBtnAddCats">Add Subcategory</button>
         <br><br>
-        <section class="user">
-            <p class="user-profile">Admin menu</p>
-            <p class="catch-phrase"> If you're reading this, you're an admin! </p>
+        <section class="user" id="userSection">
+
             <br>
             <?php
             foreach ($allusers as $userr) { ?>
@@ -85,5 +92,92 @@
 
             <?php } ?>
         </section>
+      
+        <section class="user" id="subcategorySection">
+
+            <br>
+            <?php
+            foreach ($subcat as $sub) { ?>
+            
+            <?php
+            $corresponds = Category::getCategory($db, $sub['category']);
+            ?>
+            
+            <div id="item-card">
+            <p id="user-title"><?php echo $sub['name']?></p>
+            <p id="user-name"><?php echo "(belongs to " . $corresponds->name .")";?></p>
+            
+            <form method="POST" action="../actions/remove_subcat_action.php">
+              <input type="hidden" name="subcategoryId" value="<?php echo $sub['subcategoryId']; ?>">
+              <button>Remove subcategory</button>
+            </form>
+            
+          
+            </div>
+            
+
+            <br>
+            <br>
+
+            <?php } ?>
+        </section>
+
+        <section class="user" id="addSubcategorySection">
+            <p id="user-title">Choose a category</p>
+            <form action="../actions/add_subcat_action.php" method="post" class="add">
+              <div class="dropdown">
+                  <select name="category" id="categoryDropdown" required>
+                      <option value="">Select a category</option>
+                      <?php
+                      foreach($categories as $category) {
+                          echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                      }
+                      ?>
+                  </select>
+              </div>
+              <p id="user-title">Write the new subcategory</p>
+              <div class="form_rectangle">
+                  <input type="text" name="subcategory" placeholder="Subcategory" required>
+              </div>
+            </form>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var toggleBtn = document.getElementById("toggleBtn");
+                var toggleBtnCats = document.getElementById("toggleBtnCats");
+                var toggleBtnAddCats = document.getElementById("toggleBtnAddCats");
+                var userSection = document.getElementById("userSection");
+                var subcategorySection = document.getElementById("subcategorySection");
+                var addSubcatSection = document.getElementById("addSubcategorySection");
+
+                userSection.style.display = "none";
+                subcategorySection.style.display = "none";
+                addSubcatSection.style.display = "none";
+
+                toggleBtn.addEventListener("click", function() {
+                    if (userSection.style.display === "none") {
+                        userSection.style.display = "block";
+                    } else {
+                        userSection.style.display = "none";
+                    }
+                });
+
+                toggleBtnCats.addEventListener("click", function() {
+                    if (subcategorySection.style.display === "none") {
+                      subcategorySection.style.display = "block";
+                    } else {
+                      subcategorySection.style.display = "none";
+                    }
+                });
+
+                toggleBtnAddCats.addEventListener("click",function() {
+                  if (addSubcatSection.style.display === "none") {
+                    addSubcatSection.style.display = "block";
+                  } else {
+                    addSubcatSection.style.display = "none";
+                  }
+                });
+            });
+        </script>
     </body> 
 </html>
