@@ -149,7 +149,7 @@ function drawItems($item, $seller, $itemId) { ?>
                     <img class="star" src="/images/others/starbox.png">
                     <p id="star-score"><?php echo $seller->userRating; ?></p>
                     <div class="button-message-seller"> 
-                        <p id="button-text">Message seller</p>
+                        <a href="chat.php?receiverId=' . $seller->userId . '&itemId=' . $item->id . '" id="button-text">Message seller</a>
                     </div>
                 </div>
             </div>
