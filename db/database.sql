@@ -54,10 +54,9 @@ CREATE TABLE Item (
 );
 
 CREATE TABLE Subcategory (
-  subcategoryId INTEGER NOT NULL,                         -- subcategory id
+  subcategoryId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,                         -- subcategory id
   name VARCHAR NOT NULL,                                  -- name of the subcategory
   category INTEGER NOT NULL,                              -- foreign key referencing the parent category
-  CONSTRAINT PK_Subcategory PRIMARY KEY (subcategoryId),
   FOREIGN KEY (category) REFERENCES Category(categoryid)
   ON DELETE NO ACTION ON UPDATE NO ACTION
 );

@@ -139,6 +139,7 @@
               <div class="form_rectangle">
                   <input type="text" name="subcategory" placeholder="Subcategory" required>
               </div>
+              <button type="submit">Add new subcategory</button>
             </form>
         </section>
         <script>
