@@ -33,9 +33,6 @@
         ?>      
         <br>
         <section>
-        <?php 
-            drawItems($item, $seller, $itemId);
-        ?>
         </section>
     </body>
 </html>
