@@ -19,11 +19,14 @@
 
 .user-image {
     width: 20%;
+    height: 20%;
     border-radius: 50%;
     border: 3px solid white; 
     box-shadow: 0 2px 24px #F4CD9A;
     display: flex;
     margin: auto;
+    object-fit: cover;
+
 }
 
 .name{
@@ -103,6 +106,8 @@ a {
 @media only screen and (max-width: 1024px) {
     .user-image {
         width: 40%;
+        height: 40%;
+        object-fit: cover;
         border-radius: 50%;
         border: 3px solid white; 
         box-shadow: 0 2px 24px #F4CD9A;

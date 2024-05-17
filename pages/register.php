@@ -31,7 +31,7 @@
             </div>
         </section>
         <section>
-            <form method="post" action="/actions/register_action.php">
+            <form method="post" action="/actions/register_action.php" enctype="multipart/form-data">
                 <p id="username">First Name</p>
                 <div class="form_rectangle">
                     <input id="input-login" type="text" name="firstName" required>
