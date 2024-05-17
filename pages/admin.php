@@ -47,9 +47,11 @@
         ?>
         <p class="user-profile">Admin menu</p>
         <p class="catch-phrase"> If you're reading this, you're an admin! </p>
-        <button id="toggleBtn">Toggle Users</button>
-        <button id="toggleBtnCats">Toggle Subcategories</button>
-        <button id="toggleBtnAddCats">Add Subcategory</button>
+        <div class="button-container">
+          <button id="toggleBtn">Edit Users</button>
+          <button id="toggleBtnCats">Edit Subcategories</button>
+          <button id="toggleBtnAddCats">Add Subcategory</button>
+        </div>
         <br><br>
         <section class="user" id="userSection">
 
@@ -123,7 +125,7 @@
         </section>
 
         <section class="user" id="addSubcategorySection">
-            <p id="user-title">Choose a category</p>
+            <p class="section-title">Choose a category</p>
             <form action="../actions/add_subcat_action.php" method="post" class="add">
               <div class="dropdown">
                   <select name="category" id="categoryDropdown" required>
@@ -135,11 +137,11 @@
                       ?>
                   </select>
               </div>
-              <p id="user-title">Write the new subcategory</p>
+              <p class="section-title">Write the new subcategory</p>
               <div class="form_rectangle">
-                  <input type="text" name="subcategory" placeholder="Subcategory" required>
+                  <input id="input-login" type="text" name="subcategory" placeholder="Subcategory" required>
               </div>
-              <button type="submit">Add new subcategory</button>
+              <button id="addcatbtn" type="submit">Add new subcategory</button>
             </form>
         </section>
         <script>
