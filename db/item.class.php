@@ -136,7 +136,7 @@ class Item {
         $stmt = $db->prepare(
             'SELECT *
             FROM Item
-            WHERE title LIKE ?
+            WHERE title LIKE ? AND sold = false
             LIMIT ?'
         );
 
