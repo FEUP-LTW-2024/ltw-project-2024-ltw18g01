@@ -69,7 +69,7 @@ class Item {
             $item['shippingSize'],
             $item['shippingCost'],
             $item['likes'],
-            $item['sold'],
+            (bool)$item['sold'],
             $item['image_url']
         );
     }
