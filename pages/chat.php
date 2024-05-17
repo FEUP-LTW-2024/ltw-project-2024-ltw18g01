@@ -119,4 +119,3 @@ function drawConversationsList($userId, $pdo) {
     }
 }
 ?>
-
