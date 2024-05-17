@@ -76,8 +76,15 @@ CREATE TABLE Message (
   messageId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   senderId INTEGER NOT NULL,
   receiverId INTEGER NOT NULL,
-  sentAt DATETIME NOT NULL, 
-  message TEXT NOT NULL
+  itemId INTEGER NOT NULL,
+  message TEXT NOT NULL,
+  sentAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (senderId) REFERENCES User(userId)
+  ON DELETE CASCADE ON UPDATE NO ACTION,
+  FOREIGN KEY (receiverId) REFERENCES User(userId)
+  ON DELETE CASCADE ON UPDATE NO ACTION,
+  FOREIGN KEY (itemId) REFERENCES Item(itemId)
+  ON DELETE CASCADE ON UPDATE NO ACTION
 );
 
 INSERT INTO User(userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating,salesNumber, isAdmin) VALUES
@@ -173,9 +180,8 @@ INSERT INTO Wishlist (wishlistId, user, item) VALUES
 (22, 0, 13),
 (23, 0, 21);
 
-INSERT INTO Message (senderId, receiverId, message, sentAt) VALUES
-(1, 3, 'ola!', '2024-04-13 12:40:00'),
-(3, 1, 'olaa!', '2024-04-13 12:42:00'),
-(3, 1, 'tudo?', '2024-04-13 12:45:00'),
-(1, 3, 'no!', '2024-04-13 12:40:00'),
-(1, 4, 'hello', '2024-04-13 12:40:00');
+INSERT INTO Message (senderId, receiverId, itemId, message) VALUES
+(1, 2, 1, 'Hey, I am interested in this item. Is it still available?'),
+(3, 2, 3, 'I would like to know more details about this product.'),
+(4, 1, 2, 'Is the price negotiable?'),
+(1, 4, 5, 'What is the condition of the item?');
