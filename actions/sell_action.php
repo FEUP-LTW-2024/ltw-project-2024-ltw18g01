@@ -81,7 +81,7 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 
 $db = databaseConnect();
 
-$newItem = new Item($sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, $shippingCost, $likes, $image_url);
+$newItem = new Item($sellerId, $categoryId, $subcategoryId, $title, $price, $negotiable, time(), '', $state, $description, $shippingSize, $shippingCost, $likes, false, $image_url);
 
 $newItem->save($db);
 

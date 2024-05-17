@@ -50,10 +50,6 @@ $categories = Category::getCategories($db);
             <p class="section-title">Item pictures</p>
             <br>
             <input name="image" type="file" id="fileInput" accept="image/*" required>
-            <br>
-            <br>
-            <button onclick="uploadImage()">Upload Image</button>
-            <div id="imagePreview"></div>
         </section>
         <br>
         <br>

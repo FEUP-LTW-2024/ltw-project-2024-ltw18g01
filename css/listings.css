@@ -55,7 +55,7 @@
 }
 
 #item-user-status-text {
-    margin-left: 10px;
+    margin-left: 6em;
     font-size: 35px;
     font-weight: 600;
     font-family: "Inter", sans-serif;
@@ -68,4 +68,20 @@
     font-weight: 600;
     text-align: center;
     color:white;
+}
+
+#ship-button {
+    cursor: pointer;
+    border: none;
+    appearance: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('/../images/others/print-solid.svg');
+    background-size: cover;
+    background-color: transparent;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
+    margin-left: 12em;
+    margin-top: 3em;
+
 }

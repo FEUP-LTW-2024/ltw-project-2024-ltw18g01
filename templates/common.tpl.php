@@ -114,9 +114,8 @@ function drawMyItems($db, $userId) {
                         <form method="POST" action="../actions/shipping_label_action.php">
                             <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                             <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
-                            <button>Ship</button>
+                            <button id="ship-button"></button>
                         </form>
-                        <img id="printer-img" src="/../images/others/printer.png">
                         <?php if (isset($item['sold'])) { ?>
                             <p id="item-user-status-text">SOLD</p>
                         <?php } ?>
