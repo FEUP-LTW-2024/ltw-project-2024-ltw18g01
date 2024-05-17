@@ -16,9 +16,10 @@ class Item {
     public string $shippingSize;
     public float $shippingCost;
     public int $likes;
+    public bool $sold;
     public string $image_url;
 
-    public function __construct(int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, int $likes, string $image_url) {
+    public function __construct(int $seller, int $category, int $subcategory, string $title, float $price, bool $negotiable, int $published, string $tags, string $state, string $description, string $shippingSize, float $shippingCost, int $likes, bool $sold, string $image_url) {
         $this->seller = $seller;
         $this->category = $category;
         $this->subcategory = $subcategory;
@@ -32,6 +33,7 @@ class Item {
         $this->shippingSize = $shippingSize;
         $this->shippingCost = $shippingCost;
         $this->likes = $likes;
+        $this->sold = $sold;
         $this->image_url = $image_url;
     }
 
@@ -67,6 +69,7 @@ class Item {
             $item['shippingSize'],
             $item['shippingCost'],
             $item['likes'],
+            $item['sold'],
             $item['image_url']
         );
     }
@@ -81,12 +84,6 @@ class Item {
 
         $stmt->execute(array($userId));
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($items) {
-            foreach ($items as &$item) {
-                $item['user_status'] = 'SOLD'; 
-            }
-        }
 
         return $items;
     }
@@ -142,8 +139,8 @@ class Item {
 
     public function save(PDO $db) {
         $stmt = $db->prepare('
-            INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, image_url)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, sold, image_url)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
         $stmt->execute(array(
@@ -160,6 +157,7 @@ class Item {
             $this->shippingSize,
             $this->likes,
             $this->shippingCost,
+            $this->sold,
             $this->image_url
         ));
 

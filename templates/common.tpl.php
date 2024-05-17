@@ -109,14 +109,17 @@ function drawMyItems($db, $userId) {
                         <p id="item-price"><?php echo $item['price']; ?>€</p>
                     </div>
                     <div id="item-user-status">
+                        <?php
+                        if ($item['sold'] == true) { ?>
                         <form method="POST" action="../actions/shipping_label_action.php">
                             <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                             <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
                             <button>Ship</button>
                         </form>
                         <img id="printer-img" src="/../images/others/printer.png">
-                        <?php if (isset($item['user_status'])) { ?>
-                            <p id="item-user-status-text"><?php echo $item['user_status']; ?></p>
+                        <?php if (isset($item['sold'])) { ?>
+                            <p id="item-user-status-text">SOLD</p>
+                        <?php } ?>
                         <?php } ?>
                     </div>
                 </div>

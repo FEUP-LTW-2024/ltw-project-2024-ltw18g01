@@ -1,0 +1,39 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form_rectangle {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .card-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: -34px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .visa {
+    background-image: url('/../images/others/visa.svg');
+    background-size: cover;
+    background-color: transparent;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
+  }
+
+  .mastercard {
+    background-image: url('/../images/others/mastercard.svg');
+    background-size: cover;
+    background-color: transparent;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
+  }
