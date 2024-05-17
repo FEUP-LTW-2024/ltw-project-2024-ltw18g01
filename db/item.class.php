@@ -122,6 +122,16 @@ class Item {
             $stmt->execute(array($itemId, $userId));
     }
 
+    static function updateSold(PDO $db, int $itemId) {
+        $stmt = $db->prepare('
+        UPDATE Item
+        SET sold = true
+        WHERE itemId = ?
+        ');
+
+        $stmt->execute(array($itemId));
+    }
+
     static function searchItems(PDO $db, string $query, int $count) : array {
         $stmt = $db->prepare(
             'SELECT *

@@ -160,11 +160,19 @@ function drawItems($item, $seller, $itemId) { ?>
                 <p id="item-price"><?php echo $item->price . ' €'; ?></p>
                 <p id="shipping-price"><?php echo 'Estimated shipping cost: ' . $item->shippingCost . ' €';?></p>
                 <div class="containers">
-                <a href="<?php echo '/../pages/payment.php?itemId=' . $itemId; ?>">
+                <?php
+                if ($item->sold == false) { ?>
+                    <a href="<?php echo '/../pages/payment.php?itemId=' . $itemId; ?>">
+                        <div class="button-buy-now"> 
+                            <p id="button-text">Buy now</p>
+                        </div>
+                    </a>
+                <?php } else { ?>
                     <div class="button-buy-now"> 
-                        <p id="button-text">Buy now</p>
+                        <p id="button-text">SOLD</p>
                     </div>
-                </a>
+                <?php } ?>
+
                     <div class="button-request-new-price"> 
                         <p id="button-text">Request new price</p>
                     </div>

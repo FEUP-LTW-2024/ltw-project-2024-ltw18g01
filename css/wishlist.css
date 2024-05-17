@@ -4,9 +4,11 @@
     justify-content: flex-start;
     margin-top: 5px;
     margin-left: 25px;
+    position: relative;
 }
 
 .image_display img {
+    position: relative; /* Ensure that the overlay is positioned relative to the image */
     margin-right: 10px;
     object-fit: cover;
     width: 12em; 
@@ -17,6 +19,26 @@
     border-right: 0.6em solid white; 
     box-shadow: 0 8px 24px #966478;
 }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95.5%;
+    height: 99%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.overlay p {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 30px;
+    font-weight: 600; 
+    display: flex;
+    justify-content: center;
+}
+
 
 .image_display p {
     position: relative;
@@ -44,6 +66,7 @@
     background-color: transparent;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
     transition: transform 0.5s ease;
+    z-index: 2;
 }
 
 .image_display button#liked {

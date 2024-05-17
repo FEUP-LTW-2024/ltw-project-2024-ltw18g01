@@ -50,10 +50,15 @@
 
 
         foreach ($wishlist as $wlitem) { ?>
-            
             <div class="image_wrapper">
                 <a href="/../pages/item.php?itemId=<?=$wlitem['itemId']?>">
                 <img src="<?php echo $wlitem['image_url']; ?>">
+                <?php
+                if ($wlitem['sold'] == true) { ?>
+                    <div class="overlay">
+                        <p>SOLD</p>
+                    </div>
+                <?php } ?>
                 </a>
                 <p><?php echo $wlitem['price'] . "€  | " . $wlitem['likes'] . " likes"; ?></p>
                 

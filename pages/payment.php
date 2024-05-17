@@ -15,6 +15,11 @@
   $itemId = (int)$_GET['itemId']; 
   $item = Item::getItem($db,$itemId);
   $seller = User::getUser($db,$item -> seller);
+
+  if ($item->sold == true) {
+    header('Location: /pages/index.php');
+    exit;
+  }
 ?>
 
 <!DOCTYPE html>

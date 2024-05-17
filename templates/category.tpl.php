@@ -21,7 +21,10 @@ function drawCategorySlide(Category $cat, PDO $db, int $userId) {
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
-            <div class="image_wrapper">
+            
+            <?php
+            if ($item['sold'] == false) { ?>
+                <div class="image_wrapper">
                 <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
                 <img src="<?php echo $item['image_url']; ?>">
                 </a>
@@ -42,7 +45,9 @@ function drawCategorySlide(Category $cat, PDO $db, int $userId) {
                 <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
                 <script src="/../js/wishlist.js"></script>
                 --->
-            </div>
+                </div>
+            <?php } ?>
+
         <?php } ?>
     </div>
 <?php 
