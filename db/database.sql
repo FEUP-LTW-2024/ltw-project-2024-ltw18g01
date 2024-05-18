@@ -84,6 +84,13 @@ CREATE TABLE Message (
   FOREIGN KEY (itemId) REFERENCES Item(itemId)
   ON DELETE CASCADE ON UPDATE NO ACTION
 );
+INSERT INTO User(userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating, salesNumber, isAdmin) VALUES
+(0, 'João', 'Mendes', 'joaovicente', 'Avenida das Rochas 21', 'Porto', 'Portugal', '4400-123', '+351 931 234 568', 'vicente@gmail.com', 'fce95b0e642bdb3aa90e9a80ab0d2c21:9f0abed8140a497a16bb1ae82043c1fcbcecb4f78b262a57f34a4f7a4d258960', '/../images/users/vicente.jpeg', 4.5, 14, true),
+(1, 'Rodrigo', 'Sousa', 'rodrigodesousa', 'Rua das Avenidas 23', 'Porto', 'Portugal', '4430-123', '+351 931 254 598', 'rodrigo@gmail.com', '61408077430d0305d443bb829499f4dc:e249da3ad5f4242a9a1620952f5ea0363bc7c09e519e20e8ad82c4dedd10a6f1', '/../images/users/rodrigo.jpeg', 4.2, 39, false),
+(2, 'Miguel', 'Moita', 'miguelmoita', 'Tv. dos Lírios 20', 'Póvoa de Varzim', 'Portugal', '4200-123', '+351 911 234 558', 'miguel@gmail.com', 'f19ec2139fdf38b3295ce98060bebcff:487c150f550277fe8e272779324c51b607f296b1fc0215543fa3954f66daa844', '/../images/users/Miguel.jpg', 3.5, 61, true),
+(3, 'Clara', 'Sousa', 'clarasousa', 'Av. Estados Unidos 120', 'Esposende', 'Portugal', '3400-123', '+351 921 234 568', 'clara@gmail.com', '58734c246dc16ed0761df8393cda66b3:b317934ffb5c5666751d3afb8a4867438f9ed51b30171059c7100c8f655515e4', '/../images/users/clara_sousa.jpeg', 4.8, 28, true),
+(4, 'Pedro', 'Santos', 'pedrosantos', 'Avenida de Ramalde 398', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'pedro@gmail.com', 'bdb4f6b1cd6ed228bc92097e7af21f3d:dcfa3719bbc79c3a2d4930fd9793099cbe25ab7258bf5a9d569a5a8ac586b320', '/../images/users/pedro.jpeg', 4.5, 46, false),
+(5, 'Afonso', 'Castro', 'afonsocastro', 'Senhora da Hora 28', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'afonso@gmail.com', 'a54a3dbbf24dcce54bf632c1a31b18cb:c28035dd145d2d9cad73e59ced8f444ce50f9de7ccc9793b9d649e2fa801088c','/../images/users/afonso.jpg', 2.5, 102, false);
 
 INSERT INTO Category (categoryId, name) VALUES
 (0, 'Gaming'),
