@@ -14,16 +14,21 @@
 ?>
 
 <?php
-function drawCategorySlide(Category $cat, PDO $db, int $userId) {
+function drawCategorySlideHomePage(Category $cat, PDO $db, int $userId) {
     // Retrieve items for the given category
     $items = Category::getCategoryItems($db, $cat->id);
-    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId)
+    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
+    $count = 0;
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
-            
+            <?php
+            if ($count >= 8) {
+                break;
+            } ?>
             <?php
             if ($item['sold'] == false) { ?>
+                <?php $count++; ?>
                 <div class="image_wrapper">
                 <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
                 <img src="<?php echo $item['image_url']; ?>">
@@ -40,11 +45,6 @@ function drawCategorySlide(Category $cat, PDO $db, int $userId) {
                         <button></button>
                     <?php } ?>
                 </form>
-                
-                <!-- ajax ver.
-                <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
-                <script src="/../js/wishlist.js"></script>
-                --->
                 </div>
             <?php } ?>
 
@@ -56,7 +56,7 @@ function drawCategorySlide(Category $cat, PDO $db, int $userId) {
 
 
 <?php
-function drawCategorySlideGuest(Category $cat, PDO $db) {
+function drawCategorySlideGuestHomePage(Category $cat, PDO $db) {
     // Retrieve items for the given category
     $items = Category::getCategoryItems($db, $cat->id);
 ?>  

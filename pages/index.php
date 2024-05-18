@@ -43,15 +43,15 @@
         <section>
             <div class="displays">
                 <p class="category">Gaming</p>
-                <p class="see_more">See more</p>
+                <a href="/pages/gaming.php"><p class="see_more">See more</p></a>
             </div>
             <div class="slide">
                 <?php
                     $cat = Category::getCategory($db, 0);
                     if ($session->isLoggedIn()) {
-                        drawCategorySlide($cat ,$db, $session->getId());
+                        drawCategorySlideHomePage($cat ,$db, $session->getId());
                     } else {
-                        drawCategorySlideGuest($cat, $db);
+                        drawCategorySlideGuestHomePage($cat, $db);
                     }
                 ?>
 
