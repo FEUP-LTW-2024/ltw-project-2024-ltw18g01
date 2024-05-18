@@ -32,24 +32,23 @@ class User {
         $this->phone = $phone;
         $this->email = $email;
         $this->password = hash_password($password); // Usa a função hash_password do password.php
-        $this->image_url = $image_url;
+        $this->image_url = $image_url ?? null;
         $this->userRating = $userRating ?? 0.0;
         $this->salesNumber = $salesNumber;
         $this->isAdmin = $isAdmin;
     }
 
-    function name(): string {
+    function name(){
         return $this->firstName . ' ' . $this->lastName;
     }
 
-    function save(PDO $db): void {
+    function save(PDO $db){
         $stmt = $db->prepare('
-            INSERT INTO User (userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating, salesNumber, isAdmin)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO User (firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating, salesNumber, isAdmin)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
-        $stmt->execute([
-            $this->userId,
+        $stmt->execute(array(
             $this->firstName,
             $this->lastName,
             $this->username,
@@ -64,31 +63,9 @@ class User {
             $this->userRating,
             $this->salesNumber,
             $this->isAdmin
-        ]);
+        ));
     }
 
-    static function insertUsers(PDO $db, array $users): void {
-        foreach ($users as $user) {
-            $userObj = new User(
-                $user[0], // userId
-                $user[1], // firstName
-                $user[2], // lastName
-                $user[3], // username
-                $user[4], // address
-                $user[5], // city
-                $user[6], // country
-                $user[7], // postalCode
-                $user[8], // phone
-                $user[9], // email
-                $user[10], // password
-                $user[11], // image_url
-                $user[12], // userRating
-                $user[13], // salesNumber
-                $user[14]  // isAdmin
-            );
-            $userObj->save($db);
-        }
-    }
 
     static function getUserWithPassword(PDO $db, string $email, string $password): ?User {
         $stmt = $db->prepare('
@@ -120,43 +97,42 @@ class User {
                 );
             }
         }
-
         return null;
     }
 
-    static function getUser(PDO $db, int $id): ?User {
-        $stmt = $db->prepare('
-            SELECT *
-            FROM User
-            WHERE userId = ?
-        ');
+    static function getUser(PDO $db, int $id) : ?User {
+      $stmt = $db->prepare('
+          SELECT *
+          FROM User
+          WHERE userId = ?
+      ');
 
-        $stmt->execute([$id]);
-        $user = $stmt->fetch();
+      $stmt->execute(array($id));
+      $user = $stmt->fetch();
 
-        if ($user) {
-            $image_url = is_string($user['image_url']) ? $user['image_url'] : '/images/others/guesticon.png';
+      if ($user) {
+          $image_url = is_string($user['image_url']) ? $user['image_url'] : '/images/others/guesticon.png';
 
-            return new User(
-                $user['userId'],
-                $user['firstName'],
-                $user['lastName'],
-                $user['username'],
-                $user['address'],
-                $user['city'],
-                $user['country'],
-                $user['postalCode'],
-                $user['phone'],
-                $user['email'],
-                $user['password'],
-                $image_url,
-                $user['userRating'] !== null ? (float)$user['userRating'] : null,
-                $user['salesNumber'],
-                $user['isAdmin']
-            );
-        } else {
-            return null;
-        }
+          return new User(
+              $user['userId'],
+              $user['firstName'],
+              $user['lastName'],
+              $user['username'],
+              $user['address'],
+              $user['city'],
+              $user['country'],
+              $user['postalCode'],
+              $user['phone'],
+              $user['email'],
+              $user['password'],
+              $image_url,
+              $user['userRating'] !== null ? (float)$user['userRating'] : null,
+              $user['salesNumber'],
+              $user['isAdmin']
+          );
+      } else {
+          return null;
+      }
     }
 
     static function getAllUsers(PDO $db): array {
