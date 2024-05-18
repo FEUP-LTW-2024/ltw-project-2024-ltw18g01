@@ -1,22 +1,29 @@
 <?php
-require_once(__DIR__ . '/../sessions/session.php');
 require_once(__DIR__ . '/../db/connection.db.php');
 require_once(__DIR__ . '/../db/message.class.php');
 
-$session = new Session();
-if (!$session->isLoggedIn()) {
-    echo json_encode(['success' => false, 'message' => 'Not logged in']);
-    exit;
-}
-
 $db = databaseConnect();
-$senderId = $session->getId();
-$receiverId = $_POST['receiverId'];
-$itemId = $_POST['itemId'];
-$message = $_POST['message'];
 
-if (Message::sendMessage($db, (int)$senderId, (int)$receiverId, (int)$itemId, $message)) {
-    echo json_encode(['success' => true]);
+$senderId = (int)$_POST['senderId'];
+$receiverId = (int)$_POST['receiverId'];
+$itemId = (int)$_POST['itemId'];
+$messageText = $_POST['message'];
+$sentAt = date('Y-m-d H:i:s');
+
+$message = new Message(null, $senderId, $receiverId, $itemId, $messageText, $sentAt);
+$messageId = $message->save($db);
+
+if ($messageId) {
+    echo json_encode([
+        'success' => true,
+        'message' => [
+            'messageId' => $messageId,
+            'senderId' => $senderId,
+            'message' => $messageText,
+            'sentAt' => $sentAt,
+            'isUserSender' => true
+        ]
+    ]);
 } else {
     echo json_encode(['success' => false]);
 }

@@ -43,11 +43,11 @@ if ($receiverId) {
         </div>
         <div class="chat-content">
             <?php if ($receiverId) { ?>
-                <div class="message-form">
-                    <?php drawSendMessageForm($session->getId(), $users, $receiverId, $itemId); ?>
-                </div>
                 <div class="messages" id="messages">
                     <?php drawMessages($messages, $session->getId(), $users); ?>
+                </div>
+                <div class="message-form">
+                    <?php drawSendMessageForm($session->getId(), $users, $receiverId, $itemId); ?>
                 </div>
             <?php } else { ?>
                 <p>Select a conversation to start chatting.</p>

@@ -3,20 +3,32 @@
 declare(strict_types=1);
 
 class Message {
-    public int $messageId;
+    public ?int $messageId;
     public int $senderId;
     public int $receiverId;
     public int $itemId;
     public string $message;
     public string $sentAt;
 
-    public function __construct(int $messageId, int $senderId, int $receiverId, int $itemId, string $message, string $sentAt) {
+    public function __construct(?int $messageId, int $senderId, int $receiverId, int $itemId, string $message, string $sentAt) {
         $this->messageId = $messageId;
         $this->senderId = $senderId;
         $this->receiverId = $receiverId;
         $this->itemId = $itemId;
         $this->message = $message;
         $this->sentAt = $sentAt;
+    }
+
+    public function save(PDO $db): ?int {
+        if ($this->messageId === null) {
+            $stmt = $db->prepare('INSERT INTO Message (senderId, receiverId, itemId, message, sentAt) VALUES (?, ?, ?, ?, ?)');
+            $stmt->execute([$this->senderId, $this->receiverId, $this->itemId, $this->message, $this->sentAt]);
+            $this->messageId = (int) $db->lastInsertId();
+        } else {
+            $stmt = $db->prepare('UPDATE Message SET senderId = ?, receiverId = ?, itemId = ?, message = ?, sentAt = ? WHERE messageId = ?');
+            $stmt->execute([$this->senderId, $this->receiverId, $this->itemId, $this->message, $this->sentAt, $this->messageId]);
+        }
+        return $this->messageId;
     }
 
     public static function getReceivedMessages(PDO $pdo, int $receiverId): array {
