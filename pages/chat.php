@@ -17,13 +17,13 @@ $db = databaseConnect();
 $receiverId = isset($_GET['receiverId']) ? (int)$_GET['receiverId'] : null;
 $itemId = isset($_GET['itemId']) ? (int)$_GET['itemId'] : null;
 
-$messages = [];
-$users = [];
 if ($receiverId) {
     $messages = Message::getConversation($db, $session->getId(), $receiverId);
     $users = User::getAllUsers($db);
+} else {
+    $messages = [];
+    $users = [];
 }
-$allUsers = User::getAllUsers($db);
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ $allUsers = User::getAllUsers($db);
         <div class="chat-content">
             <?php if ($receiverId) { ?>
                 <div class="message-form">
-                    <?php drawSendMessageForm($session->getId(), $allUsers, $receiverId, $itemId); ?>
+                    <?php drawSendMessageForm($session->getId(), $users, $receiverId, $itemId); ?>
                 </div>
                 <div class="messages" id="messages">
                     <?php drawMessages($messages, $session->getId(), $users); ?>
@@ -57,6 +57,7 @@ $allUsers = User::getAllUsers($db);
 </body>
 </html>
 
+
 <?php
 function drawMessages(array $messages, int $userId, array $users) {
     foreach ($messages as $message) {
@@ -64,7 +65,7 @@ function drawMessages(array $messages, int $userId, array $users) {
         $senderName = $isUserSender ? 'You' : $users[$message->senderId]->username;
         ?>
         <div class="message <?= $isUserSender ? 'sent' : 'received' ?>">
-            <p><strong><?= htmlspecialchars($senderName) ?>:</strong> <?= htmlspecialchars((string)$message->message) ?></p>
+            <p><strong><?= htmlspecialchars((string)$senderName) ?>:</strong> <?= htmlspecialchars((string)$message->message) ?></p>
             <p><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php
@@ -128,7 +129,6 @@ function drawConversationsList($userId, $pdo) {
             echo '</div>';
         }
     } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
+        echo 'Error: ' . htmlspecialchars($e->getMessage());
     }
 }
-?>
