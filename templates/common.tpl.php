@@ -131,14 +131,18 @@ function drawMyItems($db, $userId) {
     }
 }
 ?>
-
 <?php
-function drawItems($item, $seller, $itemId, $isAdmin) { ?>
+function drawItems($item, $seller, $itemId, $isAdmin) {
+    $session = new Session();
+    $loggedInUserId = $session->getId();
+    ?>
     <div class="background">
         <div class="grid-container">
+            <!-- Item Picture -->
             <div class="item-picture">
                 <img src="<?php echo $item->image_url; ?>">
             </div>
+            <!-- Seller Info -->
             <div class="user-data">
                 <img class="user-image" src="<?php echo $seller->image_url; ?>">
                 <div class="sales-info">
@@ -148,51 +152,42 @@ function drawItems($item, $seller, $itemId, $isAdmin) { ?>
                     </div>
                     <img class="star" src="/images/others/starbox.png">
                     <p id="star-score"><?php echo $seller->userRating; ?></p>
-                    <div class="button-message-seller"> 
-                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>" id="button-text">Message seller</a>
+                    <div class="button-message-seller">
+                        <a href="chat.php?receiverId=<?php echo $loggedInUserId; ?>&itemId=<?php echo $itemId; ?>" id="button-text">Message seller</a>
                     </div>
                 </div>
             </div>
-            <div class="item-info"> 
+            <!-- Item Info -->
+            <div class="item-info">
                 <p id="item-name"><?php echo $item->title; ?></p>
                 <p id="item-description"><?php echo $item->description; ?></p>
                 <p id="item-price"><?php echo $item->price . ' €'; ?></p>
-                <p id="shipping-price"><?php echo 'Estimated shipping cost: ' . $item->shippingCost . ' €';?></p>
+                <p id="shipping-price"><?php echo 'Estimated shipping cost: ' . $item->shippingCost . ' €'; ?></p>
                 <div class="containers">
-                <?php
-                if ($item->sold == false) { ?>
-                    <a href="<?php echo '/../pages/payment.php?itemId=' . $itemId; ?>">
-                        <div class="button-buy-now"> 
-                            <p id="button-text">Buy now</p>
+                    <?php if ($item->sold == false) { ?>
+                        <a href="/../pages/payment.php?itemId=<?php echo $itemId; ?>">
+                            <div class="button-buy-now">
+                                <p id="button-text">Buy now</p>
+                            </div>
+                        </a>
+                    <?php } else { ?>
+                        <div class="button-buy-now">
+                            <p id="button-text">SOLD</p>
                         </div>
-                    </a>
-                <?php } else { ?>
-                    <div class="button-buy-now"> 
-                        <p id="button-text">SOLD</p>
-                    </div>
-                <?php } ?>
-
-                    <div class="button-request-new-price"> 
+                    <?php } ?>
+                    <div class="button-request-new-price">
                         <p id="button-text">Request new price</p>
                     </div>
-                    
-                    <?php
-                    if ($isAdmin) { ?>
-                        <div class="button-request-new-price" id="submitForm"> 
+                    <?php if ($isAdmin) { ?>
+                        <div class="button-request-new-price" id="submitForm">
                             <p id="button-text">ADMIN: Delete item</p>
                         </div>
-
                         <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
-                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" ?>">
+                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
                         </form>
                     <?php } ?>
-
-
                 </div>
-                
-
             </div>
-
         </div>
     </div>
     <script>

@@ -18,8 +18,10 @@ $receiverId = isset($_GET['receiverId']) ? (int)$_GET['receiverId'] : null;
 $itemId = isset($_GET['itemId']) ? (int)$_GET['itemId'] : null;
 
 $messages = [];
+$users = [];
 if ($receiverId) {
     $messages = Message::getConversation($db, $session->getId(), $receiverId);
+    $users = User::getAllUsers($db);
 }
 $allUsers = User::getAllUsers($db);
 
@@ -45,7 +47,7 @@ $allUsers = User::getAllUsers($db);
                     <?php drawSendMessageForm($session->getId(), $allUsers, $receiverId, $itemId); ?>
                 </div>
                 <div class="messages" id="messages">
-                    <?php drawMessages($messages, $session->getId()); ?>
+                    <?php drawMessages($messages, $session->getId(), $users); ?>
                 </div>
             <?php } else { ?>
                 <p>Select a conversation to start chatting.</p>
@@ -56,12 +58,13 @@ $allUsers = User::getAllUsers($db);
 </html>
 
 <?php
-function drawMessages(array $messages, int $userId) {
+function drawMessages(array $messages, int $userId, array $users) {
     foreach ($messages as $message) {
         $isUserSender = $message->senderId === $userId;
+        $senderName = $isUserSender ? 'You' : $users[$message->senderId]->username;
         ?>
         <div class="message <?= $isUserSender ? 'sent' : 'received' ?>">
-            <p><strong><?= htmlspecialchars($isUserSender ? 'You' : 'User ' . (string)$message->senderId) ?>:</strong> <?= htmlspecialchars((string)$message->message) ?></p>
+            <p><strong><?= htmlspecialchars($senderName) ?>:</strong> <?= htmlspecialchars((string)$message->message) ?></p>
             <p><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php
@@ -81,26 +84,36 @@ function drawSendMessageForm(int $userId, array $users, int $receiverId, int $it
     <?php
 }
 
-
 function drawConversationsList($userId, $pdo) {
     try {
         $stmt = $pdo->prepare('
-            SELECT DISTINCT i.itemId, i.title, i.image_url, 
-                            u1.username as senderName, u2.username as receiverName, 
-                            m.message, m.sentAt, 
-                            CASE 
-                                WHEN u1.userId = :userId THEN u2.userId 
-                                ELSE u1.userId 
-                            END as otherUserId,
-                            CASE 
-                                WHEN u1.userId = :userId THEN u2.username 
-                                ELSE u1.username 
-                            END as otherUsername
-            FROM Item i
-            JOIN Message m ON i.itemId = m.itemId
+            SELECT i.itemId, i.title, i.image_url, 
+                   u1.username as senderName, u2.username as receiverName, 
+                   m.message, m.sentAt, 
+                   CASE 
+                       WHEN u1.userId = :userId THEN u2.userId 
+                       ELSE u1.userId 
+                   END as otherUserId,
+                   CASE 
+                       WHEN u1.userId = :userId THEN u2.username 
+                       ELSE u1.username 
+                   END as otherUsername
+            FROM Message m
+            JOIN (
+                SELECT itemId, MAX(sentAt) as lastMessageTime
+                FROM Message
+                WHERE senderId = :userId OR receiverId = :userId
+                GROUP BY itemId, 
+                         CASE 
+                             WHEN senderId = :userId THEN receiverId 
+                             ELSE senderId 
+                         END
+            ) as subq ON m.itemId = subq.itemId AND m.sentAt = subq.lastMessageTime
+            JOIN Item i ON i.itemId = m.itemId
             JOIN User u1 ON u1.userId = m.senderId
             JOIN User u2 ON u2.userId = m.receiverId
             WHERE m.senderId = :userId OR m.receiverId = :userId
+            ORDER BY m.sentAt DESC
         ');
         $stmt->execute(['userId' => $userId]);
         $conversations = $stmt->fetchAll(PDO::FETCH_ASSOC);
