@@ -172,7 +172,7 @@ INSERT INTO Wishlist (wishlistId, user, item) VALUES
 (23, 0, 21);
 
 INSERT INTO Message (messageId, senderId, receiverId, itemId, message, sentAt) VALUES
-(0, 1, 2, 0, 'Olá, estou interessado em comprar este teclado.', '2023-05-12 08:00:00'),
+(0, 2, 1, 0, 'Olá, estou interessado em comprar este teclado.', '2023-05-12 08:00:00'),
 (1, 2, 1, 0, 'Ótimo! O teclado ainda está disponível.', '2023-05-12 08:05:00'),
 (2, 3, 1, 1, 'O ZX Spectrum ainda está à venda?', '2023-05-12 08:10:00');
 
