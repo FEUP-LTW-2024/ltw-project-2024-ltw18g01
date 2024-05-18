@@ -1,30 +1,38 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: "Inter", sans-serif; 
 }
 
 .chat-container {
     display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    color: white;
 }
 
 .sidebar {
+    margin-left: 2em; 
     width: 30%;
-    border-right: 1px solid #ccc;
-    padding: 10px;
+    border-right: 2px solid white;
     overflow-y: auto;
+    padding: 1em; 
 }
 
 .conversation {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+    background-color: #4845a1;
+    border-radius: 20px; 
+    margin-bottom: 2em;
+    padding: 10px;
+    text-align: left; 
 }
 
 .conversation img.item-image {
-    width: 50px;
-    height: 50px;
+    border-radius: 20px; 
+    width: 3em;
+    height: 3em;
     object-fit: cover;
-    margin-right: 10px;
+    margin-right: 1em;
+    margin-bottom: 1em;
+
 }
 
 .conversation h3 {
@@ -37,11 +45,10 @@ body {
 
 .conversation small {
     display: block;
-    color: #666;
+    color: #D4D4D4; 
 }
 
 .conversation a {
-    display: inline-block;
     margin-top: 5px;
     color: #007bff;
     text-decoration: none;
@@ -62,12 +69,16 @@ body {
 
 .message-form textarea {
     width: 100%;
-    height: 100px;
+    height: 20%;
     margin-bottom: 10px;
+    border-radius: 10px; 
+    padding: 10px; 
 }
 
 .message {
     margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .message.sent {
@@ -76,4 +87,27 @@ body {
 
 .message.received {
     text-align: left;
+}
+
+.sender-name {
+    margin: 0;
+    font-size: 0.9em;
+    color: #F4CD9A;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #966478;
+    margin: 0;
+}
+
+.conversation a {
+    margin-top: 5px;
+    margin-left: auto; 
+    display: inline-flex; 
+}
+
+.conversation img.send-message-icon {
+    width: 20px; 
+    height: 20px;
 }

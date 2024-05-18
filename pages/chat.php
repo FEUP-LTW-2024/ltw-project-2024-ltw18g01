@@ -31,7 +31,6 @@ if ($receiverId) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
     <link rel="stylesheet" href="/css/chat.css">
     <script src="/js/chat.js" defer></script>
 </head>
@@ -65,12 +64,14 @@ function drawMessages(array $messages, int $userId, array $users) {
         $senderName = $isUserSender ? 'You' : $users[$message->senderId]->username;
         ?>
         <div class="message <?= $isUserSender ? 'sent' : 'received' ?>">
-            <p><strong><?= htmlspecialchars((string)$senderName) ?>:</strong> <?= htmlspecialchars((string)$message->message) ?></p>
-            <p><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
+            <p class="sender-name"><strong><?= htmlspecialchars((string)$senderName) ?></strong></p>
+            <p><?= htmlspecialchars((string)$message->message) ?></p>
+            <p class="message-time"><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php
     }
 }
+
 
 function drawSendMessageForm(int $userId, array $users, int $receiverId, int $itemId) {
     ?>
@@ -78,7 +79,7 @@ function drawSendMessageForm(int $userId, array $users, int $receiverId, int $it
         <input type="hidden" name="senderId" value="<?= $userId ?>">
         <input type="hidden" name="receiverId" value="<?= $receiverId ?>">
         <input type="hidden" name="itemId" value="<?= $itemId ?>">
-        <label for="message">Message:</label>
+        <label for="message">Type here</label>
         <textarea id="message" name="message" rows="4" cols="50" required></textarea>
         <button type="submit">Send</button>
     </form>
@@ -125,7 +126,7 @@ function drawConversationsList($userId, $pdo) {
             echo '<h3>' . htmlspecialchars((string)$conversation['title']) . '</h3>';
             echo '<p>' . htmlspecialchars((string)$conversation['otherUsername']) . ': ' . htmlspecialchars((string)$conversation['message']) . '</p>';
             echo '<small>Sent at: ' . htmlspecialchars((string)$conversation['sentAt']) . '</small>';
-            echo '<a href="chat.php?receiverId=' . htmlspecialchars((string)$conversation['otherUserId']) . '&itemId=' . htmlspecialchars((string)$conversation['itemId']) . '">Chat</a>';
+            echo '<a href="chat.php?receiverId=' . htmlspecialchars((string)$conversation['otherUserId']) . '&itemId=' . htmlspecialchars((string)$conversation['itemId']) . '"><img src="/../images/others/send-message.png" alt="Enviar mensagem" class="send-message-icon"></a>';
             echo '</div>';
         }
     } catch (PDOException $e) {

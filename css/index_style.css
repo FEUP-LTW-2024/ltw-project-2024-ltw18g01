@@ -67,8 +67,8 @@ body {
     border:none;
     background-color:transparent;
     width: 1.2%;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center; 
 }
 
 .navbar a.icon img {
@@ -258,6 +258,7 @@ done ihih <3
     width: 100%;
     bottom: -150px;
     left: 0;
+    height: inherit;
 }
 
 .desktop-menu.show {

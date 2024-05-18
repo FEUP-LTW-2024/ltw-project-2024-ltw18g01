@@ -69,7 +69,6 @@ function drawTopBar(Session $session, $db)
 
                 <div class="mobile-menu">
                     <button onclick="toggleDesktopMenu()">
-                        <img src="/images/others/icon-list.png" alt="Menu-Icon">
                     </button>
                     <div class="desktop-menu">
                         <?php foreach ($pages as $page => $url) {
