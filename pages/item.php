@@ -17,6 +17,7 @@
   } else {
     $isAdmin = false;
   }
+  $curUser = (int)$session->getId();
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
         <br>
         <section>
         <?php 
-            drawItems($item, $seller, $itemId, $isAdmin);
+            drawItems($item, $seller, $itemId, $isAdmin, $curUser);
         ?>
         </section>
     </body>

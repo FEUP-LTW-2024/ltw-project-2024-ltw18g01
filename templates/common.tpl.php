@@ -133,7 +133,7 @@ function drawMyItems($db, $userId) {
 ?>
 
 <?php
-function drawItems($item, $seller, $itemId, $isAdmin) { ?>
+function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     <div class="background">
         <div class="grid-container">
             <div class="item-picture">
@@ -148,9 +148,13 @@ function drawItems($item, $seller, $itemId, $isAdmin) { ?>
                     </div>
                     <img class="star" src="/images/others/starbox.png">
                     <p id="star-score"><?php echo $seller->userRating; ?></p>
+                    
+                    <?php
+                    if ($seller->userId != $curUser) { ?>
                     <div class="button-message-seller"> 
                     <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>" id="button-text">Message seller</a>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="item-info"> 
@@ -160,26 +164,31 @@ function drawItems($item, $seller, $itemId, $isAdmin) { ?>
                 <p id="shipping-price"><?php echo 'Estimated shipping cost: ' . $item->shippingCost . ' €';?></p>
                 <div class="containers">
                 <?php
-                if ($item->sold == false) { ?>
+                if ($item->sold == false && $seller->userId != $curUser) { ?>
                     <a href="<?php echo '/../pages/payment.php?itemId=' . $itemId; ?>">
                         <div class="button-buy-now"> 
                             <p id="button-text">Buy now</p>
                         </div>
                     </a>
-                <?php } else { ?>
+                <?php } else if ($seller->userId != $curUser) { ?>
                     <div class="button-buy-now"> 
                         <p id="button-text">SOLD</p>
                     </div>
                 <?php } ?>
+                    
+                    <?php
+                    if ($seller->userId != $curUser) { ?>
 
                     <div class="button-request-new-price"> 
                         <p id="button-text">Request new price</p>
                     </div>
+
+                    <?php }  ?>
                     
                     <?php
-                    if ($isAdmin) { ?>
+                    if ($isAdmin || $seller->userId == $curUser) { ?>
                         <div class="button-request-new-price" id="submitForm"> 
-                            <p id="button-text">ADMIN: Delete item</p>
+                            <p id="button-text">Delete item</p>
                         </div>
 
                         <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
