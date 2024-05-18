@@ -133,7 +133,7 @@ function drawMyItems($db, $userId) {
 ?>
 
 <?php
-function drawItems($item, $seller, $itemId) { ?>
+function drawItems($item, $seller, $itemId, $isAdmin) { ?>
     <div class="background">
         <div class="grid-container">
             <div class="item-picture">
@@ -175,10 +175,30 @@ function drawItems($item, $seller, $itemId) { ?>
                     <div class="button-request-new-price"> 
                         <p id="button-text">Request new price</p>
                     </div>
+                    
+                    <?php
+                    if ($isAdmin) { ?>
+                        <div class="button-request-new-price" id="submitForm"> 
+                            <p id="button-text">ADMIN: Delete item</p>
+                        </div>
 
-                </div>    
+                        <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
+                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" ?>">
+                        </form>
+                    <?php } ?>
+
+
+                </div>
+                
+
             </div>
+
         </div>
     </div>
+    <script>
+    document.getElementById('submitForm').addEventListener('click', function() {
+        document.getElementById('deleteForm').submit();
+    });
+    </script>
 <?php }
 ?>

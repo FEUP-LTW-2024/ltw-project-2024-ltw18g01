@@ -11,6 +11,12 @@
   $itemId = (int)$_GET['itemId']; 
   $item = Item::getItem($db,$itemId);
   $seller = User::getUser($db,$item -> seller);
+  if ($session->isLoggedIn()) {
+    $user = User::getUser($db, $session->getId());
+    $isAdmin = $user->isAdmin;
+  } else {
+    $isAdmin = false;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +40,7 @@
         <br>
         <section>
         <?php 
-            drawItems($item, $seller, $itemId);
+            drawItems($item, $seller, $itemId, $isAdmin);
         ?>
         </section>
     </body>

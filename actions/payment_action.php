@@ -23,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
         
-        <title>Techie - Shipping label</title>
+        <title>Techie - Receipt</title>
 
         <link rel="stylesheet" href="/css/shipping_label.css">
    </head>

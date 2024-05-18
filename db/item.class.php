@@ -155,6 +155,15 @@ class Item {
         $stmt->execute(array($subcatid));
     }
 
+    function removeItem(PDO $db, int $id) {
+        $stmt = $db->prepare("
+            DELETE FROM Item
+            WHERE itemId = ?
+        ");
+
+        $stmt->execute([$id]);
+    }
+
     public function save(PDO $db) {
         $stmt = $db->prepare('
             INSERT INTO Item (seller, category, subcategory, title, price, negotiable, published, tags, state, description, shippingSize, likes, shippingCost, sold, image_url)
@@ -181,5 +190,8 @@ class Item {
 
         $this->id= (int) $db->lastInsertId();
     }
+
+
+
 }
 
