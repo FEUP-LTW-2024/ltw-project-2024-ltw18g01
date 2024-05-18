@@ -5,11 +5,13 @@
   require_once(__DIR__ . '/../db/connection.db.php');
   require_once(__DIR__ . '/../db/user.class.php');
   require_once(__DIR__ . '/../templates/common.tpl.php');
+  require_once(__DIR__ . '/../templates/category.tpl.php');
   require_once(__DIR__ . '/../db/subcategory.class.php');
   $db = databaseConnect();
 
   // passar ID consoante o índice da navbar
-  $subcats = Subcategory::getSubcategoriesFromCategory($db, 0);
+  $subcats = Subcategory::getSubcategoriesFromCategory($db, (int)$_GET['category']);
+  $curUser = (int)$session->getId();
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +25,8 @@
         
         <title>Techie</title>
 
-        <link rel="stylesheet" href="/css/index_style.css"> 
+        <link rel="stylesheet" href="/css/index_style.css">
+        <link rel="stylesheet" href="/css/wishlist.css">
    </head>
     <body>
         <?php
@@ -34,28 +37,27 @@
             <header  id="sec-navbar-text" class="sec-navbar">
                 <?php
                 foreach ($subcats as $sub) { ?>
-                    <a href=""><?php echo $sub['name']; ?></a>
+                    <a href=<?php echo "category.php?category=" . (int)$_GET['category'] . "&subcategory=" . $sub['subcategoryId']; ?>><?php echo $sub['name']; ?></a>
                 <?php } ?>
-                <a class="active" href ="">All</a>
+                <a class="active" href =<?php echo "category.php?category=" . (int)$_GET['category'] . "&subcategory=all";?>>All</a>
             </header>
         </section>
+        
+        <br>
 
-        <section>
-            <div class="displays">
-                <p class="category">Nintendo lovers</p>
-                <p class="see_more">See more</p>
-            </div>
-            <div class="slide">
-                <div class="image_display">
-                    <img src="/images/products/macintoshplus.jpg">
-                    <img src="/images/products/commodore64.jpg">
-                    <img src="/images/products/ZXSpectrum48k.jpg">
-                    <img src="/images/products/Maquinacanoneos.jpg">
-                    <img src="/images/products/motorlineMC1.jpg">
-                    <img src="/images/products/tecladogamer.jpg">
-                    <img src="/images/products/GiraDiscosThorensTD125MKII.jpg">
-                </div>
-            </div>
-        </section>
+        <?php
+        if ($_GET['subcategory'] == "all") {
+            $cat = Category::getCategory($db, (int)$_GET['category']);
+            if ($session->isLoggedIn()) {
+                drawCategorySlide($cat, $db, $curUser);
+            } else {
+                drawCategorySlideGuest($cat, $db);                
+            }
+
+        } else {
+            $subcat = Subcategory::getSubcategory($db, (int)$_GET['subcategory']);
+            drawSubSlide($subcat, $db, $curUser);
+        }
+        ?>
     </body>
 </html>

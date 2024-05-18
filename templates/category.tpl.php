@@ -89,3 +89,129 @@ function drawCategorySlideGuestHomePage(Category $cat, PDO $db) {
 ?>
 
 
+<?php
+function drawCategorySlide(Category $cat, PDO $db, int $userId) {
+    // Retrieve items for the given category
+    $items = Category::getCategoryItems($db, $cat->id);
+    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
+?>  
+    <div class="image_display">
+        <?php
+
+        foreach ($items as $item) { ?>
+            <?php
+            if ($item['sold'] == false) { ?>
+            <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <img src="<?php echo $item['image_url']; ?>">
+                </a>
+                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+
+                    <?php if (in_array($item['itemId'], $wishlistItemIds)) { ?>
+                        <button id="liked"></button>
+                    <?php } else { ?> 
+                        <button></button>
+                    <?php } ?>
+
+                </form>
+            </div>
+            <?php } ?>
+<?php 
+    } 
+}?>
+
+<?php
+function drawCategorySlideGuest(Category $cat, PDO $db) {
+    // Retrieve items for the given category
+    $items = Category::getCategoryItems($db, $cat->id);
+?>  
+    <div class="image_display">
+        <?php
+
+
+        foreach ($items as $item) { ?>
+            <?php
+            if ($item['sold'] == false) { ?>
+            <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <img src="<?php echo $item['image_url']; ?>">
+                </a>
+                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <button></button>
+                </form>
+            </div>
+            <?php } ?>
+<?php 
+    } 
+}?>
+
+
+<?php
+function drawSubSlide(Subcategory $cat, PDO $db, int $userId) {
+    // Retrieve items for the given category
+    $items = Subcategory::getSubcategoryItems($db, $cat->id);
+    $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
+?>  
+    <div class="image_display">
+        <?php foreach ($items as $item) { ?>
+            <?php
+            if ($item['sold'] == false) { ?>
+                <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <img src="<?php echo $item['image_url']; ?>">
+                </a>
+                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+
+                    <?php if (in_array($item['itemId'], $wishlistItemIds)) { ?>
+                        <button id="liked"></button>
+                    <?php } else { ?> 
+                        <button></button>
+                    <?php } ?>
+                </form>
+                </div>
+            <?php } ?>
+
+        <?php } ?>
+    </div>
+<?php 
+} 
+?>
+
+<?php
+function drawSubSlideGuest(Subcategory $cat, PDO $db) {
+    // Retrieve items for the given category
+    $items = Subcategory::getSubcategoryItems($db, $cat->id);
+?>  
+    <div class="image_display">
+        <?php foreach ($items as $item) { ?>
+            <?php
+            if ($item['sold'] == false) { ?>
+                <div class="image_wrapper">
+                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+                <img src="<?php echo $item['image_url']; ?>">
+                </a>
+                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                
+                <form method="POST" action="/../actions/like_action.php">
+                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
+                    <button></button>
+                </form>
+                </div>
+            <?php } ?>
+
+        <?php } ?>
+    </div>
+<?php 
+} 
+?>

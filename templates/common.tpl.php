@@ -10,12 +10,12 @@ function drawTopBar(Session $session, $db)
 {
     $pages = array(
         'Home' => 'index.php',
-        'Gaming' => 'gaming.php',
-        'PCs' => 'pcs.php',
-        'Mobiles' => 'mobile.php',
-        'TVs' => 'tvs.php',
-        'Music' => 'music.php',
-        'Photo&Video' => 'photo_video.php'
+        'Gaming' => 'category.php?category=0&subcategory=all',
+        'PCs' => 'category.php?category=1&subcategory=all',
+        'Mobiles' => 'category.php?category=2&subcategory=all',
+        'TVs' => 'category.php?category=3&subcategory=all',
+        'Music' => 'category.php?category=4&subcategory=all',
+        'Photo&Video' => 'category.php?category=5&subcategory=all'
     );
 
     $currentPage = basename($_SERVER['PHP_SELF']);
