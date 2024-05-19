@@ -57,37 +57,29 @@
             <br>
             <?php
             foreach ($allusers as $userr) { ?>
-
             <div id="item-card">
-            <img class="user-img" src="<?php echo $userr->image_url; ?>">
-            <p id="user-title"><?php echo $userr->firstName . " " . $userr->lastName; ?></p>
-            <p id="user-name"><?php echo "@" .$userr->username; ?></p>
+                <img class="user-img" src="<?php echo $userr->image_url; ?>">
+                <p id="user-name"><?php echo "@" . $userr->username; ?></p>
 
-            <?php
-            if ($userr->isAdmin) { ?>
-              <form method="POST" action="../actions/update_admin_action.php">
-                <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
-                <button>Remove admin</button>
-              </form>
-            <?php } ?>
+                <div class="button-container">
+                    <?php if ($userr->isAdmin) { ?>
+                        <form method="POST" action="../actions/update_admin_action.php">
+                            <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
+                            <button>Remove admin</button>
+                        </form>
+                    <?php } else { ?>
+                        <form method="POST" action="../actions/update_admin_action.php">
+                            <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
+                            <button>Add admin</button>
+                        </form>
+                    <?php } ?>
 
-            <?php
-            if ($userr->isAdmin == false) { ?>
-              <form method="POST" action="../actions/update_admin_action.php">
-                <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
-                <button>Add admin</button>
-              </form>
-            <?php } ?>
-            
-            <form method="POST" action="../actions/ban_user_action.php">
-              <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
-              <button>Ban user</button>
-            </form>
-            
-          
+                    <form method="POST" action="../actions/ban_user_action.php">
+                        <input type="hidden" name="userId" value="<?php echo $userr->userId; ?>">
+                        <button>Ban user</button>
+                    </form>
+                </div>
             </div>
-            
-
             <br>
             <br>
 
