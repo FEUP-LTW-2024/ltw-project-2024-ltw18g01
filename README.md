@@ -59,7 +59,7 @@
 
 - [X] Respond to inquiries from buyers regarding their items and add further information if needed.
 
-- [X] Print shipping forms for items that have been sold.
+- [X] Print shipping forms for items that have been sold. (with real barcode)
 
 
 
@@ -133,4 +133,6 @@ We also implemented the following additional requirements (you can add more):
 
 - [X] **Shipping Costs** - Shipping cost changes with the size of the item.
 
-- [ ] **Real-Time Messaging System**
+- [X] **Real-Time Messaging System** - You can talk to a member to negotiate prices and discuss the deal's terms.
+
+- [X] **Negotiable** - You can only negotiate prices if the seller defines the item is negotiable.
