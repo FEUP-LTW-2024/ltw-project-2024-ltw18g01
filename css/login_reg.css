@@ -35,14 +35,11 @@
     align-items: center; 
 }
 
-#form_button {
-
-    height: 4em;
+.form_button {
+    height: 3em;
     border-radius: 40px;
-    border: 1.5px solid white;
     box-shadow: 0 8px 24px #966478;
-    width: 10em; 
-    margin-top: 5em;
+    width: 8em; 
     justify-content: center; 
     align-items: center;
     background-color: white;
@@ -132,7 +129,7 @@
         justify-content: center; 
         align-items: center; 
     }  
-}
+    }
 .register-button {
     display: flex;
     padding: 0.2em 2em;

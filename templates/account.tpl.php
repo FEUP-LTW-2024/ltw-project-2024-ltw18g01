@@ -55,11 +55,14 @@ function drawEditProfile(User $user, PDO $db) {
                 <input id="input-login" type="text" name="phone" value="<?=$user->phone?>">
             </div>
         
-            <br>
+            <br><br><br>
          <div class="containers">
             <button type="submit" class="form_button">Save</button> 
         </div>
+        <br>
+
     </form>
+ 
 <?php 
 } 
 ?>
