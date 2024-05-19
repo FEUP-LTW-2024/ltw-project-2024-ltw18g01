@@ -194,11 +194,10 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     if ($isAdmin || $seller->userId == $curUser) { ?>
                         <div class="button-delete-item" id="submitForm"> 
                             <p id="button-text">Delete item</p>
-                        </div>
-
-                        <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
+                            <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
                             <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" />
-                        </form>
+                            </form>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
