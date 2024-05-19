@@ -157,6 +157,7 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
             </div>
             <div class="item-info"> 
                 <p id="item-name"><?php echo $item->title; ?></p>
+                <p id="item-state"><?php echo $item->state; ?></p>
                 <p id="item-description"><?php echo $item->description; ?></p>
                 <?php
                 if ($item->negotiable == true) { ?>
