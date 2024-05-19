@@ -160,9 +160,10 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     <?php
                     if ($seller->userId != $curUser) { ?>
                     <div class="button-message-seller"> 
-                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>"> <p id="button-text">  Message seller</p></a>
+                    <a href="javascript:void(0);" onclick="sendMessageToSeller(<?php echo $seller->userId; ?>, '<?php echo $item->title; ?>', '<?php echo $item->image_url; ?>', <?php echo $itemId; ?>)"><p id="button-text">Message seller</p></a>
                     </div>
                     <?php } ?>
+        
                 </div>
             </div>
             <div class="item-info"> 
