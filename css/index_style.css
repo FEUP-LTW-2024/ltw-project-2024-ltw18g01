@@ -170,13 +170,6 @@ body {
     color: white;
 }
 
-/*
-clara por favor ajusta isto
-é suposto o texto aparecer debaixo da imagem
-ver figma
-*//*
-done ihih <3
-*/
 .image_display {
     size: 100%;
     display: inline-flex; 
@@ -211,7 +204,7 @@ done ihih <3
     border-top: 0.3em solid white; 
     border-bottom: 0.3em solid white; 
     background-color: white;
-    width: 95.5%;
+    width: 10.45em;
 }
 
 /* mobile */
@@ -315,8 +308,20 @@ done ihih <3
     width: 100%;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     .mobile-menu button {
         display:none; 
+    }
+    .navbar a.icon {
+        border:none;
+        background-color:transparent;
+        width: 1.2em;
+        justify-content: center;
+        align-items: center; 
+    }
+    
+    .navbar a.icon img {
+        width: 100%;
+        color: white;
     }
 }
