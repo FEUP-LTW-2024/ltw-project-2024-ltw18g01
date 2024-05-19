@@ -55,8 +55,8 @@ function drawEditProfile(User $user, PDO $db) {
                 <input id="input-login" type="text" name="phone" value="<?=$user->phone?>">
             </div>
         
+            <br>
          <div class="containers">
-            <a href="../pages/account.php" class="cancel_button">Cancel</a>
             <button type="submit" class="form_button">Save</button> 
         </div>
     </form>
