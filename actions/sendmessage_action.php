@@ -14,7 +14,6 @@ $message = new Message(null, $senderId, $receiverId, $itemId, $messageText, $sen
 $messageId = $message->save($db);
 
 if ($messageId) {
-    // Fetch updated conversation list
     $stmt = $db->prepare('
         SELECT i.itemId, i.title as itemTitle, i.image_url as itemImageUrl,
                m.message, m.sentAt, 

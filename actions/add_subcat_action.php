@@ -15,8 +15,6 @@ $db = databaseConnect();
 $existence = Subcategory::checkSubcategoryExistence($db, $_POST['subcategory']);
 
 if (!$existence) {
-    // CHECK IF CATEGORY IS AN ID
-    // SAVE NEW SUBCAT TO DB
     $subcat = new Subcategory($_POST['subcategory'], (int)$_POST['category']);
     $subcat->save($db);
 }

@@ -27,7 +27,7 @@ if (in_array((int)$_POST['itemId'], $wishlistItemIds)) {
 if (strpos($_SERVER['HTTP_REFERER'], '/../pages/search.php') !== false) {
     $currentURL = $_SERVER['REQUEST_URI'];
     header('Location: ' . $currentURL);
-    exit; // Make sure to exit after sending the header
+    exit; 
 } else {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }

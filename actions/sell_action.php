@@ -10,7 +10,6 @@ require_once(__DIR__ . '/../db/connection.db.php');
 require_once(__DIR__ . '/../db/user.class.php');
 require_once(__DIR__ . '/../db/item.class.php');
 
-// Obtém os dados do formulário
 $sellerId = $session->getId();
 $categoryId = isset($_POST['category']) ? (int)$_POST['category'] : 0; 
 $subcategoryId = isset($_POST['subcategory']) ? (int)$_POST['subcategory'] : 0; 
@@ -37,21 +36,17 @@ $likes = 0;
 $image_url = '';
 
 if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    // File upload is successful, process the file
     $tmp_name = $_FILES['image']['tmp_name'];
     $name = basename($_FILES['image']['name']);
     $upload_dir = __DIR__ . '/../images/products/';
     $target_file = $upload_dir . $name;
 
     if(move_uploaded_file($tmp_name, $target_file)) {
-        // File moved successfully
         $image_url = '/images/products/' . $name;
     } else {
-        // Error moving file
         echo "Erro ao mover o arquivo.";
     }
 } elseif(isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-    // File upload failed, display specific error message
     switch($_FILES['image']['error']) {
         case UPLOAD_ERR_INI_SIZE:
         case UPLOAD_ERR_FORM_SIZE:
