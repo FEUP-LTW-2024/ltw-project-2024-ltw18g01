@@ -85,3 +85,10 @@
     margin-top: 3em;
 
 }
+
+#edit-button {
+    margin-left: 6em;
+    font-size: 35px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
