@@ -22,6 +22,8 @@
     text-align: center;
 }
 
+
+
 .form_rectangle {
     background: #564D86;
     width: auto;
@@ -35,14 +37,16 @@
     align-items: center; 
 }
 
-.form_button {
+#form_button {
+    margin-top: 5em;
+    margin-bottom: 5em;
     height: 3em;
     border-radius: 40px;
     box-shadow: 0 8px 24px #966478;
     width: 8em; 
     justify-content: center; 
     align-items: center;
-    background-color: white;
+    background: white;
     
 }
 
@@ -185,7 +189,7 @@ button {
     border-radius: 40px;
     border: 1.5px solid white;
     box-shadow: 0 8px 24px #966478;
-    width: 10em; /* Em vez de 'width: 15em;' */
+    width: 10em; 
     align-items: center;
     background-color: white;
     font-family: "Inter", sans-serif;

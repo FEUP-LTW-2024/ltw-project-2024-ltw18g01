@@ -116,3 +116,99 @@ button {
     display: flex;
     justify-content: center;
 }
+
+
+@media only screen and (max-width: 1024px) {
+
+    #user-title {
+        display: none;
+    }
+    
+    #user-name {
+        font-size: 1em;
+    }
+    
+    #item-card button {
+        justify-content: center;
+        align-content: center;
+        height: 4em;
+        border-radius: 40px;
+        border: 1.5px solid white;
+        box-shadow: 0 8px 24px #966478;
+        width: 10em;
+        align-items: center;
+        background-color: white;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        margin-left: 1em; 
+    }
+    
+    .user-img {
+       display:none;
+    }
+    
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 1em; 
+        margin-top: 2em; 
+    }
+    
+    .user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .add {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%; 
+    }
+    
+    
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        height: 4em;
+        border-radius: 40px;
+        border: 1.5px solid white;
+        box-shadow: 0 8px 24px #966478;
+        width: 10em; /* Adjust as needed */
+        background-color: white;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .form_rectangle {
+        background: #564D86;
+        width: auto;
+        border-radius: 40px;
+        box-shadow: 0 8px 24px #966478;
+        width:100%;
+        display: flex;
+        justify-self: center; 
+        align-items: center; 
+    }
+    
+
+    #input-login:focus {
+        border: none;
+        outline: none;
+    }
+    
+    .section-title{
+        font-family: "Inter", sans-serif;
+        color: white;
+        font-size: 30px;
+        font-weight: 600; 
+        display: flex;
+        justify-content: center;
+    }     
+}
