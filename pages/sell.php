@@ -110,7 +110,7 @@ $categories = Category::getCategories($db);
         <section class="item_price">
             <p class="section-title">Price</p>
             <div class="form_rectangle">
-                <input id="input-text" type="text" name="price" placeholder="Price" required>
+                <input id="input-text" type="float" name="price" placeholder="Price" required>
             </div>
             <br>
             <div class="centered">

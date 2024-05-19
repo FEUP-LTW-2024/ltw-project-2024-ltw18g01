@@ -119,7 +119,14 @@ function drawMyItems($db, $userId) {
                             <p id="item-user-status-text">SOLD</p>
                         <?php } ?>
                         <?php } else { ?>
-                            <a id="edit-button"><p id="item-user-status-text">EDIT</p></a>
+                            <button class="edit-button" id="edit-button-<?php echo $item['itemId']; ?>"></button>
+                            <p id="item-user-status-text">EDIT</p>
+                            <script>
+                                document.getElementById("edit-button-<?php echo $item['itemId']; ?>").addEventListener("click", function(event) {
+                                    event.preventDefault();
+                                    window.location.href = "/../pages/edit_item.php?itemId=<?php echo $item['itemId']; ?>";
+                                });
+                            </script>
                         <?php } ?>
                     </div>
                 </div>
@@ -132,6 +139,7 @@ function drawMyItems($db, $userId) {
     }
 }
 ?>
+
 <?php
 function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     <div class="background">
