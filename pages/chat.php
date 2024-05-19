@@ -86,6 +86,7 @@ function drawSendMessageForm(int $userId, array $users, int $receiverId, int $it
     <?php
 }
 
+
 function drawConversationsList($userId, $pdo) {
     try {
         $stmt = $pdo->prepare('
