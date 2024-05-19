@@ -121,6 +121,7 @@ function drawConversationsList($userId, $pdo) {
 
             echo '<div class="conversation" data-item-id="' . htmlspecialchars((string)$conversation['itemId']) . '" data-other-user-id="' . htmlspecialchars((string)$conversation['otherUserId']) . '">';
             echo '<img src="' . htmlspecialchars((string)$conversation['otherUserImage']) . '" alt="' . htmlspecialchars((string)$conversation['otherUsername']) . '" class="otheruser-image">';
+            ?><br><?php
             echo '<h3>' . htmlspecialchars((string)$conversation['otherUsername']) . '</h3>';
             echo '<p>' . $message . '</p>';
             echo '<small>Sent at: ' . htmlspecialchars((string)$conversation['sentAt']) . '</small>';

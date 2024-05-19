@@ -159,12 +159,13 @@ body {
     
     .message-form {
         margin-bottom: 2em;
+        margin-right: 0.3em;
+
     }
     
     .message-form textarea {
         width: 100%;
         height: 15%;
-        margin-bottom: 10px;
         border-radius: 10px; 
         padding: 10px; 
     }
@@ -184,7 +185,7 @@ body {
     }
     
     .sender-name {
-        margin: 0;
+        margin-top: 1em;
         font-size: 0.9em;
         color: #F4CD9A;
     }
