@@ -77,13 +77,14 @@
     cursor: pointer;
     border: none;
     appearance: none;
-    width: 30px;
-    height: 30px;
+    margin-top: 3em;
+    width: 2em;
+    height: 2em;
     background-image: url('/../images/others/print-solid.svg');
     background-size: cover;
     background-color: transparent;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(168deg) brightness(109%) contrast(103%);
-    margin-left: 1em;
+    margin-left:42em; 
 }
 
 .edit-button {
