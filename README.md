@@ -27,10 +27,17 @@
 
 ## Screenshots
 
+![home](images/screenshots/home.png)
 
+![category](images/screenshots/category.png)
 
-(2 or 3 screenshots of your website)
+![chat](images/screenshots/chat.png)
 
+![item](images/screenshots/item.png)
+
+![shipping](images/screenshots/shipping.png)
+
+![user](images/screenshots/user.png)
 
 
 ## Implemented Features
@@ -59,7 +66,7 @@
 
 - [X] Respond to inquiries from buyers regarding their items and add further information if needed.
 
-- [X] Print shipping forms for items that have been sold.
+- [X] Print shipping forms for items that have been sold. (with real barcode)
 
 
 
@@ -115,22 +122,12 @@ We also implemented the following additional requirements (you can add more):
 
 
 
-- [ ] **Rating and Review System**
-
-- [ ] **Promotional Features**
-
-- [ ] **Analytics Dashboard**
-
-- [ ] **Multi-Currency Support**
-
-- [ ] **Item Swapping**
-
-- [ ] **API Integration**
-
-- [ ] **Dynamic Promotions**
-
-- [ ] **User Preferences**
+- [X] **Rating and Review System** - Rating system is fictional.
 
 - [X] **Shipping Costs** - Shipping cost changes with the size of the item.
 
-- [ ] **Real-Time Messaging System**
+- [X] **Real-Time Messaging System** - You can talk to a member to negotiate prices and discuss the deal's terms.
+
+- [X] **Negotiable** - You can only negotiate prices if the seller defines the item is negotiable.
+      
+- [X] **Mobile optimization** - Website is fully functional on mobile, with specific-features like scrollable lists.
