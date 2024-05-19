@@ -27,10 +27,17 @@
 
 ## Screenshots
 
+![home](images/screenshots/home.png)
 
+![category](images/screenshots/category.png)
 
-(2 or 3 screenshots of your website)
+![chat](images/screenshots/chat.png)
 
+![item](images/screenshots/item.png)
+
+![shipping](images/screenshots/shipping.png)
+
+![user](images/screenshots/user.png)
 
 
 ## Implemented Features
