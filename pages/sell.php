@@ -116,10 +116,12 @@ $categories = Category::getCategories($db);
                 <label for="price_neg">Is it negotiable?</label><br>
             </div>
         </section>
-
         <br>
-
         <button type="submit">List item</button>
     </form>
+    <br>
+    <br>
+    <br>
+    <br>
 </body> 
 </html>
