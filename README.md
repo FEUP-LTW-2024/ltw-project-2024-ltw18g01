@@ -122,21 +122,7 @@ We also implemented the following additional requirements (you can add more):
 
 
 
-- [ ] **Rating and Review System**
-
-- [ ] **Promotional Features**
-
-- [ ] **Analytics Dashboard**
-
-- [ ] **Multi-Currency Support**
-
-- [ ] **Item Swapping**
-
-- [ ] **API Integration**
-
-- [ ] **Dynamic Promotions**
-
-- [ ] **User Preferences**
+- [X] **Rating and Review System** - Rating system is fictional.
 
 - [X] **Shipping Costs** - Shipping cost changes with the size of the item.
 
