@@ -129,7 +129,7 @@ function drawMyItems($db, $userId) {
                             </script>
                         <?php } ?>
                     </div>
-                </div>text-align: right;
+                </div>
             </a>
             <br><br>
             <?php
