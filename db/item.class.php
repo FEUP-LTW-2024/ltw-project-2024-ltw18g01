@@ -132,6 +132,26 @@ class Item {
         $stmt->execute(array($itemId));
     }
 
+    static function updatePrice(PDO $db, float $price, int $itemId) {
+        $stmt = $db->prepare('
+        UPDATE Item
+        SET price = ?
+        WHERE itemId = ?
+        ');
+
+        $stmt->execute(array($price, $itemId));
+    }
+
+    static function updateNegotiable(PDO $db, bool $negotiable, int $itemId) {
+        $stmt = $db->prepare('
+        UPDATE Item
+        SET negotiable = ?
+        WHERE itemId = ?
+        ');
+
+        $stmt->execute(array($negotiable, $itemId));
+    }
+
     static function searchItems(PDO $db, string $query, int $count) : array {
         $stmt = $db->prepare(
             'SELECT *
