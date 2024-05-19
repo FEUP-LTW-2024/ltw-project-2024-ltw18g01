@@ -7,6 +7,8 @@ body {
     justify-content: center;
     margin-top: 2em;
     color: white;
+    flex: 1;
+    height: 80vh;
 }
 
 .sidebar {
@@ -28,7 +30,7 @@ body {
     border-radius: 20px; 
     margin-bottom: 2em;
     padding: 10px;
-    text-align: left; 
+    text-align: left;
 }
 
 .conversation h3 {
@@ -57,6 +59,10 @@ body {
 .chat-content {
     width: 70%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
 }
 
 .message-form {
@@ -160,7 +166,7 @@ body {
     .message-form {
         margin-bottom: 2em;
         margin-right: 0.3em;
-
+        padding: 10px;
     }
     
     .message-form textarea {
@@ -205,4 +211,15 @@ body {
 }
 
 
+.messages {
+    flex: 1;
+    overflow-y: auto;
+}
 
+
+.message-wrap {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
