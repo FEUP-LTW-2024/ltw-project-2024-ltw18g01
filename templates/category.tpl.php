@@ -59,12 +59,18 @@ function drawCategorySlideHomePage(Category $cat, PDO $db, int $userId) {
 function drawCategorySlideGuestHomePage(Category $cat, PDO $db) {
     // Retrieve items for the given category
     $items = Category::getCategoryItems($db, $cat->id);
+    $count = 0;
 ?>  
     <div class="image_display">
         <?php foreach ($items as $item) { ?>
             <?php
+            if ($count >= 8) {
+                break;
+            }
+            ?>
+            <?php
             if ($item['sold'] == false) { ?>
-
+            <?php $count++; ?>
             <div class="image_wrapper">
                 <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
                 <img src="<?php echo $item['image_url']; ?>">
@@ -77,7 +83,7 @@ function drawCategorySlideGuestHomePage(Category $cat, PDO $db) {
                 </form>
                 
                 <!-- ajax ver.
-                <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
+              button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
                 <script src="/../js/wishlist.js"></script>
                 --->
             </div>
