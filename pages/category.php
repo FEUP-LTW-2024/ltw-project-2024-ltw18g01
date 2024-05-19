@@ -37,7 +37,7 @@
             <header  id="sec-navbar-text" class="sec-navbar">
                 <?php
                 foreach ($subcats as $sub) { ?>
-                    <a href=<?php echo "category.php?category=" . (int)$_GET['category'] . "&subcategory=" . $sub['subcategoryId']; ?>><?php echo $sub['name']; ?></a>
+                    <a class= "subcategory" href=<?php echo "category.php?category=" . (int)$_GET['category'] . "&subcategory=" . $sub['subcategoryId']; ?>><?php echo $sub['name']; ?></a>
                 <?php } ?>
                 <a class="active" href =<?php echo "category.php?category=" . (int)$_GET['category'] . "&subcategory=all";?>>All</a>
             </header>
