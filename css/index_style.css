@@ -159,16 +159,7 @@ body {
     font-size: 15px; 
 }
 
-.see_more {
-    margin-right: 8em;
-    text-decoration: none;
-}
-.see_more p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: white;
-}
+
 
 .image_display {
     size: 100%;
@@ -176,6 +167,7 @@ body {
     margin-top: 5px;
     margin-left: 25px;
     align-content: center;
+    position: relative;
 }
 
 
@@ -206,6 +198,20 @@ body {
     border-bottom: 0.3em solid white; 
     background-color: white;
     width: 10.45em;
+}
+
+.see_more {
+    position:absolute;
+    margin-right: 0;
+    right: 8em;
+    text-decoration: none;
+}
+
+.see_more p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
 }
 
 /* mobile */
@@ -243,6 +249,13 @@ body {
     #sec-navbar-text {
         font-size: 0.8em;
         font-weight: bold;
+    }
+
+    .see_more {
+        margin-right: 0;
+        text-decoration: none;
+        position: absolute;
+        right: 0.5em;
     }
 
 }

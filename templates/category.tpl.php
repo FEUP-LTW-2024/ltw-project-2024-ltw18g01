@@ -19,8 +19,14 @@ function drawCategorySlideHomePage(Category $cat, PDO $db, int $userId) {
     $items = Category::getCategoryItems($db, $cat->id);
     $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
     $count = 0;
-?>  
+?>      
+        <div class="displays">
+            <p class="category"><?php echo $cat->name; ?></p>
+            <a class="see_more" href=<?php echo "/pages/category.php?category=" . $cat->id . "&subcategory=all";?>><p>See more</p></a>
+        </div>
         <div class="image_display">
+
+
             <?php foreach ($items as $item): ?>
                 <?php if ($count >= 8) break; ?>
                 <?php if (!$item['sold']): ?>

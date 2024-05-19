@@ -50,12 +50,6 @@
                 
                 $catt = Category::getCategory($db, (int)$cat['categoryId']);    
             ?>
-            
-
-            <div class="displays">
-                <p class="category"><?php echo $catt->name; ?></p>
-                <a class="see_more" href=<?php echo "/pages/category.php?category=" . $catt->id . "&subcategory=all";?>><p>See more</p></a>
-            </div>
             <div class="slide">
                 <?php
 
