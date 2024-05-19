@@ -11,6 +11,7 @@
   require_once(__DIR__ . '/../templates/subcategory.tpl.php');
 
   $db = databaseConnect();
+  $cats = Category::getCategories($db);
 ?>
 
 <!DOCTYPE html>
@@ -39,40 +40,33 @@
                 <p id="disclaimer" >*Buyer pays for the shipping.</p>
             </div>
         </section>
-        <!-- New Arrivals-->
+        
         <section>
+            <?php
+
+            foreach ($cats as $cat) { 
+                
+                $catt = Category::getCategory($db, (int)$cat['categoryId']);    
+            ?>
+            
+
             <div class="displays">
-                <p class="category">Gaming</p>
-                <a href="/pages/gaming.php"><p class="see_more">See more</p></a>
+                <p class="category"><?php echo $catt->name; ?></p>
+                <a class="see_more" href=<?php echo "/pages/category.php?category=" . $catt->id . "&subcategory=all";?>><p>See more</p></a>
             </div>
             <div class="slide">
                 <?php
-                    $cat = Category::getCategory($db, 0);
+
                     if ($session->isLoggedIn()) {
-                        drawCategorySlideHomePage($cat ,$db, $session->getId());
+                        drawCategorySlideHomePage($catt ,$db, $session->getId());
                     } else {
-                        drawCategorySlideGuestHomePage($cat, $db);
+                        drawCategorySlideGuestHomePage($catt, $db);
                     }
                 ?>
 
             </div>
-        </section>
-        <br>
-        <br>
-        <br>
 
-         <!-- SEGA example-->
-         <section>
-            <div class="displays">
-                <p class="category">Retro Consoles</p>
-                <p class="see_more">See more</p>
-            </div>
-            <div class="slide">
-                <?php
-                    $cat = Subcategory::getSubcategory($db, 5);
-                    drawSubcategorySlide($cat ,$db);
-                ?>
-            </div>
+            <?php } ?>
         </section>
     </body>
 </html>

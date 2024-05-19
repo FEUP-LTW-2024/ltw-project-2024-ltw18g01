@@ -160,8 +160,14 @@ body {
 }
 
 .see_more {
+    margin-right: 8em;
+    text-decoration: none;
+}
+.see_more p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     font-size: 15px;
-    right:0;
+    color: white;
 }
 
 /*
