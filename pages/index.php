@@ -34,7 +34,6 @@
         <?php
         drawTopBar($session, $db);
         ?>
-        <!-- Section of quotes-->
         <section>
             <div class="info-text">
                 <p id="First-text">Fancy some pre-loved tech?</p>

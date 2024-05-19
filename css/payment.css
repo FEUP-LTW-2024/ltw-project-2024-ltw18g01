@@ -4,10 +4,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 .form_rectangle {
     display: flex;
     align-items: center;

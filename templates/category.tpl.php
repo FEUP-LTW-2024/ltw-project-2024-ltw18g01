@@ -151,7 +151,6 @@ function drawCategorySlideGuest(Category $cat, PDO $db) {
 
 <?php
 function drawSubSlide(Subcategory $cat, PDO $db, int $userId) {
-    // Retrieve items for the given category
     $items = Subcategory::getSubcategoryItems($db, $cat->id);
     $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
 ?>  

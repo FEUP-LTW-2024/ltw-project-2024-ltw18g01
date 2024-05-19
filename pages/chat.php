@@ -66,7 +66,7 @@ function drawMessages(array $messages, int $userId, array $users) { ?>
         ?>
         <div class="message <?= $isUserSender ? 'sent' : 'received' ?>">
             <p class="sender-name"><strong><?= htmlspecialchars((string)$senderName) ?></strong></p>
-            <p><?= $message->message ?></p> <!-- Removido htmlspecialchars para permitir HTML -->
+            <p><?= $message->message ?></p> 
             <p class="message-time"><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php

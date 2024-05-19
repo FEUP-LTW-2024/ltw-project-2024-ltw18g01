@@ -48,8 +48,8 @@ if (searchItems) {
         form.appendChild(button)
 
         anchor.appendChild(form)
-        image_wrapper.appendChild(anchor); // Append the anchor to the image wrapper
-        imagedisplay.appendChild(image_wrapper); // Append the image wrapper to the image display
+        image_wrapper.appendChild(anchor); 
+        imagedisplay.appendChild(image_wrapper); 
     }
 
     document.body.appendChild(imagedisplay);

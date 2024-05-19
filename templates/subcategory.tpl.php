@@ -10,7 +10,6 @@
 
 <?php 
 function drawSubcategorySlide(Subcategory $cat, PDO $db) {
-    // Retrieve items for the given category
     $items = Subcategory::getSubcategoryItems($db, $cat->id);
 ?>  
     <div class="image_display">

@@ -31,7 +31,7 @@ class User {
         $this->postalCode = $postalCode;
         $this->phone = $phone;
         $this->email = $email;
-        $this->password = hash_password($password); // Usa a função hash_password do password.php
+        $this->password = hash_password($password); 
         $this->image_url = $image_url ?? null;
         $this->userRating = $userRating ?? 0.0;
         $this->salesNumber = $salesNumber;
@@ -77,7 +77,7 @@ class User {
         $stmt->execute([strtolower($email)]);
 
         if ($user = $stmt->fetch()) {
-            if (verify_password($password, $user['password'])) { // Usa a função verify_password do password.php
+            if (verify_password($password, $user['password'])) { 
                 return new User(
                     $user['userId'],
                     $user['firstName'],

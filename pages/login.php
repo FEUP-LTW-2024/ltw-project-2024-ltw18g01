@@ -27,7 +27,6 @@
     <?php
         drawTopBar($session, $db);
         ?>
-        <!-- Section of quotes-->
         <section>
             <div class="login-text">
                 <p id="First-text">Login to Techie</p>

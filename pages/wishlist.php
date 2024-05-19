@@ -73,11 +73,6 @@
                     <?php } ?>
 
                 </form>
-                
-                <!-- ajax ver.
-                <button class="like-button" data-user="<?php/* echo $session->getId(); */?>" data-item="<?php/* echo $wlitem['itemId']; */?>"></button>
-                <script src="/../js/wishlist.js"></script>
-                --->
             </div>
 
         <?php } ?>

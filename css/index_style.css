@@ -365,13 +365,11 @@ body {
         overflow-x: auto;
     }
     
-    /* Hide scrollbar for webkit browsers */
     .image_display::-webkit-scrollbar {
-        width: 0; /* Set scrollbar width to zero */
+        width: 0; 
     }
     
-    /* Optional: Hide scrollbar for Firefox */
     .image_display {
-        scrollbar-width: none; /* Firefox 64+ */
+        scrollbar-width: none; 
     }
 }

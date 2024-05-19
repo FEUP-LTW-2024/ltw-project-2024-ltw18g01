@@ -16,36 +16,36 @@ CREATE TABLE User (
   postalCode NVARCHAR,
   phone NVARCHAR,
   email NVARCHAR NOT NULL,
-  password NVARCHAR NOT NULL,                               -- password stored in bcrypt
-  image_url VARCHAR,                                        -- user image
-  userRating FLOAT default 0.0 CHECK (userRating >= 0.0 AND userRating <= 5.0), -- stars/rating
+  password NVARCHAR NOT NULL,                               
+  image_url VARCHAR,                                        
+  userRating FLOAT default 0.0 CHECK (userRating >= 0.0 AND userRating <= 5.0), 
   salesNumber INTEGER NOT NULL,
   isAdmin BOOLEAN NOT NULL
 );
 
 CREATE TABLE Category (
-  categoryId INTEGER NOT NULL,                             -- category id
-  name VARCHAR NOT NULL,                                   --  name of the category 
+  categoryId INTEGER NOT NULL,                             
+  name VARCHAR NOT NULL,                                    
   CONSTRAINT PK_Category PRIMARY KEY (categoryId)
 );
 
 CREATE TABLE Item (
-  itemId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,       -- item id
-  seller INTEGER NOT NULL,                                 -- user that possess the item
+  itemId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,       
+  seller INTEGER NOT NULL,                                 
   category INTEGER NOT NULL,
   subcategory INTEGER NOT NULL,
-  title VARCHAR NOT NULL,                                  --  name of the item
-  price FLOAT NOT NULL,                                    -- price of the item
+  title VARCHAR NOT NULL,                                  
+  price FLOAT NOT NULL,                                    
   negotiable BOOLEAN NOT NULL,
-  published INTEGER NOT NULL,                              -- date when the article was published in epoch format
-  tags VARCHAR,                                            -- comma separated tags                
-  state VARCHAR NOT NULL,                                  -- state of the item
-  description VARCHAR NOT NULL,                            -- report / additional description of the state of the item
+  published INTEGER NOT NULL,                              
+  tags VARCHAR,                                            
+  state VARCHAR NOT NULL,                                  
+  description VARCHAR NOT NULL,                            
   shippingSize VARCHAR NOT NULL,
   likes INTEGER,
   shippingCost INTEGER NOT NULL,
   sold BOOLEAN DEFAULT FALSE,
-  image_url VARCHAR NOT NULL,                              -- user image 
+  image_url VARCHAR NOT NULL,                              
   FOREIGN KEY (category) REFERENCES Category (categoryId)
   ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (seller) REFERENCES User (userId)
@@ -53,9 +53,9 @@ CREATE TABLE Item (
 );
 
 CREATE TABLE Subcategory (
-  subcategoryId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,                         -- subcategory id
-  name VARCHAR NOT NULL,                                  -- name of the subcategory
-  category INTEGER NOT NULL,                              -- foreign key referencing the parent category
+  subcategoryId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,                         
+  name VARCHAR NOT NULL,                                  
+  category INTEGER NOT NULL,                              
   FOREIGN KEY (category) REFERENCES Category(categoryId)
   ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -158,7 +158,7 @@ INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiabl
 (24, 3, 2, 15, 'Nokia', 0.99, true, 06052024, 'mobile,peripherals,phone','Very Good','Introducing the Nokia 3310, the legendary mobile phone that defined a generation! Known for its iconic design, indestructible build, and long-lasting battery life, the Nokia 3310 is a timeless classic that continues to capture the hearts of mobile enthusiasts around the world.With its sturdy construction and reliable performance, the Nokia 3310 is more than just a phone its a symbol of durability and simplicity in a world of ever-evolving technology. From making calls and sending texts to playing Snake and composing ringtones, the Nokia 3310 offers everything you need in a mobile device, without the distractions of modern smartphones.','Small', 19.99, 5, false, '/../images/products/nokia.jpg'),
 (25, 4, 5, 9, 'Fuji Film Camera', 79.99, false, 06052024, 'audio,camera,photo,video', 'Very Good','Introducing the Fujifilm X100V, a masterpiece of modern photography that combines classic design with cutting-edge technology. With its retro-inspired aesthetics and advanced features, the X100V is the perfect companion for capturing stunning images in any situation.Featuring a high-performance 26.1MP X-Trans CMOS 4 sensor and X-Processor 4, the X100V delivers exceptional image quality with sharp detail, vibrant colors, and rich dynamic range. Its versatile 23mm F2 lens provides a wide field of view, perfect for everything from landscapes to street photography.', 'Medium',29.99, 10, false, '/../images/products/fujifilm.jpg'),
 (26, 2, 0, 8, 'Call of Duty Modern Warfare 3', 29.99,true, 07052024, 'gaming,retro,game', 'Very Good','Get ready to experience the adrenaline-pumping action of modern warfare like never before with "Call of Duty: Modern Warfare 3"! As the thrilling conclusion to the epic Modern Warfare trilogy, this game thrusts players into the heart of a global conflict where every decision could mean the difference between victory and defeat.With its intense single-player campaign, gripping multiplayer modes, and addictive cooperative missions, "Modern Warfare 3" offers something for every type of player. Join iconic characters like Soap, Price, and Frost as they battle against the forces of chaos and terror in a desperate fight for survival.' , 'Small',19.99, 15, false, '/../images/products/mw3.jpg'),
--- 19/05 02h update
+
 
 (27, 1, 1, 7, 'Acer GL553VD gaming laptop', 300.00, true, 19052024, 'laptop,gaming,pc', 'Good', 'Includes charger. In great shape, bought in 2021, runs most modern games.', 'Large', 49.99, 4, false, '/../images/products/acergaming.jpg'),
 (28, 3, 1, 5, 'Macbook Pro 2016', 150.00, false, 19052024, 'laptop, apple', 'Very Good', '2016 model, some scratches in the bottom case but overall very good state. Non-negotiable price.', 'Medium', 29.99, 15, false, '/../images/products/macbook2016.jpg'),

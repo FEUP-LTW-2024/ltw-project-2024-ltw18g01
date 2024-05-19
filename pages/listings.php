@@ -37,7 +37,6 @@
    <?php
         drawTopBar($session, $db);
         ?>
-        <!-- Section of quotes-->
         <p class="user-profile">My items</p>
         <p class="catch-phrase">Your place for sales and purchases!</p>
         <br>
