@@ -130,7 +130,6 @@ function drawMyItems($db, $userId) {
     }
 }
 ?>
-
 <?php
 function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     <div class="background">
@@ -194,13 +193,8 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                             <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" ?>">
                         </form>
                     <?php } ?>
-
-
                 </div>
-                
-
             </div>
-
         </div>
     </div>
     <script>
