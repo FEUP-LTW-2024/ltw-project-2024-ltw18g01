@@ -159,7 +159,7 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     <?php
                     if ($seller->userId != $curUser) { ?>
                     <div class="button-message-seller"> 
-                    <a href="javascript:void(0);" onclick="sendMessageToSeller(<?php echo $seller->userId; ?>, '<?php echo $item->title; ?>', '<?php echo $item->image_url; ?>', <?php echo $itemId; ?>)"><p id="button-text">Message seller</p></a>
+                    <a href="javascript:void(0);" onclick="sendMessageToSeller(<?php echo $seller->userId; ?>, '<?php echo $item->title; ?>', '<?php echo $item->image_url; ?>', <?php echo $itemId; ?>, false)"><p id="button-text">Message seller</p></a>
                     </div>
                     <?php } ?>
         
@@ -191,10 +191,10 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                 <?php } ?>
                     
                     <?php
-                    if ($seller->userId != $curUser) { ?>
+                    if ($seller->userId != $curUser && $item->negotiable) { ?>
 
                     <div class="button-request-new-price"> 
-                        <p id="button-text">Request new price</p>
+                        <a href="javascript:void(0);" onclick="sendMessageToSeller(<?php echo $seller->userId; ?>, '<?php echo $item->title; ?>', '<?php echo $item->image_url; ?>', <?php echo $itemId; ?>, true)"><p id="button-text">Request new price</p></a>
                     </div>
 
                     <?php }  ?>
@@ -217,12 +217,13 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
         document.getElementById('deleteForm').submit();
     });
 
-    function sendMessageToSeller(receiverId, itemTitle, itemImageUrl, itemId) {
-        const messageText = `
-            Hello! I am interested in your item! 
-            <br>
-            <img src="${itemImageUrl}" alt="${itemTitle}" style="width: 5em; height: 5em;">
-        `;
+    function sendMessageToSeller(receiverId, itemTitle, itemImageUrl, itemId, price) {
+        
+        const messageText = price ? 
+        `Hello! Can we negotiate a new price? <br><img src="${itemImageUrl}" alt="${itemTitle}" style="width: 5em; height: 5em;">` :
+        `Hello! I am interested in your item! <br><img src="${itemImageUrl}" alt="${itemTitle}" style="width: 5em; height: 5em;">`;
+
+
 
         fetch('/actions/sendmessagetoseller_action.php', {
             method: 'POST',
