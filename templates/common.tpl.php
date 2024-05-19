@@ -130,6 +130,7 @@ function drawMyItems($db, $userId) {
     }
 }
 ?>
+
 <?php
 function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     <div class="background">
@@ -207,6 +208,40 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     document.getElementById('submitForm').addEventListener('click', function() {
         document.getElementById('deleteForm').submit();
     });
-    </script>
+
+    function sendMessageToSeller(receiverId, itemTitle, itemImageUrl, itemId) {
+        const messageText = `
+            Hello! I am interested in your item! 
+            <br>
+            <img src="${itemImageUrl}" alt="${itemTitle}" style="width: 5em; height: 5em;">
+        `;
+
+        fetch('/actions/sendmessagetoseller_action.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                receiverId: receiverId,
+                itemTitle: itemTitle,
+                itemImageUrl: itemImageUrl,
+                itemId: itemId,
+                message: messageText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'chat.php?receiverId=' + receiverId + '&itemId=' + itemId;
+            } else {
+                alert('Failed to send message.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error sending message.');
+        });
+    }
+</script>
 <?php }
 ?>

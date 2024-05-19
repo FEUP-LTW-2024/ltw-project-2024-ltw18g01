@@ -56,7 +56,6 @@ if ($receiverId) {
 </body>
 </html>
 
-
 <?php
 function drawMessages(array $messages, int $userId, array $users) {
     foreach ($messages as $message) {
@@ -65,13 +64,12 @@ function drawMessages(array $messages, int $userId, array $users) {
         ?>
         <div class="message <?= $isUserSender ? 'sent' : 'received' ?>">
             <p class="sender-name"><strong><?= htmlspecialchars((string)$senderName) ?></strong></p>
-            <p><?= htmlspecialchars((string)$message->message) ?></p>
+            <p><?= $message->message ?></p> <!-- Removido htmlspecialchars para permitir HTML -->
             <p class="message-time"><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php
     }
 }
-
 
 function drawSendMessageForm(int $userId, array $users, int $receiverId, int $itemId) {
     ?>
@@ -86,51 +84,54 @@ function drawSendMessageForm(int $userId, array $users, int $receiverId, int $it
     <?php
 }
 
-
 function drawConversationsList($userId, $pdo) {
     try {
         $stmt = $pdo->prepare('
-            SELECT i.itemId, i.title, i.image_url, 
-                   u1.username as senderName, u2.username as receiverName, 
-                   m.message, m.sentAt, 
-                   CASE 
-                       WHEN u1.userId = :userId THEN u2.userId 
-                       ELSE u1.userId 
-                   END as otherUserId,
-                   CASE 
-                       WHEN u1.userId = :userId THEN u2.username 
-                       ELSE u1.username 
-                   END as otherUsername
+            SELECT i.itemId, i.title, 
+                   CASE WHEN u1.userId = :userId THEN u2.userId ELSE u1.userId END as otherUserId, 
+                   CASE WHEN u1.userId = :userId THEN u2.username ELSE u1.username END as otherUsername,
+                   CASE WHEN u1.userId = :userId THEN u2.image_url ELSE u1.image_url END as otherUserImage,
+                   m.message, m.sentAt
             FROM Message m
             JOIN (
-                SELECT itemId, MAX(sentAt) as lastMessageTime
+                SELECT itemId, 
+                       CASE WHEN senderId = :userId THEN receiverId ELSE senderId END as otherUserId, 
+                       MAX(sentAt) as lastMessageTime
                 FROM Message
                 WHERE senderId = :userId OR receiverId = :userId
-                GROUP BY itemId, 
-                         CASE 
-                             WHEN senderId = :userId THEN receiverId 
-                             ELSE senderId 
-                         END
-            ) as subq ON m.itemId = subq.itemId AND m.sentAt = subq.lastMessageTime
+                GROUP BY otherUserId
+            ) as subq ON m.itemId = subq.itemId AND m.sentAt = subq.lastMessageTime 
+                       AND ((m.senderId = :userId AND m.receiverId = subq.otherUserId) 
+                       OR (m.receiverId = :userId AND m.senderId = subq.otherUserId))
             JOIN Item i ON i.itemId = m.itemId
             JOIN User u1 ON u1.userId = m.senderId
             JOIN User u2 ON u2.userId = m.receiverId
             WHERE m.senderId = :userId OR m.receiverId = :userId
             ORDER BY m.sentAt DESC
         ');
+
         $stmt->execute(['userId' => $userId]);
         $conversations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($conversations as $conversation) {
-            echo '<div class="conversation">';
-            echo '<img src="' . htmlspecialchars((string)$conversation['image_url']) . '" alt="' . htmlspecialchars((string)$conversation['title']) . '" class="item-image">';
-            echo '<h3>' . htmlspecialchars((string)$conversation['title']) . '</h3>';
-            echo '<p>' . htmlspecialchars((string)$conversation['otherUsername']) . ': ' . htmlspecialchars((string)$conversation['message']) . '</p>';
+            $message = htmlspecialchars((string)$conversation['message']);
+            if (strlen($message) > 20) {
+                $message = substr($message, 0, 20) . '...';
+            }
+
+            echo '<div class="conversation" data-item-id="' . htmlspecialchars((string)$conversation['itemId']) . '" data-other-user-id="' . htmlspecialchars((string)$conversation['otherUserId']) . '">';
+            echo '<img src="' . htmlspecialchars((string)$conversation['otherUserImage']) . '" alt="' . htmlspecialchars((string)$conversation['otherUsername']) . '" class="otheruser-image">';
+            echo '<h3>' . htmlspecialchars((string)$conversation['otherUsername']) . '</h3>';
+            echo '<p>' . $message . '</p>';
             echo '<small>Sent at: ' . htmlspecialchars((string)$conversation['sentAt']) . '</small>';
-            echo '<a href="chat.php?receiverId=' . htmlspecialchars((string)$conversation['otherUserId']) . '&itemId=' . htmlspecialchars((string)$conversation['itemId']) . '"><img src="/../images/others/send-message.png" alt="Enviar mensagem" class="send-message-icon"></a>';
+            echo '<a href="chat.php?receiverId=' . htmlspecialchars((string)$conversation['otherUserId']) . '&itemId=' . htmlspecialchars((string)$conversation['itemId']) . '">';
+            echo '<img src="/images/others/send-message.png" alt="Send Message">';
+            echo '</a>';
             echo '</div>';
         }
     } catch (PDOException $e) {
         echo 'Error: ' . htmlspecialchars($e->getMessage());
     }
 }
+
+?>
