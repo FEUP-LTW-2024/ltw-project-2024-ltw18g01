@@ -114,15 +114,14 @@
 
             <?php } ?>
         </section>
-
         <section class="user" id="addSubcategorySection">
-            <p class="section-title">Choose a category</p>
-            <form action="../actions/add_subcat_action.php" method="post" class="add">
+          <p class="section-title">Choose a category</p>
+          <form action="../actions/add_subcat_action.php" method="post" class="add">
               <div class="dropdown">
                   <select name="category" id="categoryDropdown" required>
                       <option value="">Select a category</option>
                       <?php
-                      foreach($categories as $category) {
+                      foreach ($categories as $category) {
                           echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
                       }
                       ?>
@@ -133,8 +132,8 @@
                   <input id="input-login" type="text" name="subcategory" placeholder="Subcategory" required>
               </div>
               <button id="addcatbtn" type="submit">Add new subcategory</button>
-            </form>
-        </section>
+          </form>
+      </section>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var toggleBtn = document.getElementById("toggleBtn");
