@@ -95,7 +95,7 @@ function drawMyItems($db, $userId) {
     if ($items) {
         foreach ($items as $item) {
             ?>
-            <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
+            < href="/../pages/item.php?itemId=<?=$item['itemId']?>">
                 <div id="item-card">
                     <img src="<?php echo $item['image_url']; ?>"></img>
                     <div id="item-things">
@@ -118,7 +118,9 @@ function drawMyItems($db, $userId) {
                         <?php if (isset($item['sold'])) { ?>
                             <p id="item-user-status-text">SOLD</p>
                         <?php } ?>
-                        <?php } ?>
+                        <?php } else { ?>
+                            <a> </a><p id="item-user-status-text">EDIT</p>
+                       <?php } ?>
                     </div>
                 </div>
             </a>
