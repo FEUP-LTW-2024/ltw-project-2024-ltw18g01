@@ -120,7 +120,7 @@ function drawMyItems($db, $userId) {
                         <?php } ?>
                         <?php } ?>
                     </div>
-                </div>
+                </div>text-align: right;
             </a>
             <br><br>
             <?php
@@ -150,15 +150,15 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     <?php
                     if ($seller->userId != $curUser) { ?>
                     <div class="button-message-seller"> 
-                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>" id="button-text">Message seller</a>
+                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>"> <p id="button-text">  Message seller</p></a>
                     </div>
                     <?php } ?>
                 </div>
             </div>
             <div class="item-info"> 
                 <p id="item-name"><?php echo $item->title; ?></p>
-                <p id="item-state"><?php echo $item->state; ?></p>
                 <p id="item-description"><?php echo $item->description; ?></p>
+                <p id="item-state">The condition is <span id="state-lowercase"> <?php echo $item->state;?> </span></p>
                 <?php
                 if ($item->negotiable == true) { ?>
                     <p id="item-price"><?php echo $item->price . ' € (negotiable)'; ?></p>
@@ -169,11 +169,11 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                 <div class="containers">
                 <?php
                 if ($item->sold == false && $seller->userId != $curUser) { ?>
+                    <div class="button-buy-now"> 
                     <a href="<?php echo '/../pages/payment.php?itemId=' . $itemId; ?>">
-                        <div class="button-buy-now"> 
                             <p id="button-text">Buy now</p>
-                        </div>
                     </a>
+                    </div>
                 <?php } else if ($seller->userId != $curUser) { ?>
                     <div class="button-buy-now"> 
                         <p id="button-text">SOLD</p>
@@ -191,12 +191,12 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     
                     <?php
                     if ($isAdmin || $seller->userId == $curUser) { ?>
-                        <div class="button-request-new-price" id="submitForm"> 
+                        <div class="button-delete-item" id="submitForm"> 
                             <p id="button-text">Delete item</p>
                         </div>
 
                         <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
-                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" ?>">
+                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" />
                         </form>
                     <?php } ?>
                 </div>
