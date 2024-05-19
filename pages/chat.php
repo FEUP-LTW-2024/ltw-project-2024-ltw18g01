@@ -57,7 +57,9 @@ if ($receiverId) {
 </html>
 
 <?php
-function drawMessages(array $messages, int $userId, array $users) {
+function drawMessages(array $messages, int $userId, array $users) { ?>
+    
+    <?php
     foreach ($messages as $message) {
         $isUserSender = $message->senderId === $userId;
         $senderName = $isUserSender ? 'You' : $users[$message->senderId]->username;
@@ -68,8 +70,10 @@ function drawMessages(array $messages, int $userId, array $users) {
             <p class="message-time"><em><?= htmlspecialchars((string)$message->sentAt) ?></em></p>
         </div>
         <?php
-    }
-}
+    } ?>
+<?php } ?>
+
+<?php
 
 function drawSendMessageForm(int $userId, array $users, int $receiverId, int $itemId) {
     ?>
