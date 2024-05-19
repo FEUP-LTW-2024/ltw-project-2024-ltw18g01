@@ -31,16 +31,6 @@ body {
     text-align: left; 
 }
 
-.conversation img.user-image {
-    border-radius: 20px; 
-    width: 2em;
-    height: 2em;
-    object-fit: cover;
-    margin-right: 1em;
-    margin-bottom: 1em;
-
-}
-
 .conversation h3 {
     margin: 0;
 }
@@ -118,6 +108,13 @@ body {
     height: 20px;
 }
 
+.image-message {
+    width: 3em;
+    height: 3em;
+    border-radius: 40px;
+}
+
+
 /* mobile */
 @media only screen and (max-width: 1024px) {
 
@@ -142,15 +139,7 @@ body {
         padding: 10px;
         text-align: left; 
     }
-    
-    .conversation img.user-image {
-        border-radius: 20px; 
-        width: 2em;
-        height: 2em;
-        object-fit: cover;
-        margin: 1em ;
-    
-    }
+
     
     .conversation h3 {
        display:none;
@@ -213,3 +202,6 @@ body {
     }
     
 }
+
+
+
