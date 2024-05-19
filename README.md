@@ -41,11 +41,11 @@
 
 
 
-- [ ] Register a new account.
+- [X] Register a new account.
 
-- [ ] Log in and out.
+- [X] Log in and out.
 
-- [ ] Edit their profile, including their name, username, password, and email.
+- [X] Edit their profile, including their name, username, password, email and image.
 
 
 
@@ -53,13 +53,13 @@
 
 
 
-- [ ] List new items, providing details such as category, brand, model, size, and condition, along with images.
+- [X] List new items, providing title, category, subcategory, model, size, and condition, along with images.
 
-- [ ] Track and manage their listed items.
+- [X] Track and manage their listed items.
 
-- [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
+- [X] Respond to inquiries from buyers regarding their items and add further information if needed.
 
-- [ ] Print shipping forms for items that have been sold.
+- [X] Print shipping forms for items that have been sold.
 
 
 
@@ -67,13 +67,13 @@
 
 
 
-- [ ] Browse items using filters like category, price, and condition.
+- [X] Browse items using filters like category, price, and condition.
 
-- [ ] Engage with sellers to ask questions or negotiate prices.
+- [X] Engage with sellers to ask questions or negotiate prices.
 
-- [ ] Add items to a wishlist or shopping cart.
+- [X] Add items to a wishlist or shopping cart.
 
-- [ ] Proceed to checkout with their shopping cart (simulate payment process).
+- [X] Proceed to checkout with their shopping cart (simulate payment process).
 
 
 
@@ -81,11 +81,11 @@
 
 
 
-- [ ] Elevate a user to admin status.
+- [X] Elevate a user to admin status.
 
-- [ ] Introduce new item categories, sizes, conditions, and other pertinent entities.
+- [X] Introduce new item categories, sizes, conditions, and other pertinent entities.
 
-- [ ] Oversee and ensure the smooth operation of the entire system.
+- [X] Oversee and ensure the smooth operation of the entire system.
 
 
 
@@ -95,7 +95,7 @@ We have been careful with the following security aspects:
 
 
 
-- [ ] **SQL injection**
+- [X] **SQL injection**
 
 - [ ] **Cross-Site Scripting (XSS)**
 
@@ -103,7 +103,7 @@ We have been careful with the following security aspects:
 
 
 
-**Password Storage Mechanism**: md5 / sha1 / sha256 / hash_password&verify_password
+**Password Storage Mechanism**: hash_password & verify_password (salting techniques)
 
 
 
@@ -131,6 +131,6 @@ We also implemented the following additional requirements (you can add more):
 
 - [ ] **User Preferences**
 
-- [ ] **Shipping Costs**
+- [X] **Shipping Costs** - Shipping cost changes with the size of the item.
 
 - [ ] **Real-Time Messaging System**

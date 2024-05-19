@@ -1,58 +1,62 @@
-.user-profile{
+.user-profile {
     font-family: "Inter", sans-serif;
     color: white;
     font-size: 40px;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
+    text-align: center; /* Centralizar texto */
 }
 
-.catch-phrase{
+.user-image {
+    width: 30em;
+    height: 30em;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white; 
+    box-shadow: 0 2px 24px #F4CD9A;
+    display: flex;
+    margin: auto;
+}
+
+.catch-phrase {
     font-family: "Inter", sans-serif;
     color: white;
     font-size: 1.3em;
     font-weight: regular; 
     display: flex;
     justify-content: center; 
+    text-align: center; /* Centralizar texto */
     margin-top: -1.5em;
 }
 
-.user-image {
-    width: 30em;
-    height: 30em;
-    border-radius: 50%;
-    border: 3px solid white; 
-    box-shadow: 0 2px 24px #F4CD9A;
-    display: flex;
-    margin: auto;
-    object-fit: cover;
-
-}
-
-.name{
+.name {
     font-family: "Inter", sans-serif;
     color: white;
     font-size: 2.9em;
     font-weight: bold; 
     display: flex;
     justify-content: center; 
+    text-align: center; /* Centralizar texto */
 }
 
-.username{
+.username {
     font-family: "Inter", sans-serif;
     color: white;
     font-size: 1.95em;
     font-weight: 600; 
     display: flex;
     justify-content: center;
+    text-align: center; /* Centralizar texto */
     margin-top: -1em;
 }
-.containers{
+
+.containers {
     display: flex;
     justify-content: center;
     gap: 3em;
-    
 }
+
 .form-button {
     height: 4em;
     border-radius: 40px;
@@ -60,8 +64,10 @@
     box-shadow: 0 8px 24px #966478;
     width: 15em;
     margin-top: 1em;
-}   
-
+    display: flex;
+    justify-content: center; /* Centralizar botão */
+    align-items: center; /* Centralizar botão */
+}
 
 #form-button-text {
     font-family: "Inter", sans-serif;
@@ -101,57 +107,55 @@ a {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
-
 @media only screen and (max-width: 1024px) {
+
     .user-image {
-        width: 15em;
-        height: 15em;
+        width: 20em;
+        height: 20em;
         object-fit: cover;
-        border-radius: ;
+        border-radius: 50%;
         border: 3px solid white; 
         box-shadow: 0 2px 24px #F4CD9A;
         display: flex;
         margin: auto;
     }
 
-    .user-profile{
-        font-family: "Inter", sans-serif;
-        color: white;
-        font-size: 40px;
-        font-weight: bold; 
-        display: flex;
-        justify-content: center; 
-        margin-top: 0em;
+    .user-profile {
+        font-size: 30px;
     }
-    
+
+    .catch-phrase {
+        font-size: 1em;
+        margin-top: -1em; 
+    }
+
+    .name {
+        font-size: 2em; 
+    }
+
+    .username {
+        font-size: 1.5em; 
+        margin-top: -0.5em; 
+    }
 
     .containers {
         display: flex;
         justify-content: center;
         align-items: center; 
         gap: 1em;
-        text-align: center; 
+        text-align: center; /* Centralizar texto */
     }
     
     .form-button {
-        height: 5.5em;
+        height: 5em;
         border-radius: 40px;
-        border: 1.5px solid white;
-        box-shadow: 0 8px 24px #966478;
-        width: 6.5em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        max-width: 90%;
+        width: 7em;
     }   
     
     #form-button-text {
-        font-family: "Inter", sans-serif;
-        font-weight: bold;
-        color: white;
-        font-size: 1.2em;
-        margin-top: 20%;
-        display: flex;
-        align-content: end;
+        content: normal;
+        justify-content: center;
+        align-content: center; 
+        font-size: 1.3em;
     }    
 }
