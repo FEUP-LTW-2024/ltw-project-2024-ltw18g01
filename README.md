@@ -136,3 +136,5 @@ We also implemented the following additional requirements (you can add more):
 - [X] **Real-Time Messaging System** - You can talk to a member to negotiate prices and discuss the deal's terms.
 
 - [X] **Negotiable** - You can only negotiate prices if the seller defines the item is negotiable.
+      
+- [X] **Mobile optimization** - Website is fully functional on mobile, with specific-features like scrollable lists.
