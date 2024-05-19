@@ -130,6 +130,7 @@ function drawMyItems($db, $userId) {
     }
 }
 ?>
+
 <?php
 function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     <div class="background">
@@ -150,14 +151,13 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                     <?php
                     if ($seller->userId != $curUser) { ?>
                     <div class="button-message-seller"> 
-                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>" id="button-text">Message seller</a>
+                    <a href="javascript:void(0);" onclick="sendMessageToSeller(<?php echo $seller->userId; ?>, '<?php echo $item->title; ?>', '<?php echo $item->image_url; ?>', <?php echo $itemId; ?>)" id="button-text">Message seller</a>
                     </div>
                     <?php } ?>
                 </div>
             </div>
             <div class="item-info"> 
                 <p id="item-name"><?php echo $item->title; ?></p>
-                <p id="item-state"><?php echo $item->state; ?></p>
                 <p id="item-description"><?php echo $item->description; ?></p>
                 <?php
                 if ($item->negotiable == true) { ?>
@@ -181,12 +181,10 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                 <?php } ?>
                     
                     <?php
-                    if ($seller->userId != $curUser && $item->negotiable) { ?>
+                    if ($seller->userId != $curUser) { ?>
 
                     <div class="button-request-new-price"> 
-                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>">
                         <p id="button-text">Request new price</p>
-                    </a>    
                     </div>
 
                     <?php }  ?>
@@ -198,7 +196,7 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                         </div>
 
                         <form action="/../actions/delete_item_action.php" method="post" id="deleteForm">
-                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>" ?>">
+                            <input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
                         </form>
                     <?php } ?>
                 </div>
@@ -209,6 +207,40 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
     document.getElementById('submitForm').addEventListener('click', function() {
         document.getElementById('deleteForm').submit();
     });
-    </script>
+
+    function sendMessageToSeller(receiverId, itemTitle, itemImageUrl, itemId) {
+        const messageText = `
+            Hello! I am interested in your item! 
+            <br>
+            <img src="${itemImageUrl}" alt="${itemTitle}" style="width: 5em; height: 5em;">
+        `;
+
+        fetch('/actions/sendmessagetoseller_action.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                receiverId: receiverId,
+                itemTitle: itemTitle,
+                itemImageUrl: itemImageUrl,
+                itemId: itemId,
+                message: messageText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'chat.php?receiverId=' + receiverId + '&itemId=' + itemId;
+            } else {
+                alert('Failed to send message.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error sending message.');
+        });
+    }
+</script>
 <?php }
 ?>
