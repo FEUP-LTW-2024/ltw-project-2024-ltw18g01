@@ -306,101 +306,73 @@ button {
 }
 
 @media only screen and (max-width: 1024px) {
-    #user-title {
-        display: none;
-    }
-    
-    #user-name {
-        margin-top: 1em;
-        font-size: 1em;
-        order: -1; 
-        margin-bottom: 1em; 
-        margin-left: 0; 
-    }
-    
-    #item-card {
-        flex-direction: column;
-    }
-    
-    #item-card button {
-        height: 3em;
-        border-radius: 40px;
-        box-shadow: 0 8px 24px #966478;
-        width: 10em;
-        align-items: center;
-        background-color: white;
-        font-family: "Inter", sans-serif;
-        font-weight: 600;
-        margin-top: 0;
-    }
-
-    .button-container {
-        display: flex;
-        flex-direction: row; 
-        justify-content: center;
-        gap: 1em; 
-        margin-top: 1em;
-    }
-
-    .user-img {
-        display: none !important;
-    }
-
-    .user {
+    #addSubcategorySection {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        min-height: 100vh;
     }
-    
+
     .add {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 70%; 
+        width: 100%;
+        justify-content: center;
     }
-    
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        height: 4em;
+        border-radius: 40px;
+        border: 1.5px solid white;
+        box-shadow: 0 8px 24px #966478;
+        width: 10em;
+        background-color: white;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
     .form_rectangle {
         background: #564D86;
         width: auto;
         border-radius: 40px;
         box-shadow: 0 8px 24px #966478;
-        width: 100%;
+        width: 90%;
+        margin: auto;
         display: flex;
-        justify-self: center; 
-        align-items: center; 
+        justify-content: center;
+        align-items: center;
     }
-    
+
+    #input-login {
+        background: transparent;
+        height: 3em;
+        width: 90%;
+        text-align: center;
+        border: none;
+        font-size: 20px;
+        color: white;
+    }
+
     #input-login:focus {
         border: none;
         outline: none;
     }
-    
+
     .section-title {
         font-family: "Inter", sans-serif;
         color: white;
         font-size: 30px;
-        font-weight: 600; 
+        font-weight: 600;
         display: flex;
         justify-content: center;
     }
-}
-
-
     
-    #input-login:focus {
-        border: none;
-        outline: none;
-    }
-    
-    .section-title {
-        font-family: "Inter", sans-serif;
-        color: white;
-        font-size: 30px;
-        font-weight: 600; 
-        display: flex;
-        justify-content: center;
-    }
 }
-
