@@ -85,12 +85,12 @@ CREATE TABLE Message (
   ON DELETE CASCADE ON UPDATE NO ACTION
 );
 INSERT INTO User(userId, firstName, lastName, username, address, city, country, postalCode, phone, email, password, image_url, userRating, salesNumber, isAdmin) VALUES
-(0, 'João', 'Mendes', 'joaovicente', 'Avenida das Rochas 21', 'Porto', 'Portugal', '4400-123', '+351 931 234 568', 'vicente@gmail.com', 'fce95b0e642bdb3aa90e9a80ab0d2c21:9f0abed8140a497a16bb1ae82043c1fcbcecb4f78b262a57f34a4f7a4d258960', '/../images/users/vicente.jpeg', 4.5, 14, true),
 (1, 'Rodrigo', 'Sousa', 'rodrigodesousa', 'Rua das Avenidas 23', 'Porto', 'Portugal', '4430-123', '+351 931 254 598', 'rodrigo@gmail.com', '61408077430d0305d443bb829499f4dc:e249da3ad5f4242a9a1620952f5ea0363bc7c09e519e20e8ad82c4dedd10a6f1', '/../images/users/rodrigo.jpeg', 4.2, 39, false),
 (2, 'Miguel', 'Moita', 'miguelmoita', 'Tv. dos Lírios 20', 'Póvoa de Varzim', 'Portugal', '4200-123', '+351 911 234 558', 'miguel@gmail.com', 'f19ec2139fdf38b3295ce98060bebcff:487c150f550277fe8e272779324c51b607f296b1fc0215543fa3954f66daa844', '/../images/users/Miguel.jpg', 3.5, 61, true),
 (3, 'Clara', 'Sousa', 'clarasousa', 'Av. Estados Unidos 120', 'Esposende', 'Portugal', '3400-123', '+351 921 234 568', 'clara@gmail.com', '58734c246dc16ed0761df8393cda66b3:b317934ffb5c5666751d3afb8a4867438f9ed51b30171059c7100c8f655515e4', '/../images/users/clara_sousa.jpeg', 4.8, 28, true),
 (4, 'Pedro', 'Santos', 'pedrosantos', 'Avenida de Ramalde 398', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'pedro@gmail.com', 'bdb4f6b1cd6ed228bc92097e7af21f3d:dcfa3719bbc79c3a2d4930fd9793099cbe25ab7258bf5a9d569a5a8ac586b320', '/../images/users/pedro.jpeg', 4.5, 46, false),
-(5, 'Afonso', 'Castro', 'afonsocastro', 'Senhora da Hora 28', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'afonso@gmail.com', 'a54a3dbbf24dcce54bf632c1a31b18cb:c28035dd145d2d9cad73e59ced8f444ce50f9de7ccc9793b9d649e2fa801088c','/../images/users/afonso.jpg', 2.5, 102, false);
+(5, 'Afonso', 'Castro', 'afonsocastro', 'Senhora da Hora 28', 'Porto', 'Portugal', '4480-123', '+351 961 234 568', 'afonso@gmail.com', 'a54a3dbbf24dcce54bf632c1a31b18cb:c28035dd145d2d9cad73e59ced8f444ce50f9de7ccc9793b9d649e2fa801088c','/../images/users/afonso.jpg', 2.5, 102, false),
+(6, 'João', 'Mendes', 'joaovicente', 'Avenida das Rochas 21', 'Porto', 'Portugal', '4400-123', '+351 931 234 568', 'vicente@gmail.com', 'fce95b0e642bdb3aa90e9a80ab0d2c21:9f0abed8140a497a16bb1ae82043c1fcbcecb4f78b262a57f34a4f7a4d258960', '/../images/users/vicente.jpeg', 4.5, 14, true);
 
 INSERT INTO Category (categoryId, name) VALUES
 (0, 'Gaming'),
@@ -135,15 +135,15 @@ INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiabl
 (1, 4, 0, 3, 'ZX Spectrum', 19.99, true, 12042024, 'gaming,console,retro', 'Decent', 'Old Console a bit dusty but functional to fun nights','Medium',29.99, 2, false, '/../images/products/ZXSpectrum48k.jpg'),
 (2, 1, 1, 11, 'Macintosh Plus', 79.99, true, 14042024, 'desktop,retro', 'Decent', 'The white components are a little yellowed due to the passing of the years', 'Large',49.99, 3, false, '/../images/products/macintoshplus.jpg'),
 (3, 3, 4, 10, 'Record Deck', 279.99, true, 14042024, 'sound,retro,music', 'Very Good', 'a milestone in music, nothing better to listen to music than a record player', 'Large',49.99,27, false,  '/../images/products/GiraDiscosThorensTD125MKII.jpg'),
-(4, 0, 0, 3, 'Commodore 64', 99.99, true, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', 'Medium',29.99, 31, false, '/../images/products/commodore64.jpg'),
-(5, 0, 1, 1, 'Motorline MC1', 119.99, true, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','Small', 19.99,1, true, '/../images/products/motorlineMC1.jpg'),
+(4, 6, 0, 3, 'Commodore 64', 99.99, true, 15042024, 'gaming,retro,console', 'Very Good', 'Classic console to play with a bit of nostalgia, very clean', 'Medium',29.99, 31, false, '/../images/products/commodore64.jpg'),
+(5, 6, 1, 1, 'Motorline MC1', 119.99, true, 18042024, 'processor,desktop,pc,retro', 'Good', 'Functional processor that belonged to a MC1','Small', 19.99,1, true, '/../images/products/motorlineMC1.jpg'),
 (6, 3, 5, 9, 'Canon Camera', 139.99, true, 18042024, 'audio,camera,photo,video', 'Good', 'A canon camera that takes beautiful photos','Medium',29.99, 3, false, '/../images/products/Maquinacanoneos.jpg'),
 (7, 1, 0, 8, 'The Legend of Zelda: Ocarina of Time', 14.99, false, 01052024, 'gaming,retro,game', 'Very Good', 'Timeless masterpiece that has captivated gamers for decades. This Nintendo 64 classic is an epic journey that masterfully combines elements of action, adventure, and puzzles. With groundbreaking graphics for its time and a compelling narrative, this game transports players to a vast and magical world filled with memorable characters and thrilling challenges.', 'Small',19.99, 4, false, '/../images/products/zelda.jpg'),
 (8, 2, 0, 8, 'Resident Evil 2', 14.99, false, 01052024,'gaming,retro,game','Decent', 'Whether you re a fan of classic survival horror or a newcomer looking to experience one of the genres defining titles, "Resident Evil 2" offers an unforgettable journey into the heart of darkness. Prepare yourself for a relentless battle for survival against the forces of evil in one of the most iconic games of all time.','Small',19.99, 2, false, '/../images/products/residentevil2ps1.jpg'),
 (9, 1, 4, 12, 'Radiohead - OK Computer', 7.99, true, 02052024, 'music,retro,album', 'Decent', 'Seminal album in alternative rock, renowned for its innovative sound and introspective lyrics. With tracks like "Paranoid Android" and "Exit Music (For a Film)," it explores themes of technology and existentialism. Praised for its sonic experimentation, it remains a timeless masterpiece in music history.','Small',19.99,19, false, '/../images/products/radioheadcd.jpg'),
 (10, 3, 4, 12, 'Nirvana . Nevermind', 8.99,true,02052024, 'music,retro,album', 'Decent', 'Landmark album in the grunge movement that shook the music world in the early 1990s. Featuring iconic tracks like "Smells Like Teen Spirit" and "Come as You Are," the album is a raw and powerful expression of angst and disillusionment. Its blend of punk rock energy and catchy melodies propelled Nirvana to superstardom and forever changed the landscape of popular music. "Nevermind" remains a cultural touchstone, beloved by fans and critics alike for its raw emotion and timeless relevance.','Small',19.99, 1, false, '/../images/products/nirvanacd.jpg'),
 (11, 4, 0, 3, 'Nintendo 64', 69.99, false, 02052024,'gaming,retro,console', 'Very Good','Legendary gaming console released by Nintendo in 1996. Love this console to the ground, you will be very happy playing it! ','Medium',29.99, 58, true, '/../images/products/nintendo64.jpg'),
-(12, 0, 0, 3, 'Mega Drive', 39.99, true, 0305024,'gaming,retro,console', 'Very Good','Legendary 16-bit gaming console released by Sega in 1988. It quickly became a cultural phenomenon, competing fiercely with Nintendo during the 1990s console wars. The impact on gaming culture is undeniable, leaving behind a legacy of timeless classics and fond memories for gamers around the world.','Small',19.99, 23, false, '/../images/products/megadrive.jpg'),
+(12, 6, 0, 3, 'Mega Drive', 39.99, true, 0305024,'gaming,retro,console', 'Very Good','Legendary 16-bit gaming console released by Sega in 1988. It quickly became a cultural phenomenon, competing fiercely with Nintendo during the 1990s console wars. The impact on gaming culture is undeniable, leaving behind a legacy of timeless classics and fond memories for gamers around the world.','Small',19.99, 23, false, '/../images/products/megadrive.jpg'),
 (13, 4, 4, 23, 'CD Player', 19.99, false, 03052024, 'music,retro,album', 'Decent', 'Experience the timeless joy of music with this sleek and reliable CD player, perfect for enjoying your favorite albums with pristine sound quality. Its compact design and easy-to-use controls make it a versatile addition to any audio setup.','Small',19.99, 1, false, '/../images/products/cdplayer.jpg'),
 (14, 1, 4, 12, 'Deftones - Around the fur', 11.99, true, 04052024, 'music,retro,album', 'Very Good', 'Powerful and visceral album that showcases their signature blend of heavy riffs, ethereal melodies, and emotional intensity. With tracks like "My Own Summer (Shove It)" and "Be Quiet and Drive (Far Away)," it captures the raw energy and complexity that define the Deftones sound, making it a must-have for fans of alternative metal.','Small',19.99, 8, false, '/../images/products/deftonesvinyl.jpg'),
 (15, 2, 0, 8, 'Shadow The Hedgehog', 9.99, false, 04052024,'gaming,retro,game', 'Very Good', ',Step into the shoes of the enigmatic Shadow the Hedgehog in this thrilling action-adventure game! Uncover the mysteries of his past as you embark on a quest for redemption. With fast-paced gameplay, intense combat, and multiple endings to discover, Shadow the Hedgehog offers an exhilarating experience for Sonic fans and newcomers alike. Get ready for an epic adventure filled with speed, chaos, and unforgettable moments!','Small',19.99, 10, false, '/../images/products/shadow.jpg'),
@@ -164,27 +164,27 @@ INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiabl
 (28, 3, 1, 5, 'Macbook Pro 2016', 150.00, false, 19052024, 'laptop, apple', 'Very Good', '2016 model, some scratches in the bottom case but overall very good state. Non-negotiable price.', 'Medium', 29.99, 15, false, '/../images/products/macbook2016.jpg'),
 (29, 4, 1, 6, 'Gaming station - GTX1060 3GB', 219.99, true, 19052024, 'desktop, gaming', 'Very Good', 'Ryzen R5, 1TB (HDD), 16GB RAM, GTX1060 3GB. Runs some modern games but, of course, all parts are upgradeable.', 'Large', 49.99, 27, false, '/../images/products/gamingstation.jpg'),
 (30, 2, 1, 5, 'iBook G3', 139.99, false, 19052024, 'frutiger, aero', 'Good', 'Some yellowing. Everything works fine.', 'Medium', 29.99, 120, false, '/../images/products/ibook.jpg'),
-(31, 0, 1, 4, 'Asus full setup', 99.99, true, 19052024, 'pc, full, setup', 'Good', 'Full PC setup from circa 2009. Good for accessing internet and other light tasks. Windows 7 activated.', 'Large', 49.99, 5, false, '/../images/products/asussetup.jpg'),
+(31, 6, 1, 4, 'Asus full setup', 99.99, true, 19052024, 'pc, full, setup', 'Good', 'Full PC setup from circa 2009. Good for accessing internet and other light tasks. Windows 7 activated.', 'Large', 49.99, 5, false, '/../images/products/asussetup.jpg'),
 (32, 4, 1, 4, 'Lenovo Thinkcentre', 119.99, true, 19052024, 'pc, lenovo', 'Very Good', 'Old thinkcentre laptop, professional line. 2016 model, intel core i3. Great for small businesses.', 'Large', 49.99, 88, false, '/../images/products/thinkcentre.jpg'),
 (33, 1, 1, 1, 'Intel Core i7-9700T NEW', 40.00, false, 19052024, 'processor', 'Very Good', 'i7-9700T, new. 2.0GHz - Eight-Core Eight-Thread CPU Processor 12M 35W PC Desktop LGA 1151', 'Small', 19.99, 12, false, '/../images/products/i7.jpg'),
-(34, 0, 1, 11, 'IBM 5150, untested', 200.00, false, 19052024, 'retro, desktop', 'Very Good', 'IBM 5150 from the 80s, floppy hard drive. Untested but with all cables', 'Large', 49.99, 34, false, '/../images/products/amiga.jpg'),
+(34, 6, 1, 11, 'IBM 5150, untested', 200.00, false, 19052024, 'retro, desktop', 'Very Good', 'IBM 5150 from the 80s, floppy hard drive. Untested but with all cables', 'Large', 49.99, 34, false, '/../images/products/amiga.jpg'),
 
 
 (35, 4, 2, 18, 'iPhone 11 A2221 128gb', 99.99, false, 19052024, 'iphone, phone', 'Decent', 'iPhone 11, very scratched at the back, hence the low price (non negotiable). 128gb, fully working, 89% capacity.', 'Small', '19.99', 21, false, '/../images/products/iphone11.jpg'),
-(36, 0, 2, 16, 'Xiaomi Redmi Note 12', 115.00, true, 19052024, 'xiaomi', 'Very Good', 'Redmi Note 12. Few scratches but very good state. 2021 model, my daily driver until I bought a newer model.', 'Small', 19.99, 28, false, '/../images/products/redmi12.jpg'),
+(36, 6, 2, 16, 'Xiaomi Redmi Note 12', 115.00, true, 19052024, 'xiaomi', 'Very Good', 'Redmi Note 12. Few scratches but very good state. 2021 model, my daily driver until I bought a newer model.', 'Small', 19.99, 28, false, '/../images/products/redmi12.jpg'),
 (37, 3, 2, 17, 'Note 20 5G Snapdragon 865+', 299.99, false, 19052024, 'samsung', 'Very Good', 'Samsung Galaxy Note 20 5G - NEW SEALED - Snapdragon 865+, great specs and amazing phone.', 'Small', 19.99, 13, false, '/../images/products/note20.jpg'),
 (38, 2, 2, 15, 'Nokia N95 symbian', 25.00, false, 19052024, 'nokia, n95, retro', 'Good', 'Retro Nokia N95 8GB. Symbian operating system. Might not work with all carriers as it only supports 3G.', 'Small', 19.99, 2, false, '/../images/products/n95.jpg'),
-(39, 0, 2, 15, 'Microsoft Lumia 950', 69.00, false, 19052024, 'lumia, microsoft', 'Good', 'Microsoft Lumia 950 32GB, good state. Windows 10 Mobile included. Charger not included (regular micro USB)', 'Small', 19.99, 7, false, '/../images/products/lumia950.jpg'),
+(39, 6, 2, 15, 'Microsoft Lumia 950', 69.00, false, 19052024, 'lumia, microsoft', 'Good', 'Microsoft Lumia 950 32GB, good state. Windows 10 Mobile included. Charger not included (regular micro USB)', 'Small', 19.99, 7, false, '/../images/products/lumia950.jpg'),
 (40, 1, 2, 25, 'Nothing Phone 2', 610.00, false, 19052024, 'nothing, phone', 'Very Good', 'Nothing Phone 2 unlocked, almost as new, comes with box and charging cable. A truly great phone - selling because I do not need so much power.', 'Small', 19.99, 41, false, '/../images/products/nothing.jpg'),
 (41, 1, 2, 25, 'Oppo Find x5 Pro 256gb', 300.00, true, 19052024, 'oppo, mobile', 'Very Good', 'Oppo Find x5 Pro, bought in 03/2022, 12gb RAM 256GB storage, ceramic white color. Still have the payment receipt, warranty and boxes. A very good phone powered by MariSilicon.', 'Small', 19.99, 14, false, '/../images/products/oppo.png'),
 (42, 2, 2, 25, 'Huawei P30 Pro VOG-L29', 100.00, false, 19052024, 'huawei, p30', 'Very Good', 'Huawei P30 Pro VOG-L29, 128GB, matte black, unblocked, dual sim. Comes with box. I took care of it, no visible scratches.', 'Small', 19.99, 34, false, '/../images/products/huawei.jpg'),
-(43, 3, 2, 25, 'Huawei P30 Lite FOR PARTS', 15.00, false, 19052024, 'huawei', 'For parts', 'Huawei P30 Lite for parts - out of service. Got a new screen but phone does not turn on. Selling for parts or for someone who can fix it.', 'Small', 19.99, 13, false, '/../images/products/p30lite.jpg'),
+(43, 5, 2, 25, 'Huawei P30 Lite FOR PARTS', 15.00, false, 19052024, 'huawei', 'For parts', 'Huawei P30 Lite for parts - out of service. Got a new screen but phone does not turn on. Selling for parts or for someone who can fix it.', 'Small', 19.99, 13, false, '/../images/products/p30lite.jpg'),
 
 (44, 3, 3, 20, 'TD Systems 50inch QLED 4K', 250.00, false, 19052024, 'tv, google', 'Very Good', 'TD Systems Smart TV 50 inch QLED 4K with androidTV 11. Enjoy your favorite apps directly from your TV and benefit from Hey Google!. New TV, shipped boxed.', 'Large', 49.99, 5, false, '/../images/products/tdsystems.jpg'),
 (45, 3, 3, 19, 'Winnie the Pooh rare CRT', 50.00, false, 19052024, 'disney', 'Decent', 'Winnie the Pooh disney rare CRT tv. Has AV input. Comes with the original cables and remote.', 'Large', 49.99, 10, false, '/../images/products/pooh.jpg'),
 (46, 2, 3, 21, 'LG 24LJ4540', 40.00, false, 19052024, 'lg tv', 'Good', 'LG 24LJ4540 TV, 24 inch, works perfectly, with all original accessories.', 'Large', 49.99, 21, false, '/../images/products/lg.jpg'),
 (47, 4, 3, 21, 'Orion TV', 25.00, false, 19052024, 'lcd tv', 'Good', 'Orion LCD TV, works fine, little outdated.', 'Large', 49.99, 10, false, '/../images/products/orion.jpg'),
-(48, 4, 3, 19, 'Sony Trinitron CRT TV', 200.00, false, 19052024, 'crt', 'Very Good', 'Very good state, almost as new. A very rare CRT model nowadays, from tech giants sony. No scratches or broken parts. Remote included.', 'Large', 49.99, 8, false, '/../images/products/sony.jpg'),
+(48, 5, 3, 19, 'Sony Trinitron CRT TV', 200.00, false, 19052024, 'crt', 'Very Good', 'Very good state, almost as new. A very rare CRT model nowadays, from tech giants sony. No scratches or broken parts. Remote included.', 'Large', 49.99, 8, false, '/../images/products/sony.jpg'),
 (49, 1, 3, 20, 'LG smart TV 42inch', 160.00, false, 19052024, 'smart, lg', 'Good', 'LG smart TV, 42 inch, original cables. One of the HDMI ports do not work. Remote included and one hdmi cable free.', 'Large', 49.99, 21, false, '/../images/products/lgsmart.jpg'),
 (50, 1, 3, 20, 'Sony Bravia XR 2022 OLED', 250.00, false, 19052024, 'smart, sony', 'Very Good', 'Sony Bravia XR 2022 OLED, new, boxed. Google TV - allows for using famous apps directly on the TV. This is a discontinued model. No warranty.', 'Large', 49.99, 47, false, '/../images/products/bravia.jpg'),
 (51, 2, 3, 20, 'LG LED 55 for parts', 129.99, true, 19052024, 'smart', 'For parts', 'LG TV LED 55inch surround sound. Broken LCD panel. For parts or to someone that can replace the panel.', 'Large', 49.99, 1, false, '/../images/products/lgtvparts.png'),
@@ -203,8 +203,8 @@ INSERT INTO Item (itemId, seller, category, subcategory, title, price, negotiabl
 
 
 INSERT INTO Wishlist (wishlistId, user, item) VALUES
-(0, 0, 14),
-(1, 0, 15),
+(0, 6, 14),
+(1, 6, 15),
 (2, 1, 1),
 (3, 1, 20),
 (4, 2, 21),
@@ -213,20 +213,20 @@ INSERT INTO Wishlist (wishlistId, user, item) VALUES
 (7, 3, 3),
 (8, 4, 5),
 (9, 4, 16),
-(10, 0, 1),
-(11, 0, 2),
-(12, 0, 3),
-(13, 0, 4),
-(14, 0, 5),
-(15, 0, 6),
-(16, 0, 7),
-(17, 0, 8),
-(18, 0, 9),
-(19, 0, 10),
-(20, 0, 11),
-(21, 0, 12),
-(22, 0, 13),
-(23, 0, 21);
+(10, 6, 1),
+(11, 6, 2),
+(12, 6, 3),
+(13, 6, 4),
+(14, 6, 5),
+(15, 6, 6),
+(16, 6, 7),
+(17, 6, 8),
+(18, 6, 9),
+(19, 6, 10),
+(20, 6, 11),
+(21, 6, 12),
+(22, 6, 13),
+(23, 6, 21);
 
 INSERT INTO Message (messageId, senderId, receiverId, itemId, message, sentAt) VALUES
 (0, 2, 1, 0, 'Olá, estou interessado em comprar este teclado.', '2023-05-12 08:00:00'),
