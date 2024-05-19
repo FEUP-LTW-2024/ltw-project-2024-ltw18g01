@@ -181,10 +181,12 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
                 <?php } ?>
                     
                     <?php
-                    if ($seller->userId != $curUser) { ?>
+                    if ($seller->userId != $curUser && $item->negotiable) { ?>
 
                     <div class="button-request-new-price"> 
+                    <a href="<?php echo 'chat.php?receiverId=' . $seller->userId . '&itemId=' . $itemId; ?>">
                         <p id="button-text">Request new price</p>
+                    </a>    
                     </div>
 
                     <?php }  ?>
