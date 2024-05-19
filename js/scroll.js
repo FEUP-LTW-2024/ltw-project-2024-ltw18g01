@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const leftArrows = document.querySelectorAll('.arrow.left');
     const rightArrows = document.querySelectorAll('.arrow.right');
-    const wrappers = document.querySelectorAll('.items-wrapper');
+    const scrollables = document.querySelectorAll('.scrollable');
 
     leftArrows.forEach((arrow, index) => {
         arrow.addEventListener('click', () => {
-            wrappers[index].scrollBy({
-                left: -wrappers[index].clientWidth,  
+            scrollables[index].scrollBy({
+                left: -scrollables[index].clientWidth,  
                 behavior: 'smooth'
             });
         });
@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rightArrows.forEach((arrow, index) => {
         arrow.addEventListener('click', () => {
-            wrappers[index].scrollBy({
-                left: wrappers[index].clientWidth,  
+            scrollables[index].scrollBy({
+                left: scrollables[index].clientWidth,  
                 behavior: 'smooth'
             });
         });

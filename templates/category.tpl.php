@@ -20,39 +20,32 @@ function drawCategorySlideHomePage(Category $cat, PDO $db, int $userId) {
     $wishlistItemIds = Wishlist::getWishlistUserIDs($db, $userId);
     $count = 0;
 ?>  
-    <div class="image_display">
-        <?php foreach ($items as $item) { ?>
-            <?php
-            if ($count >= 8) {
-                break;
-            } ?>
-            <?php
-            if ($item['sold'] == false) { ?>
-                <?php $count++; ?>
-                <div class="image_wrapper">
-                <a href="/../pages/item.php?itemId=<?=$item['itemId']?>">
-                <img src="<?php echo $item['image_url']; ?>">
-                </a>
-                <p><?php echo $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
-                
-                <form method="POST" action="/../actions/like_action.php">
-                    <input type="hidden" name="itemId" value="<?php echo $item['itemId']; ?>">
-                    <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+        <div class="image_display">
+            <?php foreach ($items as $item): ?>
+                <?php if ($count >= 8) break; ?>
+                <?php if (!$item['sold']): ?>
+                    <?php $count++; ?>
+                    <div class="image_wrapper">
+                        <a href="/../pages/item.php?itemId=<?= $item['itemId'] ?>">
+                            <img src="<?= $item['image_url'] ?>" alt="Item Image">
+                        </a>
+                        <p><?= $item['price'] . "€  | " . $item['likes'] . " likes"; ?></p>
+                        
+                        <form method="POST" action="/../actions/like_action.php">
+                            <input type="hidden" name="itemId" value="<?= $item['itemId'] ?>">
+                            <input type="hidden" name="userId" value="<?= $userId ?>">
 
-                    <?php if (in_array($item['itemId'], $wishlistItemIds)) { ?>
-                        <button id="liked"></button>
-                    <?php } else { ?> 
-                        <button></button>
-                    <?php } ?>
-                </form>
-                </div>
-            <?php } ?>
+                            <button class="<?= in_array($item['itemId'], $wishlistItemIds) ? 'liked' : '' ?>"></button>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
 
-        <?php } ?>
-    </div>
 <?php 
-} 
+}
 ?>
+
 
 
 <?php

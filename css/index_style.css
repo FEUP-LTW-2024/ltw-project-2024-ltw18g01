@@ -178,6 +178,7 @@ body {
     align-content: center;
 }
 
+
 .image_wrapper {
     position: relative;
 }
@@ -323,5 +324,26 @@ body {
     .navbar a.icon img {
         width: 100%;
         color: white;
+    }
+
+    .image_display {
+        size: 100%;
+        display: inline-flex; 
+        margin-top: 5px;
+        margin-left: 25px;
+        align-content: center;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    
+    /* Hide scrollbar for webkit browsers */
+    .image_display::-webkit-scrollbar {
+        width: 0; /* Set scrollbar width to zero */
+    }
+    
+    /* Optional: Hide scrollbar for Firefox */
+    .image_display {
+        scrollbar-width: none; /* Firefox 64+ */
     }
 }

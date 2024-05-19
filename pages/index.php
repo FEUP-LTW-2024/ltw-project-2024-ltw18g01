@@ -27,6 +27,8 @@
 
         <link rel="stylesheet" href="/css/index_style.css">
         <link rel="stylesheet" href="/css/index_cards.css">
+
+        <script src="/../js/scroll.js"></script>
    </head>
     <body>
         <?php
