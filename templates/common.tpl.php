@@ -159,7 +159,12 @@ function drawItems($item, $seller, $itemId, $isAdmin, $curUser) { ?>
             <div class="item-info"> 
                 <p id="item-name"><?php echo $item->title; ?></p>
                 <p id="item-description"><?php echo $item->description; ?></p>
-                <p id="item-price"><?php echo $item->price . ' €'; ?></p>
+                <?php
+                if ($item->negotiable == true) { ?>
+                    <p id="item-price"><?php echo $item->price . ' € (negotiable)'; ?></p>
+                <?php } else { ?>
+                    <p id="item-price"><?php echo $item->price . ' €'; ?></p>
+                <?php } ?>
                 <p id="shipping-price"><?php echo 'Estimated shipping cost: ' . $item->shippingCost . ' €';?></p>
                 <div class="containers">
                 <?php

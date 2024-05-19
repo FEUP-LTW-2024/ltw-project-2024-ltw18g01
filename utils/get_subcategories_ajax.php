@@ -23,7 +23,7 @@ if(isset($_POST['categoryId'])){
     if($subcategories){
         echo '<option value="">Select a subcategory</option>';
         foreach($subcategories as $subcategory){
-            echo '<option value="'.$subcategory['subcategory_id'].'">'.$subcategory['name'].'</option>';
+            echo '<option value="'.$subcategory['subcategoryId'].'">'.$subcategory['name'].'</option>';
         }
     }else{
         echo '<option value="">No subcategories found</option>';
